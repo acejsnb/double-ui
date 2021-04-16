@@ -1,0 +1,86 @@
+.d-button
+  display inline-block
+  vertical-align middle
+  padding-left 8px
+  padding-right 8px
+  border-radius 4px
+  border-width 1px
+  border-style solid
+  font-size 0
+  text-align center
+  transition background-color .3s, border .3s
+  + .d-button
+    margin-left 12px
+  .d-button-content
+    width 100%
+.d-button-default
+  background-color var(--theme)
+  border-color var(--grey-400)
+  color var(--grey-900)
+  &:hover
+    border-color var(--blue-500)
+    .d-button-text
+      color var(--blue-500)
+  &:active
+    border-color var(--blue-600)
+    .d-button-text
+      color var(--blue-600)
+.d-button-blue
+  background-color var(--blue-500)
+  border-color var(--blue-500)
+  color var(--white)
+  &:hover
+    background-color var(--blue-400)
+    border-color var(--blue-400)
+  &:active
+    background-color var(--blue-600)
+    border-color var(--blue-600)
+.d-button-word
+  background none
+  border-color transparent
+  color var(--grey-900)
+  .d-button-text
+    font-weight 500
+  &:hover
+    .d-button-text
+      color var(--blue-500)
+  &:active
+    .d-button-text
+      color var(--blue-600)
+.d-button-text
+  user-select none
+.d-button-large
+  max-width 128px
+  min-width 80px
+  height 40px
+  .d-button-content
+    height 38px
+    line-height @height
+.d-button-medium
+  max-width 116px
+  min-width 80px
+  height 32px
+  .d-button-content
+    height 30px
+    line-height @height
+.d-button-small
+  max-width 108px
+  min-width 60px
+  height 28px
+  .d-button-content
+    height 26px
+    line-height @height
+
+.d-button-normal
+  cursor pointer
+.d-button.d-button-disabled
+  cursor not-allowed
+  .d-button-text
+    color var(--grey-400)
+.d-button-disabled:not([type='word'])
+  background-color var(--grey-200)
+  border-color var(--grey-200)
+
+.d-button-text
+  font-size 14px
+  transition color .3s
