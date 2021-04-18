@@ -1,0 +1,20 @@
+/*CSS动画*/
+@keyframes slideInUpUi
+  from
+    transform translate3d(0, 100%, 0)
+    opacity 0
+  to
+    transform translate3d(0, 0, 0)
+    opacity 1
+@keyframes slideOutUpUi
+  from
+    transform translate3d(0, 0, 0)
+    opacity 1
+  to
+    transform translate3d(0, -100%, 0)
+    opacity 0
+
+.slideUpUi-enter-active
+  animation slideInUpUi .3s ease-out
+.slideUpUi-leave-active
+  animation slideOutUpUi .15s ease-in

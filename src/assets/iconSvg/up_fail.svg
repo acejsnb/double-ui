@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="40px" viewBox="0 0 41 40" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.925548735">
+        <rect class="svg-stroke-grey-500" stroke-width="2" x="4.00368755" y="7" width="32" height="25"
+              rx="2.02985075"></rect>
+        <path d="M4.26491802,26.6431168 L12.1045755,16.9621735 C12.457332,16.5265656 13.0964277,16.4594014 13.5320356,16.812158 C13.5707575,16.8435151 13.6071177,16.8776811 13.6408213,16.914379 L17.8672865,21.5163297 C18.2059311,21.8850599 18.7628649,21.9517713 19.1790152,21.6734529 L21.4437915,20.1587862 C21.8389862,19.8944827 22.3646926,19.939935 22.7086589,20.2681458 L35.0036876,32 L35.0036876,32 L4.26491802,32 L4.26491802,26.6431168 Z"
+              class="svg-fill-grey-500"></path>
+        <circle class="svg-stroke-grey-50" stroke-width="2" fill="#C7CBCE" cx="31.5" cy="28" r="7"></circle>
+        <path d="M32.5,30 L32.5,32 L30.5,32 L30.5,30 L32.5,30 Z M32.5,24 L32.5,29 L30.5,29 L30.5,24 L32.5,24 Z"
+              class="svg-fill-white"></path>
+    </g>
+</svg>

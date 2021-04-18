@@ -1,0 +1,188 @@
+.d-drop
+  display inline-block
+  vertical-align middle
+  font-size 0
+  text-align left
+  .d-drop-title
+    display flex
+    align-items center
+    cursor pointer
+    .d-drop-title-content
+      font-size 14px
+      transition color .3s
+    .d-drop-triangle
+      width 16px
+      height 16px
+      line-height 1
+      svg
+        transition transform .3s
+        path
+          transition fill .3s
+    .d-drop-triangle-rotate
+      svg
+        transform rotate(180deg)
+  &:hover
+    .d-drop-title-content
+      color var(--blue-500)
+    .d-drop-triangle
+      path
+        fill var(--blue-500)
+.d-drop-show
+  position relative
+  &::after
+    content ''
+    position absolute
+    left 0
+    top 0
+    z-index 10
+    display inline-block
+    opacity 0
+    width 100%
+    height 100%
+    cursor pointer
+  .d-drop-title-content
+    color var(--blue-500)
+  .d-drop-triangle
+    path
+      fill var(--blue-500)
+.d-drop-disabled
+  .d-drop-title
+    cursor not-allowed
+.d-drop-light
+  .d-drop-title
+    color var(--grey-900)
+
+.d-drop-content
+  position absolute
+  display inline-block
+  outline none
+  padding-top 8px
+  padding-bottom 8px
+  border-radius 4px
+  box-shadow var(--box-shadow-bottom)
+  min-width 120px
+  z-index 7000
+  font-size 0
+  // pointer-events none
+.d-drop-content-top-arrow
+  filter drop-shadow(var(--box-shadow-triangle-top))
+  &::before
+    position absolute
+    top -6px
+    right 12px
+    content ''
+    border-style solid
+    border-width 0 6px 6px 6px
+    border-color transparent transparent var(--white) transparent
+    width 0
+    height 0
+.d-drop-content-bottom-arrow
+  filter drop-shadow(var(--box-shadow-triangle-bottom))
+  &::after
+    position absolute
+    bottom -6px
+    right 12px
+    content ''
+    border-style solid
+    border-width 6px 6px 0 6px
+    border-color var(--white) transparent transparent transparent
+    width 0
+    height 0
+.d-drop-option
+  width 100%
+  overflow-x hidden
+  overflow-y auto
+  min-height 54px
+  .d-drop-option-item
+    padding-left 12px
+    padding-right 12px
+    width 100%
+    height 38px
+    font-size 14px
+    cursor pointer
+    white-space nowrap
+    text-overflow ellipsis
+    overflow hidden
+    transition background-color .3s
+    .d-drop-option-svg
+      margin-right 8px
+      svg
+        vertical-align middle
+    span
+      vertical-align middle
+      line-height 38px
+      .d-drop-option-svg
+        svg
+          path
+            fill var(--blue-500)
+    &.d-drop-option-disable
+      cursor not-allowed
+.d-drop-search
+  position relative
+  display block
+  padding-left 12px
+  padding-right 12px
+  padding-bottom 8px
+  width 100%
+  height 40px
+  .d-drop-input
+    outline none
+    padding-left 12px
+    padding-right 30px
+    background none
+    border 1px solid var(--grey-400)
+    border-radius 4px
+    width 100%
+    height 100%
+    font-size 14px
+    color var(--grey-900)
+  .d-drop-clear
+    position absolute
+    right 13px
+    top 1px
+    width 30px
+    height @width
+    line-height @width
+    text-align center
+    cursor pointer
+    &:hover
+      path
+        fill var(--blue-500)
+    svg
+      width 16px
+      height @width
+      font-size 0
+      vertical-align middle
+      path
+        transition fill .3s
+.d-drop-search-shadow
+  box-shadow var(--box-shadow-bottom)
+.d-drop-content-light
+  background-color var(--theme)
+  border 1px solid var(--grey-300)
+  .d-drop-option-item
+    color var(--grey-900)
+    &:hover
+      background-color  var(--hover-color-grey)
+    &.d-drop-option-selected
+      color var(--blue-500)
+      background-color var(--blue-100)
+    &.d-drop-option-disable
+      color var(--grey-400)
+.d-drop-content-dark
+  background-color var(--blue-900)
+  border 1px solid var(--blue-500)
+  .d-drop-option-item
+    color var(--white)
+    &:hover
+      background-color var(--blue-800)
+    &.d-drop-option-selected
+      color var(--blue-50)
+      background-color var(--blue-700)
+    &.d-drop-option-disable
+      color var(--blue-200)
+
+.d-drop-hidden
+  display none
+
+@import "../../assets/animate/selectDownUpExtend.styl"

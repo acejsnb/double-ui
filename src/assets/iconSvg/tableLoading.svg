@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 80 80">
+    <g transform="rotate(0)">
+        <animateTransform
+                attributeType="xml"
+                attributeName="transform"
+                type="rotate"
+                from="0 40 40"
+                to="360 40 40"
+                dur="2s"
+                repeatCount="indefinite" />
+        <circle
+                cx="40" cy="40" r="38"
+                stroke="#c3c7cb"
+                stroke-width="4"
+                fill="none"
+        >
+            <animate
+                    attributeType="xml"
+                    attributeName="stroke-dasharray"
+                    values="1,360;130,360;130,360"
+                    dur="1.5s"
+                    repeatCount="indefinite" />
+            <animate
+                    attributeType="xml"
+                    attributeName="stroke-dashoffset"
+                    values="0;-50;-300"
+                    dur="1.5s"
+                    repeatCount="indefinite" />
+        </circle>
+    </g>
+</svg>

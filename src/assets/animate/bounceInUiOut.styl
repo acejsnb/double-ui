@@ -1,0 +1,20 @@
+/*CSS动画*/
+@keyframes bounceInUi
+  from
+    opacity 0
+    transform translate3d(0, 24px, 0)
+  to
+    opacity 1
+    transform translate3d(0, 0, 0)
+@keyframes bounceOutUi
+  from
+    opacity 1
+    transform translate3d(0, 0, 0)
+  to
+    opacity 0
+    transform translate3d(0, 24px, 0)
+
+.bounceInUiOut-enter-active
+  animation bounceInUi .3s ease-out
+.bounceInUiOut-leave-active
+  animation bounceOutUi .3s ease-in

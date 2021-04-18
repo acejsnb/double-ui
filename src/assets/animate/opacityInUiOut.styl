@@ -1,0 +1,16 @@
+/*CSS动画*/
+@keyframes opacityInUi
+  from
+    opacity 0
+  to
+    opacity 1
+@keyframes opacityOutUi
+  from
+    opacity 1
+  to
+    opacity 0
+
+.opacityInUiOut-enter-active
+  animation opacityInUi .3s ease-out
+.opacityInUiOut-leave-active
+  animation opacityOutUi .3s ease-in

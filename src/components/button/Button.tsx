@@ -1,7 +1,7 @@
 import './style.styl';
 import React from 'react';
 
-type Fn = () => void
+type Fn = () => void;
 
 interface Props {
     type?: string

@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="0 0 1024 1024" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(0, -30)">
+        <path class="svg-fill-grey-800"
+              d="M512 108.066133a438.0672 438.0672 0 1 1 0 876.1344A438.0672 438.0672 0 0 1 512 108.066133zM512 187.733333a358.4 358.4 0 1 0 0 716.8 358.4 358.4 0 0 0 0-716.8z m59.733333 517.666134V785.066667H472.200533v-79.6672h99.5328z m0-398.199467v338.466133H472.200533V307.2h99.5328z"/>
+    </g>
+</svg>
