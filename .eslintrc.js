@@ -54,6 +54,13 @@ module.exports = {
         'react/jsx-uses-vars': 'error',
         'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
         'react/jsx-key': 2, // 在数组或迭代器中验证JSX具有key属性
+        'react/jsx-props-no-spreading': 'off',
+        // Indent JSX with 4 spaces
+        'react/jsx-indent': ['error', 4],
+        // Indent props with 4 spaces
+        'react/jsx-indent-props': ['error', 4],
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
         'import/no-dynamic-require': 0,
         'import/no-extraneous-dependencies': 0,
         'import/no-named-as-default': 0,
@@ -64,20 +71,16 @@ module.exports = {
         'class-methods-use-this': 0, // 强制类方法使用 this
         // 缩进Indent with 4 spaces
         indent: ['error', 4],
-        // Indent JSX with 4 spaces
-        'react/jsx-indent': ['error', 4],
-        // Indent props with 4 spaces
-        'react/jsx-indent-props': ['error', 4],
         'no-console': 0, // 不禁用console
         'no-debugger': 2, // 禁用debugger
-        'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn',
         'comma-dangle': [2, 'never'],
         'no-use-before-define': 'off',
         'import/extensions': ['error', {
             js: 'never',
             ts: 'never',
-            tsx: 'never'
+            tsx: 'never',
+            svg: 'always',
+            styl: 'always'
         }]
     }
 };

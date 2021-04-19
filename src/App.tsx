@@ -1,4 +1,4 @@
-import '@/assets/stylus/app';
+import '@/assets/stylus/app.styl';
 import React from 'react';
 import {
     HashRouter, Route, Switch, Redirect

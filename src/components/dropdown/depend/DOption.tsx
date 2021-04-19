@@ -1,88 +1,125 @@
-import React, { MouseEvent, useRef, useState, useEffect, useLayoutEffect } from 'react';
-
-import { Item, OptionProps as Props } from '../Props';
-
-import ClearSvg from '@/assets/iconSvg/clear2.svg';
-import TextEllipsis from '../../../utils/TextEllipsis';
-
+import React, {
+    useRef, useState, useEffect
+} from 'react';
+import { Item, OptionProps as Props } from '../Types';
 import Transition from '../../transition/Transition';
 
-const DOption = (porps: Props) => {
-    // console.log(porps)
+import ClearSvg from '@/assets/iconSvg/clear2.svg';
+import TextEllipsis from '@/utils/TextEllipsis';
+import FindTarget from "@/utils/FindTarget";
+
+const DOption = (props: Props) => {
     const {
-        show, left, top,
-        data, value, arrow, minWidth, maxWidth, openSearch, placeholder, change
-    } = porps;
+        show, setShow, left, top, position,
+        data, value, arrow, openSearch, placeholder, change,
+        maxWidth = 180, maxCount = 5
+    } = props;
+    const contentRef = useRef(null);
     const [inputVal, setInputVal] = useState('');
     const [scrollTop, setScrollTop] = useState(0);
     const [optionData, setOptionData] = useState(JSON.parse(JSON.stringify(data)));
-    // 下拉弹窗显示状态
-    const [visible, setVisible] = useState(false);
-    // 动画执行方向
-    const [position, setPosition] = useState(false);
-    const [height, setHeight] = useState(0);
+    useEffect(() => {
+        console.log('data===', data);
+        setOptionData(JSON.parse(JSON.stringify(data)));
+    }, [data]);
 
-    const wheel = () => { };
-    const dropClose = () => { };
-    const dropEnter = () => { };
-    const dropLeave = () => { };
-    const inputHandle = () => { };
-    const inputDown = () => { };
-    const clearInput = () => { };
-    const scrollTopHandle = () => { };
-    const itemClick = (e: MouseEvent, item: Item) => {
+    // 搜索数据
+    const searchHandle = (str: string) => {
+        const cloneData = JSON.parse(JSON.stringify(data));
+        if (str) {
+            setOptionData(cloneData.filter((d: Item) => {
+                if (!d.disabled && d.name.includes(str)) return d;
+                return null;
+            }));
+        } else {
+            setOptionData(cloneData);
+        }
+    };
+    let timer: NodeJS.Timeout;
+    // input输入回调
+    const inputHandle = (e: any): void => {
+        const {target: {value}} = e;
+        setInputVal(value);
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(() => {
+            searchHandle(value);
+        }, 300);
+    };
+    // 清除搜索的输入
+    const clearInput = () => {
+        setInputVal('');
+        setOptionData(JSON.parse(JSON.stringify(data)));
+    };
+    useEffect(() => {
+        if (!show) setTimeout(() => {clearInput();}, 300);
+    }, [show]);
+    // 滚动回调
+    const scrollTopHandle = (e: any) => { setScrollTop(e.target.scrollTop); };
+    // 点击每项
+    const optionClick = (e: any) => {
         e.stopPropagation();
-        if (item.disabled) return;
-        change(item);
+        const {dataset: { id, disabled }} = FindTarget(e.target, 'SECTION');
+        if (disabled && disabled === 'true') return;
+        change(optionData.find((d: Item) => d.id === id));
+        setTimeout(() => { setOptionData(JSON.parse(JSON.stringify(data))); }, 300);
+    };
+    // hover每项
+    const optionHover = (e: any) => {
+        // console.log(e);
+        e.stopPropagation();
+        if (e.target.tagName === 'DIV') return;
+        TextEllipsis(e, 'SECTION');
     };
 
     return (
-        <Transition show={show} classHidden="d-drop-hidden" classPrefix="d-transition-down">
+        <Transition show={show} setShow={setShow} classHidden="d-drop-hidden" classPrefix="d-transition-down">
             <div
+                ref={contentRef}
                 className={[
                     'd-drop-content',
                     'd-drop-content-light',
-                    arrow && (position ? 'd-drop-content-top-arrow' : 'd-drop-content-bottom-arrow'),
+                    arrow && (position ? 'd-drop-content-top-arrow' : 'd-drop-content-bottom-arrow')
                 ].join(' ')}
                 style={{
                     left: `${left}px`,
                     top: `${top}px`,
-                    minWidth: `${minWidth}px`,
                     maxWidth: `${maxWidth}px`
                 }}
-                // tabIndex={-1}
-                onWheel={wheel}
-                onBlur={dropClose}
-                onMouseEnter={dropEnter}
-                onMouseLeave={dropLeave}
+                onWheel={(e) => {e.stopPropagation();}}
             >
                 <>
                     {
                         openSearch && (
                             <span className={['d-drop-search', scrollTop > 12 && 'd-drop-search-shadow'].join(' ')}>
-                                <input className="d-drop-input"
+                                <input
+                                    className="d-drop-input"
                                     type="text"
                                     placeholder={placeholder}
                                     value={inputVal}
                                     onInput={inputHandle}
-                                    onMouseDown={inputDown}
                                 />
                                 {inputVal && <i className="d-drop-clear" onClick={clearInput}><ClearSvg /></i>}
                             </span>
                         )
                     }
                 </>
-                <div className="d-drop-option" onClick={scrollTopHandle}>
+                <div className="d-drop-option"
+                     onScroll={scrollTopHandle}
+                     style={{maxHeight: `${maxCount * 38}px`}}
+                     onClick={optionClick}
+                     onMouseOver={optionHover}
+                >
                     {
                         optionData.map((item: Item) => (
-                            <section key={item.id}
+                            <section
+                                key={item.id}
                                 className={
                                     [
                                         'd-drop-option-item', value === item.id && 'd-drop-option-selected', item.disabled && 'd-drop-option-disable'
                                     ].join(' ')
                                 }
-                                onClick={(e): void => { itemClick(e, item) }}
-                                onMouseEnter={TextEllipsis}
+                                data-disabled={item.disabled}
+                                data-id={item.id}
                             >
                                 {item.icon && <i className="d-drop-option-svg" />}
                                 <span>{item.name}</span>
@@ -97,12 +134,12 @@ const DOption = (porps: Props) => {
 
 DOption.defaultProps = {
     show: false,
+    setShow: () => {},
     left: 0,
-    top: 96,
+    top: 0,
+    position: true,
     data: [],
     value: '',
-    minWidth: '', // 最小宽度
-    maxWidth: '',
     trigger: 'hover', // 通过点击或hover打开下拉列表
     openSearch: false,
     placeholder: '请搜索',
@@ -110,6 +147,7 @@ DOption.defaultProps = {
     arrow: false, // 显示右上角箭头
     translateX: 0, // X轴偏移量
     maxCount: 5, // 下拉列表容纳最大条数
+    maxWidth: 180,
     change: () => { }
 };
 

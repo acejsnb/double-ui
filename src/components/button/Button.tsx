@@ -22,16 +22,16 @@ const Button = (props: Props) => {
     return (
         <div
             className={[
-                'd-button',
-                `d-button-${type}`,
-                `d-button-${size}`,
-                `d-button-${disabled ? 'disabled' : 'normal'}`
+                'd-btn',
+                `d-btn-${type}`,
+                `d-btn-${size}`,
+                `d-btn-${disabled ? 'disabled' : 'normal'}`
             ].join(' ')}
             style={{ width: `${width}px` }}
             onClick={clickHandle}
         >
-            <section className="d-button-content">
-                <span className="d-button-text">{children}</span>
+            <section className="d-btn-content">
+                <span className="d-btn-text">{children}</span>
             </section>
         </div>
     );

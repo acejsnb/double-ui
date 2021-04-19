@@ -12,8 +12,8 @@
 ## 按需引入
 - 引入组件 `import { Button } from 'double-ui'`
 - 安装依赖包   `npm i -D babel-plugin-import`
-- 在 .babelrc中的plugins里添加
-```json
+- 在 babel.config.js 中的plugins里添加
+```js
     [
           "import",
           {

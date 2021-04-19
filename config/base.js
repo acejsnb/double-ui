@@ -112,7 +112,7 @@ const config = {
         ]
     },
     resolve: { // 配置路径别名
-        extensions: ['.js', '.ts', '.tsx', '.styl'], // import引入文件的时候不用加后缀
+        extensions: ['.js', '.ts', '.tsx'], // import引入文件的时候不用加后缀
         modules: [
             'node_modules',
             resolve(__dirname, '../src/assets'),
@@ -126,7 +126,7 @@ const config = {
     plugins: [
         new webpack.BannerPlugin({
             banner,
-            test: /\.ts$/
+            test: /\.js$/
         }),
         new webpack.BannerPlugin({
             banner: '@import "../base/style.css";',

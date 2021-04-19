@@ -65,12 +65,6 @@ const config = {
             commonjs2: 'react-dom',
             commonjs: 'react-dom',
             amd: 'react-dom'
-        },
-        'react-transition-group': {
-            root: 'ReactTransitionGroup',
-            commonjs2: 'react-transition-group',
-            commonjs: 'react-transition-group',
-            amd: 'react-transition-group'
         }
     },
     target: ['web', 'es5']

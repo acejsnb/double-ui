@@ -1,4 +1,4 @@
-.d-button
+.d-btn
   display inline-block
   vertical-align middle
   padding-left 8px
@@ -9,23 +9,23 @@
   font-size 0
   text-align center
   transition background-color .3s, border .3s
-  + .d-button
+  + .d-btn
     margin-left 12px
-  .d-button-content
+  .d-btn-content
     width 100%
-.d-button-default
+.d-btn-default
   background-color var(--theme)
   border-color var(--grey-400)
   color var(--grey-900)
   &:hover
     border-color var(--blue-500)
-    .d-button-text
+    .d-btn-text
       color var(--blue-500)
   &:active
     border-color var(--blue-600)
-    .d-button-text
+    .d-btn-text
       color var(--blue-600)
-.d-button-blue
+.d-btn-blue
   background-color var(--blue-500)
   border-color var(--blue-500)
   color var(--white)
@@ -35,52 +35,52 @@
   &:active
     background-color var(--blue-600)
     border-color var(--blue-600)
-.d-button-word
+.d-btn-word
   background none
   border-color transparent
   color var(--grey-900)
-  .d-button-text
+  .d-btn-text
     font-weight 500
   &:hover
-    .d-button-text
+    .d-btn-text
       color var(--blue-500)
   &:active
-    .d-button-text
+    .d-btn-text
       color var(--blue-600)
-.d-button-text
+.d-btn-text
   user-select none
-.d-button-large
+.d-btn-large
   max-width 128px
   min-width 80px
   height 40px
-  .d-button-content
+  .d-btn-content
     height 38px
     line-height @height
-.d-button-medium
+.d-btn-medium
   max-width 116px
   min-width 80px
   height 32px
-  .d-button-content
+  .d-btn-content
     height 30px
     line-height @height
-.d-button-small
+.d-btn-small
   max-width 108px
   min-width 60px
   height 28px
-  .d-button-content
+  .d-btn-content
     height 26px
     line-height @height
 
-.d-button-normal
+.d-btn-normal
   cursor pointer
-.d-button.d-button-disabled
+.d-btn.d-btn-disabled
   cursor not-allowed
-  .d-button-text
+  .d-btn-text
     color var(--grey-400)
-.d-button-disabled:not([type='word'])
+.d-btn-disabled:not([type='word'])
   background-color var(--grey-200)
   border-color var(--grey-200)
 
-.d-button-text
+.d-btn-text
   font-size 14px
   transition color .3s

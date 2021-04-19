@@ -9,7 +9,7 @@ export interface routerProps {
 
 const routes: routerProps[] = [
     { name: 'Button', path: '/buttonview', component: ButtonView },
-    { name: 'Dropdown', path: '/dropdownview', component: DropdownView },
+    { name: 'Dropdown', path: '/dropdownview', component: DropdownView }
 ];
 
 export default routes;

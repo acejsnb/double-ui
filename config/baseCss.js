@@ -1,12 +1,11 @@
 const { resolve } = require('path');
-// const { merge } = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const config = {
     mode: 'production',
-    entry: { index: resolve(__dirname, '../src/components/base/index.js') },
+    entry: { index: resolve(__dirname, '../src/components/base/index.ts') },
     // entry: { index: resolve(__dirname, '../src/components/base/base.styl') },
     output: {
         path: resolve(__dirname, '../lib'),
@@ -60,10 +59,10 @@ const config = {
                 exclude: /node_modules/
             },
             {
-                test: /\.js$/,
+                test: /\.ts$/,
                 use: [
                     {
-                        loader: 'babel-loader'
+                        loader: 'ts-loader'
                     }
                 ],
                 include: [resolve(__dirname, '../src')]
