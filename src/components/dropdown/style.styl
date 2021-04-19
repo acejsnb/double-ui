@@ -48,6 +48,16 @@
 .d-drop-disabled
   .d-drop-title
     cursor not-allowed
+    .d-drop-title-content
+      color var(--grey-400)
+    .d-drop-triangle
+      cursor not-allowed
+      path
+        fill var(--grey-400)
+    &:hover
+      .d-drop-triangle
+        path
+          fill var(--grey-400)
 .d-drop-light
   .d-drop-title
     color var(--grey-900)

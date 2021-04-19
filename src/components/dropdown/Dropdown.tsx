@@ -42,6 +42,7 @@ const Dropdown = (props: Props) => {
     const [position, setPosition] = useState(true);
 
     const dropClick = () => {
+        if (disabled) return;
         if (!hasDrop) setHasDrop(true);
         const { X, Y, P } = ResetPosition({
             maxWidth, maxCount, alignRight, data, tag: dropRef
@@ -84,6 +85,7 @@ const Dropdown = (props: Props) => {
                     alignRight={alignRight}
                     arrow={arrow}
                     translateX={translateX}
+                    maxWidth={maxWidth}
                     maxCount={maxCount}
                     show={show}
                     setShow={setShow}

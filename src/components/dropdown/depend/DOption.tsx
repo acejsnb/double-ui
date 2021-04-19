@@ -19,7 +19,6 @@ const DOption = (props: Props) => {
     const [scrollTop, setScrollTop] = useState(0);
     const [optionData, setOptionData] = useState(JSON.parse(JSON.stringify(data)));
     useEffect(() => {
-        console.log('data===', data);
         setOptionData(JSON.parse(JSON.stringify(data)));
     }, [data]);
 
@@ -65,14 +64,13 @@ const DOption = (props: Props) => {
     };
     // hover每项
     const optionHover = (e: any) => {
-        // console.log(e);
         e.stopPropagation();
         if (e.target.tagName === 'DIV') return;
         TextEllipsis(e, 'SECTION');
     };
 
     return (
-        <Transition show={show} setShow={setShow} classHidden="d-drop-hidden" classPrefix="d-transition-down">
+        <Transition show={show} setShow={setShow} classHidden="d-drop-hidden" classPrefix={`d-transition-${position ? 'down' : 'up'}`}>
             <div
                 ref={contentRef}
                 className={[

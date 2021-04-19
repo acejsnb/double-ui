@@ -39,9 +39,9 @@ const ResetPosition = (options: IOptions): IRP => {
     const width = maxWidth
         ? maxWidth
         : GetWidth(data, maxWidth);
-    // const baseHei = 16 + (openSearch && 40), // 基本高度
-    const h = data.length * 38;
-    const maxHeiByCount = maxCount * 38; // 最大容纳高度
+    // 18表示上下padding=8 + 上下border=1
+    const h = data.length * 38 + 18;
+    const maxHeiByCount = maxCount * 38 + 18; // 最大容纳高度
     let height;
     if (h < maxHeiByCount) height = h;
     else height = maxHeiByCount;

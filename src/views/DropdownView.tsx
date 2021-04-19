@@ -24,7 +24,7 @@ const data = [
 const DropdownView = () => {
     const [value, setValue] = useState('totalEnergy');
     const [name, setName] = useState('总量');
-    const [dropData, setDropData] = useState(data);
+    const [dropData, setDropData] = useState(JSON.parse(JSON.stringify(data)));
     const change = (item: Item) => {
         console.log(item);
         setValue(item.id);
@@ -32,17 +32,53 @@ const DropdownView = () => {
     };
     useEffect(() => {
         setTimeout(() => {
-            setDropData([...data, {id: 'lowerLevel667', name: '下级分项7'}]);
+            setDropData([...JSON.parse(JSON.stringify(data)), {id: 'lowerLevel667', name: '下级分项7'}]);
         }, 5000);
     }, []);
+
+    const [value2, setValue2] = useState('singleParty');
+    const [name2, setName2] = useState('单平米');
+    const [dropData2, setDropData2] = useState(JSON.parse(JSON.stringify(data)));
+    const change2 = (item: Item) => {
+        console.log(item);
+        setValue2(item.id);
+        setName2(item.name);
+    };
     return (
         <div className="component-view">
             <Dropdown
                 value={value}
                 data={dropData}
-                openSearch={true}
                 change={change}
             >{name}</Dropdown>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+            <br/><br/><br/>
+
+            <Dropdown
+                maxWidth={240}
+                maxCount={5}
+                value={value2}
+                data={dropData2}
+                // alignRight={true}
+                // openSearch={true}
+                triangle={false}
+                // disabled={true}
+                placeholder={'请搜索哟'}
+                change={change2}
+            >{name2}</Dropdown>
         </div>
     );
 };
