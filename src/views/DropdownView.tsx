@@ -32,7 +32,7 @@ const DropdownView = () => {
     };
     useEffect(() => {
         setTimeout(() => {
-            setDropData([...JSON.parse(JSON.stringify(data)), {id: 'lowerLevel667', name: '下级分项7'}]);
+            setDropData([...JSON.parse(JSON.stringify(data)), { id: 'lowerLevel667', name: '下级分项7' }]);
         }, 5000);
     }, []);
 
@@ -50,22 +50,10 @@ const DropdownView = () => {
                 value={value}
                 data={dropData}
                 change={change}
-            >{name}</Dropdown>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
-            <br/><br/><br/>
+            >
+                {name}
+            </Dropdown>
+            <div style={{ height: '800px' }} />
 
             <Dropdown
                 maxWidth={240}
@@ -76,9 +64,11 @@ const DropdownView = () => {
                 // openSearch={true}
                 triangle={false}
                 // disabled={true}
-                placeholder={'请搜索哟'}
+                placeholder="请搜索哟"
                 change={change2}
-            >{name2}</Dropdown>
+            >
+                {name2}
+            </Dropdown>
         </div>
     );
 };

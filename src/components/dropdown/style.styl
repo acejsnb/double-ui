@@ -1,66 +1,5 @@
-.d-drop
-  display inline-block
-  vertical-align middle
-  font-size 0
-  text-align left
-  .d-drop-title
-    display flex
-    align-items center
-    cursor pointer
-    .d-drop-title-content
-      font-size 14px
-      transition color .3s
-    .d-drop-triangle
-      width 16px
-      height 16px
-      line-height 1
-      svg
-        transition transform .3s
-        path
-          transition fill .3s
-    .d-drop-triangle-rotate
-      svg
-        transform rotate(180deg)
-  &:hover
-    .d-drop-title-content
-      color var(--blue-500)
-    .d-drop-triangle
-      path
-        fill var(--blue-500)
-.d-drop-show
-  position relative
-  &::after
-    content ''
-    position absolute
-    left 0
-    top 0
-    z-index 10
-    display inline-block
-    opacity 0
-    width 100%
-    height 100%
-    cursor pointer
-  .d-drop-title-content
-    color var(--blue-500)
-  .d-drop-triangle
-    path
-      fill var(--blue-500)
-.d-drop-disabled
-  .d-drop-title
-    cursor not-allowed
-    .d-drop-title-content
-      color var(--grey-400)
-    .d-drop-triangle
-      cursor not-allowed
-      path
-        fill var(--grey-400)
-    &:hover
-      .d-drop-triangle
-        path
-          fill var(--grey-400)
-.d-drop-light
-  .d-drop-title
-    color var(--grey-900)
+@import "drop.styl"
+@import "../../assets/animate/selectDownUpExtend.styl"
 
 .d-drop-content
   position absolute
@@ -191,8 +130,3 @@
       background-color var(--blue-700)
     &.d-drop-option-disable
       color var(--blue-200)
-
-.d-drop-hidden
-  display none
-
-@import "../../assets/animate/selectDownUpExtend.styl"

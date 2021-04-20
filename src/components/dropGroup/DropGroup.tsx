@@ -1,23 +1,25 @@
 import './style.styl';
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Triangle from '@/assets/iconSvg/triangle.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
-
-import Teleport from '../teleport/Teleport';
+import ResetPosition from './depend/ResetPosition';
 import { IProps as Props, Item } from './Types';
 
-import DOption from './depend/DOption';
+import Teleport from '../teleport/Teleport';
+import DGroup from './depend/DGroup';
 
-import ResetPosition from './depend/ResetPosition';
+interface ClickItem {
+    pid?: string
+    id: string
+    name: string | undefined
+}
 
-const Dropdown = (props: Props) => {
-    const {
-        value, data, disabled, triangle, children, change,
-        maxWidth = 180, openSearch, placeholder, alignRight = false, arrow,
-        translateX, maxCount = 5
-    } = props;
+const DropGroup = (props: Props) => {
     const dropRef = useRef(null);
+    const {
+        value, data, disabled, triangle = true, maxWidth = 180, change, children
+    } = props;
     // 是否创建了下拉弹窗
     const [hasDrop, setHasDrop] = useState(false);
     // 下拉弹窗显示
@@ -25,19 +27,18 @@ const Dropdown = (props: Props) => {
     const [left, setLeft] = useState(0);
     const [top, setTop] = useState(0);
     const [position, setPosition] = useState(true);
-
     const openDrop = () => {
         if (disabled) return;
         if (!hasDrop) setHasDrop(true);
         const { X, Y, P } = ResetPosition({
-            maxWidth, maxCount, alignRight, data, tag: dropRef
+            maxWidth, data, tag: dropRef
         });
         setLeft(X);
         setTop(Y);
         setPosition(P);
         setShow(true);
     };
-    const itemClick = (item: Item): void => {
+    const itemClick = (item: ClickItem): void => {
         setShow(false);
         change(item);
     };
@@ -60,43 +61,20 @@ const Dropdown = (props: Props) => {
             </section>
             {hasDrop && (
                 <Teleport
-                    Component={DOption}
+                    Component={DGroup}
+                    show={show}
                     left={left}
                     top={top}
                     position={position}
-                    value={value}
-                    data={data}
-                    openSearch={openSearch}
-                    placeholder={placeholder}
-                    alignRight={alignRight}
-                    arrow={arrow}
-                    translateX={translateX}
-                    maxWidth={maxWidth}
-                    maxCount={maxCount}
-                    show={show}
                     setShow={setShow}
                     change={itemClick}
+                    value={value}
+                    data={data}
                 />
             )}
         </div>
     );
 };
 
-Dropdown.defaultProps = {
-    data: [], // 数据列表
-    value: '', // 选中的项
-    maxWidth: 180, // 最大宽度
-    triangle: true, // 是否显示右边三角形
-    trigger: 'hover', // 通过点击或hover打开下拉列表
-    openSearch: false,
-    placeholder: '请搜索',
-    alignRight: false, // 居右对齐
-    arrow: false, // 显示右上角箭头
-    translateX: 0, // X轴偏移量
-    disabled: false, // 是否禁用
-    maxCount: 5, // 下拉列表容纳最大条数
-    change: () => {},
-    children: ''
-};
+export default DropGroup;
 
-export default Dropdown;

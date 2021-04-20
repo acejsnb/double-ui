@@ -23,7 +23,7 @@ const GetWidth = (data: Item[], maxWidth: number): number => {
     return width;
 };
 
-interface IRP {X: number, Y: number, P: boolean}
+interface XYP {X: number, Y: number, P: boolean}
 interface IOptions {
     maxWidth: number
     maxCount: number
@@ -32,13 +32,11 @@ interface IOptions {
     tag: any
 }
 
-const ResetPosition = (options: IOptions): IRP => {
+const ResetPosition = (options: IOptions): XYP => {
     const {
         maxWidth, maxCount, alignRight, data, tag
     } = options;
-    const width = maxWidth
-        ? maxWidth
-        : GetWidth(data, maxWidth);
+    const width = maxWidth || GetWidth(data, maxWidth);
     // 18表示上下padding=8 + 上下border=1
     const h = data.length * 38 + 18;
     const maxHeiByCount = maxCount * 38 + 18; // 最大容纳高度

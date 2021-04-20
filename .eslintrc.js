@@ -70,7 +70,7 @@ module.exports = {
         'arrow-body-style': [2, 'as-needed'], // 箭头函数
         'class-methods-use-this': 0, // 强制类方法使用 this
         // 缩进Indent with 4 spaces
-        indent: ['error', 4],
+        indent: [2, 4],
         'no-console': 0, // 不禁用console
         'no-debugger': 2, // 禁用debugger
         'comma-dangle': [2, 'never'],
@@ -81,6 +81,16 @@ module.exports = {
             tsx: 'never',
             svg: 'always',
             styl: 'always'
-        }]
+        }],
+        quotes: [1, 'single'],
+        'eol-last': 2,
+        'no-else-return': 2,
+        'no-empty': 2,
+        eqeqeq: 2,
+        'no-multiple-empty-lines': [1, { max: 2 }],
+        'no-trailing-spaces': 1,
+        'key-spacing': [0, { beforeColon: false, afterColon: true }],
+        'padded-blocks': 2,
+        'no-unused-vars': 0
     }
 };

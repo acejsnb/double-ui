@@ -1,12 +1,12 @@
 import React, {
     useRef, useState, useEffect
 } from 'react';
-import { Item, OptionProps as Props } from '../Types';
-import Transition from '../../transition/Transition';
 
 import ClearSvg from '@/assets/iconSvg/clear2.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
-import FindTarget from "@/utils/FindTarget";
+import FindTarget from '@/utils/FindTarget';
+import Transition from '../../transition/Transition';
+import { Item, OptionProps as Props } from '../Types';
 
 const DOption = (props: Props) => {
     const {
@@ -34,14 +34,14 @@ const DOption = (props: Props) => {
             setOptionData(cloneData);
         }
     };
-    let timer: NodeJS.Timeout;
+    let timer: any;
     // input输入回调
     const inputHandle = (e: any): void => {
-        const {target: {value}} = e;
-        setInputVal(value);
+        const { target: { value: inputValue } } = e;
+        setInputVal(inputValue);
         if (timer) clearTimeout(timer);
         timer = setTimeout(() => {
-            searchHandle(value);
+            searchHandle(inputValue);
         }, 300);
     };
     // 清除搜索的输入
@@ -50,14 +50,14 @@ const DOption = (props: Props) => {
         setOptionData(JSON.parse(JSON.stringify(data)));
     };
     useEffect(() => {
-        if (!show) setTimeout(() => {clearInput();}, 300);
+        if (!show) setTimeout(() => { clearInput(); }, 300);
     }, [show]);
     // 滚动回调
     const scrollTopHandle = (e: any) => { setScrollTop(e.target.scrollTop); };
     // 点击每项
     const optionClick = (e: any) => {
         e.stopPropagation();
-        const {dataset: { id, disabled }} = FindTarget(e.target, 'SECTION');
+        const { dataset: { id, disabled } } = FindTarget(e.target, ['SECTION']);
         if (disabled && disabled === 'true') return;
         change(optionData.find((d: Item) => d.id === id));
         setTimeout(() => { setOptionData(JSON.parse(JSON.stringify(data))); }, 300);
@@ -66,7 +66,7 @@ const DOption = (props: Props) => {
     const optionHover = (e: any) => {
         e.stopPropagation();
         if (e.target.tagName === 'DIV') return;
-        TextEllipsis(e, 'SECTION');
+        TextEllipsis(e, ['SECTION']);
     };
 
     return (
@@ -83,7 +83,7 @@ const DOption = (props: Props) => {
                     top: `${top}px`,
                     maxWidth: `${maxWidth}px`
                 }}
-                onWheel={(e) => {e.stopPropagation();}}
+                onWheel={(e) => { e.stopPropagation(); }}
             >
                 <>
                     {
@@ -101,11 +101,12 @@ const DOption = (props: Props) => {
                         )
                     }
                 </>
-                <div className="d-drop-option"
-                     onScroll={scrollTopHandle}
-                     style={{maxHeight: `${maxCount * 38}px`}}
-                     onClick={optionClick}
-                     onMouseOver={optionHover}
+                <div
+                    className="d-drop-option"
+                    onScroll={scrollTopHandle}
+                    style={{ maxHeight: `${maxCount * 38}px` }}
+                    onClick={optionClick}
+                    onMouseOver={optionHover}
                 >
                     {
                         optionData.map((item: Item) => (

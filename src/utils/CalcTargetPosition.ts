@@ -7,7 +7,7 @@
  * @constructor
  */
 const CalcTargetPosition = (
-    triggerDom: any, targetHeight: number, targetWidth: number, alignRight: boolean
+    triggerDom: any, targetHeight: number, targetWidth: number, alignRight?: boolean
 ) => {
     const { clientHeight, clientWidth } = document.body; // 当前触发器父级的位置
     const { pageYOffset, pageXOffset } = window; // 基于window对象滚动的距离

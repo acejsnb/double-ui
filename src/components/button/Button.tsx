@@ -7,7 +7,7 @@ interface Props {
     type?: string
     size?: string
     disabled?: boolean
-    width?: string
+    width?: string | number
     children?: any
     click?: Fn
 }

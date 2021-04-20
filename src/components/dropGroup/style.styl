@@ -1,0 +1,70 @@
+@import "../dropdown/drop.styl"
+@import "../../assets/animate/selectDownUpExtend.styl"
+
+.d-drop-group-box
+  position absolute
+  outline none
+  padding-top 8px
+  padding-bottom 8px
+  border-radius 4px
+  box-shadow var(--box-shadow-bottom)
+  min-width 120px
+  max-width 240px
+  max-height 246px
+  overflow-y auto
+  z-index 7000
+  //pointer-events none
+  .d-drop-item-title
+    padding-left 12px
+    padding-right 12px
+    height 38px
+    line-height @height
+    font-size 14px
+    white-space nowrap
+    text-overflow ellipsis
+    overflow hidden
+  .d-drop-group-option
+    padding-left 20px
+    padding-right 12px
+    width 100%
+    height 38px
+    line-height 38px
+    font-size 14px
+    cursor pointer
+    white-space nowrap
+    text-overflow ellipsis
+    overflow hidden
+    &.d-drop-group-option-disable
+      cursor not-allowed
+  .d-drop-option-left
+    left 0
+  .d-drop-option-right
+    right 0
+.d-drop-group-box-light
+  background-color var(--theme)
+  border 1px solid var(--grey-300)
+  .d-drop-item-title
+    color var(--grey-500)
+  .d-drop-group-option
+    color var(--grey-900)
+    &:hover
+      background-color var(--hover-color-grey)
+    &.d-drop-group-option-selected
+      color var(--blue-500)
+      background-color var(--blue-100)
+    &.d-drop-group-option-disable
+      color var(--grey-400)
+.d-drop-group-box-dark
+  background-color var(--blue-900)
+  border 1px solid var(--blue-500)
+  .d-drop-item-title
+    color var(--white)
+  .d-drop-group-option
+    color var(--white)
+    &:hover
+      background-color var(--blue-800)
+    &.d-drop-group-option-selected
+      color var(--blue-50)
+      background-color var(--blue-700)
+    &.d-drop-group-option-disable
+      color var(--blue-200)
