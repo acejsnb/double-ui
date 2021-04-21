@@ -1,6 +1,6 @@
 // 过度组件
 import React, {
-    useState, cloneElement, useLayoutEffect
+    FC, useState, cloneElement, useLayoutEffect
 } from 'react';
 
 import ClickOutside from '@/utils/ClickOutside';
@@ -14,10 +14,9 @@ interface Props {
 }
 
 // 自定义下拉弹窗动画
-const Transition = (props: Props) => {
-    const {
-        show = false, setShow, classHidden, classPrefix, children
-    } = props;
+const Transition: FC<Props> = ({
+    show = false, setShow, classHidden, classPrefix, children
+}) => {
     const oldClassName = children.props.className;
     const [className, setClassName] = useState(oldClassName);
     useLayoutEffect(() => {
@@ -52,13 +51,5 @@ const Transition = (props: Props) => {
         <>{cloneChildren}</>
     );
 };
-
-/* Transition.defaultProps = {
-    show: false,
-    setShow: () => {},
-    classHidden: '',
-    classPrefix: '',
-    children: ''
-}; */
 
 export default Transition;

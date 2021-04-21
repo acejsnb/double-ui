@@ -1,5 +1,5 @@
 import './style.styl';
-import React, { useState, useRef } from 'react';
+import React, { FC, useState, useRef } from 'react';
 
 import Triangle from '@/assets/iconSvg/triangle.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
@@ -11,13 +11,22 @@ import DOption from './depend/DOption';
 
 import ResetPosition from './depend/ResetPosition';
 
-const Dropdown = (props: Props) => {
-    const {
-        value, data, disabled, triangle, children, change,
-        maxWidth = 180, openSearch, placeholder, alignRight = false, arrow,
-        translateX, maxCount = 5
-    } = props;
-    const dropRef = useRef(null);
+const Dropdown: FC<Props> = ({
+    value = '',
+    data = [],
+    disabled = false,
+    triangle = true,
+    children,
+    change = () => {},
+    maxWidth = 180,
+    openSearch = false,
+    placeholder = '请搜索',
+    alignRight = false,
+    arrow = false,
+    translateX = 0,
+    maxCount = 5
+}) => {
+    const dropRef = useRef<HTMLDivElement>(null);
     // 是否创建了下拉弹窗
     const [hasDrop, setHasDrop] = useState(false);
     // 下拉弹窗显示
@@ -82,7 +91,7 @@ const Dropdown = (props: Props) => {
     );
 };
 
-Dropdown.defaultProps = {
+/* Dropdown.defaultProps = {
     data: [], // 数据列表
     value: '', // 选中的项
     maxWidth: 180, // 最大宽度
@@ -97,6 +106,6 @@ Dropdown.defaultProps = {
     maxCount: 5, // 下拉列表容纳最大条数
     change: () => {},
     children: ''
-};
+}; */
 
 export default Dropdown;

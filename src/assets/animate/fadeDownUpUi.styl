@@ -1,19 +1,16 @@
 /*CSS动画*/
-@keyframes fadeInDownUi
-  from
-    opacity 0
-    transform translate3d(0, -100%, 0)
-  to
-    opacity 1
-    transform translate3d(0, 0, 0)
-@keyframes fadeOutUpUi
-  from
-    opacity 1
-  to
-    opacity 0
-    transform translate3d(0, -100%, 0)
-
-.fadeDownUpUi-enter-active
-  animation fadeInDownUi .3s ease-out
-.fadeDownUpUi-leave-active
-  animation fadeOutUpUi .3s ease-in
+// 向下弹出
+.d-fade-in-down-enter
+  opacity 0
+  transform translateY(-100%)
+.d-fade-in-down-enter-active
+  opacity 1
+  transform translateY(0)
+  transition opacity .3s, transform .3s
+.d-fade-in-down-leave
+  opacity 1
+  transform translateY(0)
+.d-fade-in-down-leave-active
+  opacity 0
+  transform translateY(-100%)
+  transition opacity .3s, transform .3s

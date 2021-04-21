@@ -26,4 +26,11 @@
 ## 启动说明
 - npm run dev ` 启动开发预览 `
 - npm run vite ` 启动开发预览 `
+
+## z-index规范
+- message弹窗900-1000 最高级别
+- loading 800-900
+- 局部弹窗 700-800
+- 全屏弹窗 600-700
+- **注意：loading 小于 message，因为在loading过程中可能会出现报错等提示**
     

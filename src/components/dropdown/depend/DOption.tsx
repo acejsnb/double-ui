@@ -1,5 +1,5 @@
 import React, {
-    useRef, useState, useEffect
+    FC, FormEvent, MouseEvent, UIEvent, useRef, useState, useEffect
 } from 'react';
 
 import ClearSvg from '@/assets/iconSvg/clear2.svg';
@@ -8,13 +8,12 @@ import FindTarget from '@/utils/FindTarget';
 import Transition from '../../transition/Transition';
 import { Item, OptionProps as Props } from '../Types';
 
-const DOption = (props: Props) => {
-    const {
-        show, setShow, left, top, position,
-        data, value, arrow, openSearch, placeholder, change,
-        maxWidth = 180, maxCount = 5
-    } = props;
-    const contentRef = useRef(null);
+const DOption: FC<Props> = ({
+    show, setShow, left, top, position,
+    data, value, arrow, openSearch, placeholder, change,
+    maxWidth = 180, maxCount = 5
+}) => {
+    const contentRef = useRef<HTMLDivElement>(null);
     const [inputVal, setInputVal] = useState('');
     const [scrollTop, setScrollTop] = useState(0);
     const [optionData, setOptionData] = useState(JSON.parse(JSON.stringify(data)));
@@ -36,8 +35,8 @@ const DOption = (props: Props) => {
     };
     let timer: any;
     // input输入回调
-    const inputHandle = (e: any): void => {
-        const { target: { value: inputValue } } = e;
+    const inputHandle = (e: FormEvent): void => {
+        const inputValue = (e.target as HTMLInputElement).value;
         setInputVal(inputValue);
         if (timer) clearTimeout(timer);
         timer = setTimeout(() => {
@@ -53,9 +52,11 @@ const DOption = (props: Props) => {
         if (!show) setTimeout(() => { clearInput(); }, 300);
     }, [show]);
     // 滚动回调
-    const scrollTopHandle = (e: any) => { setScrollTop(e.target.scrollTop); };
+    const scrollTopHandle = (e: UIEvent) => {
+        setScrollTop((e.target as HTMLElement).scrollTop);
+    };
     // 点击每项
-    const optionClick = (e: any) => {
+    const optionClick = (e: MouseEvent) => {
         e.stopPropagation();
         const { dataset: { id, disabled } } = FindTarget(e.target, ['SECTION']);
         if (disabled && disabled === 'true') return;
@@ -63,9 +64,9 @@ const DOption = (props: Props) => {
         setTimeout(() => { setOptionData(JSON.parse(JSON.stringify(data))); }, 300);
     };
     // hover每项
-    const optionHover = (e: any) => {
+    const optionHover = (e: MouseEvent) => {
         e.stopPropagation();
-        if (e.target.tagName === 'DIV') return;
+        if ((e.target as HTMLElement).tagName === 'DIV') return;
         TextEllipsis(e, ['SECTION']);
     };
 
@@ -131,7 +132,7 @@ const DOption = (props: Props) => {
     );
 };
 
-DOption.defaultProps = {
+/* DOption.defaultProps = {
     show: false,
     setShow: () => {},
     left: 0,
@@ -148,6 +149,6 @@ DOption.defaultProps = {
     maxCount: 5, // 下拉列表容纳最大条数
     maxWidth: 180,
     change: () => { }
-};
+}; */
 
 export default DOption;

@@ -1,0 +1,62 @@
+@import "../../assets/animate/fadeDownUpUi.styl"
+
+.d-message-box
+  position absolute
+  top 36px
+  left 0
+  text-align center
+  display flex
+  flex-flow column wrap
+  justify-content center
+  align-items center
+  width 100%
+  z-index 1000
+  pointer-events none
+
+.d-message
+  display flex
+  justify-content space-around
+  align-items flex-start
+  padding 8px 8px 8px 12px
+  border-radius 4px
+  box-shadow var(--box-shadow-bottom)
+  min-width 240px
+  max-width 600px
+  min-height 40px
+  .d-message-hint
+    line-height 24px
+    font-size 0
+    svg
+      vertical-align middle
+      width 16px
+      height 16px
+  .d-message-text
+    padding-left 8px
+    padding-right 8px
+    width 100%
+    text-align left
+    font-size 14px
+    color var(--white)
+    word-wrap break-word
+    line-height 24px
+  .d-message-close
+    height 24px
+    line-height @height
+    pointer-events auto
+    font-size 0
+    svg
+      vertical-align middle
+      width 12px
+      opacity .5
+      transition opacity .3s
+      cursor pointer
+      &:hover
+        opacity 1
+.d-message-info
+  background-color var(--blue-500)
+.d-message-success
+  background-color var(--turquoise-500)
+.d-message-warning
+  background-color var(--orange-400)
+.d-message-error
+  background-color var(--red-400)

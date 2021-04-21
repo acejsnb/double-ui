@@ -22,7 +22,6 @@ export interface IProps extends Types {
     triangle?: boolean
     trigger?: string
     disabled?: boolean
-    children?: any
 }
 
 export interface OptionProps extends Types {

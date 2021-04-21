@@ -8,8 +8,8 @@ const ButtonView = () => {
     };
     return (
         <div className="component-view">
-            <Button width="90" click={click}>按钮</Button>
-            <Button type="blue" width="90" click={click}>按钮</Button>
+            <Button width={90} click={click}>按钮</Button>
+            <Button type="blue" width={120} click={click}>按钮</Button>
         </div>
     );
 };

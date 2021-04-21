@@ -1,4 +1,3 @@
-import { MutableRefObject } from 'react';
 import CalcTargetPosition from '@/utils/CalcTargetPosition';
 
 import { IItem } from '../Types';
@@ -52,7 +51,7 @@ interface XYP {X: number, Y: number, P: boolean}
 interface IOptions {
     maxWidth: number
     data: IItem[]
-    tag: MutableRefObject<null>
+    tag: any
 }
 
 const ResetPosition = (options: IOptions): XYP => {

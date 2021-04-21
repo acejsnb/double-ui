@@ -50,6 +50,8 @@ module.exports = {
         }
     },
     rules: {
+        'react/prop-types': 0,
+        'react/display-name': 0,
         'react/jsx-uses-react': 'error', // 防止react被错误地标记为未使用
         'react/jsx-uses-vars': 'error',
         'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
@@ -73,6 +75,7 @@ module.exports = {
         indent: [2, 4],
         'no-console': 0, // 不禁用console
         'no-debugger': 2, // 禁用debugger
+        'no-shadow': 0,
         'comma-dangle': [2, 'never'],
         'no-use-before-define': 'off',
         'import/extensions': ['error', {

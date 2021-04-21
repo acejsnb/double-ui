@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { FC, MouseEvent, useRef } from 'react';
 
 import TextEllipsis from '@/utils/TextEllipsis';
 import FindTarget from '@/utils/FindTarget';
@@ -6,14 +6,15 @@ import { OptionProps as Props, IItem } from '../Types';
 
 import Transition from '../../transition/Transition';
 
-const DGroup = (props: Props) => {
-    const {
-        show, setShow, value, data, left, top, position, maxWidth, change
-    } = props;
-    const contentRef = useRef(null);
+const DGroup: FC<Props> = ({
+    show, setShow, value, data, left, top, position, maxWidth, change
+}) => {
+    const contentRef = useRef<HTMLDivElement>(null);
 
-    const optionClick = (e: any) => {
+    const optionClick = (e: MouseEvent) => {
         e.stopPropagation();
+        const { tagName } = e.target as HTMLElement;
+        if (tagName === 'DIV' || tagName === 'SECTION') return;
         const {
             dataset: {
                 pid = '', id = '', name = '', disabled
@@ -23,10 +24,10 @@ const DGroup = (props: Props) => {
         change({ pid, id, name });
     };
 
-    const optionHover = (e: any) => {
+    const optionHover = (e: MouseEvent) => {
         e.stopPropagation();
-        if (e.target.tagName === 'DIV') return;
-        TextEllipsis(e, ['SECTION', 'ARTICLE']);
+        if ((e.target as HTMLElement).tagName === 'DIV') return;
+        TextEllipsis(e, ['ARTICLE']);
     };
 
     return (

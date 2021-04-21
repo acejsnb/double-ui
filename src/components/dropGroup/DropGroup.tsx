@@ -1,10 +1,12 @@
 import './style.styl';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+    FC, useRef, useState
+} from 'react';
 
 import Triangle from '@/assets/iconSvg/triangle.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
 import ResetPosition from './depend/ResetPosition';
-import { IProps as Props, Item } from './Types';
+import { IProps as Props } from './Types';
 
 import Teleport from '../teleport/Teleport';
 import DGroup from './depend/DGroup';
@@ -15,11 +17,16 @@ interface ClickItem {
     name: string | undefined
 }
 
-const DropGroup = (props: Props) => {
+const DropGroup: FC<Props> = ({
+    value,
+    data,
+    disabled,
+    triangle = true,
+    maxWidth = 180,
+    change,
+    children
+}) => {
     const dropRef = useRef(null);
-    const {
-        value, data, disabled, triangle = true, maxWidth = 180, change, children
-    } = props;
     // 是否创建了下拉弹窗
     const [hasDrop, setHasDrop] = useState(false);
     // 下拉弹窗显示

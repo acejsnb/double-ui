@@ -1,10 +1,10 @@
 // 传送门
-import React from 'react';
+import React, { FC } from 'react';
 import { createPortal } from 'react-dom';
 
 let ele: HTMLDivElement;
 
-const Teleport = ({ Component, ...options }: any) => {
+const Teleport: FC<any> = ({ Component, ...options }) => {
     if (!ele) {
         ele = document.createElement('div');
         ele.style.position = 'absolute';
