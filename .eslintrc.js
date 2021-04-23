@@ -83,7 +83,10 @@ module.exports = {
             ts: 'never',
             tsx: 'never',
             svg: 'always',
-            styl: 'always'
+            styl: 'always',
+            png: 'always',
+            mp4: 'always',
+            webm: 'always'
         }],
         quotes: [1, 'single'],
         'eol-last': 2,
@@ -94,6 +97,10 @@ module.exports = {
         'no-trailing-spaces': 1,
         'key-spacing': [0, { beforeColon: false, afterColon: true }],
         'padded-blocks': 2,
-        'no-unused-vars': 0
+        'no-unused-vars': 0,
+        'jsx-a11y/no-static-element-interactions': 0,
+        'jsx-a11y/click-events-have-key-events': 0,
+        'jsx-a11y/label-has-associated-control': 0,
+        'jsx-a11y/media-has-caption': 0
     }
 };

@@ -105,7 +105,7 @@ const config = {
                 include: [resolve(__dirname, '../src')]
             },
             {
-                test: /\.(png|jpe?g|gif|bmp)$/,
+                test: /\.(png|jpe?g|gif|bmp|webm|mp4)$/,
                 type: 'asset/resource',
                 include: [resolve(__dirname, '../src/assets')]
             }

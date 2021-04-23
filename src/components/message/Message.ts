@@ -9,22 +9,21 @@ interface Options {
     time?: number
 }
 
-
-let msgBox: HTMLDivElement;
+let msgEle: HTMLDivElement;
 const Message = ({ type, message, time = 3.6 }: Options) => {
-    if (!msgBox) {
-        msgBox = document.createElement('div');
-        msgBox.className = 'd-message-box';
-        document.body.appendChild(msgBox);
+    if (!msgEle) {
+        msgEle = document.createElement('div');
+        msgEle.className = 'd-message-box';
+        document.body.appendChild(msgEle);
     }
     (() => {
         const span: HTMLSpanElement = document.createElement('span');
         span.style.marginBottom = '24px';
-        msgBox.appendChild(span);
+        msgEle.appendChild(span);
         let timer: any;
         const remove = () => {
             if (timer) clearTimeout(timer);
-            if (span) msgBox.removeChild(span);
+            if (span) msgEle.removeChild(span);
         };
 
         render(createElement(MessageBox, {

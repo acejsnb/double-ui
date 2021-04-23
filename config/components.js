@@ -3,33 +3,34 @@ const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清理垃圾文件
 
 const baseConfig = require('./base');
 
-const EntryObj = require('../src/single.ts');
-
-const objEntry = {};
-// eslint-disable-next-line no-restricted-syntax
-for (const key of Object.keys(EntryObj)) {
-    objEntry[key] = EntryObj[key];
-}
-
 const config = {
     mode: 'production',
-    entry: objEntry,
+    entry: resolve(__dirname, '../src/multiple.ts'),
     output: {
         path: resolve(__dirname, '../lib'),
         // assetModuleFilename: 'static/[name].[hash:5][ext][query]',
         assetModuleFilename: 'static/[name][ext]',
-        filename: '[name]/index.js',
-        library: '[name]',
+        filename: 'index.js',
+        library: 'double-ui',
+        libraryExport: 'default',
         libraryTarget: 'umd',
         umdNamedDefine: true,
         globalObject: 'this'
     },
     plugins: [
         new MiniCssExtractPlugin({ // 分离css
-            filename: '[name]/style.css'
+            filename: 'style.css'
+        }),
+        new CleanWebpackPlugin({
+            verbose: true,
+            protectWebpackAssets: false,
+            cleanOnceBeforeBuildPatterns: (
+                [resolve(__dirname, '../lib')]
+            )
         })
     ],
     optimization: {
