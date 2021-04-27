@@ -1,12 +1,23 @@
 import React, { FC, useRef } from 'react';
 
+// import LoadingPng from '@/assets/loading/loading-png.png';
+// import LoadingMp4 from '@/assets/loading/loading-mp4.mp4';
+// import LoadingWebm from '@/assets/loading/loading-webm.webm';
+
+
 import Loading from '@/components/loading/Loading';
 import Button from '../components/button/Button';
 
+/* const poster = LoadingPng;
+const sources = [
+    { src: LoadingMp4, type: 'mp4' },
+    { src: LoadingWebm, type: 'webm' }
+]; */
 const ButtonView: FC = () => {
     const divRef = useRef(null);
     const click = () => {
-        const global = Loading.global();
+        // const global = Loading.global();
+        const global = Loading({ type: 'global' });
         setTimeout(() => {
             global.close();
         }, 3000);

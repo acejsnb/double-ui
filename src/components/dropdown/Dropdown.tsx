@@ -17,8 +17,8 @@ const Dropdown: FC<Props> = ({
     disabled = false,
     triangle = true,
     children,
-    change = () => {},
-    maxWidth = 180,
+    onChange = () => {},
+    maxWidth = 120,
     openSearch = false,
     placeholder = '请搜索',
     alignRight = false,
@@ -48,7 +48,7 @@ const Dropdown: FC<Props> = ({
     };
     const itemClick = (item: Item): void => {
         setShow(false);
-        change(item);
+        onChange(item);
     };
 
     return (
@@ -84,28 +84,11 @@ const Dropdown: FC<Props> = ({
                     maxCount={maxCount}
                     show={show}
                     setShow={setShow}
-                    change={itemClick}
+                    onChange={itemClick}
                 />
             )}
         </div>
     );
 };
-
-/* Dropdown.defaultProps = {
-    data: [], // 数据列表
-    value: '', // 选中的项
-    maxWidth: 180, // 最大宽度
-    triangle: true, // 是否显示右边三角形
-    trigger: 'hover', // 通过点击或hover打开下拉列表
-    openSearch: false,
-    placeholder: '请搜索',
-    alignRight: false, // 居右对齐
-    arrow: false, // 显示右上角箭头
-    translateX: 0, // X轴偏移量
-    disabled: false, // 是否禁用
-    maxCount: 5, // 下拉列表容纳最大条数
-    change: () => {},
-    children: ''
-}; */
 
 export default Dropdown;

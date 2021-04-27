@@ -13,7 +13,7 @@ const config = {
     output: {
         path: resolve(__dirname, '../lib'),
         // assetModuleFilename: 'static/[name].[hash:5][ext][query]',
-        assetModuleFilename: 'static/[name][ext]',
+        assetModuleFilename: './static/[name][ext]',
         filename: 'index.js',
         library: 'double-ui',
         libraryExport: 'default',

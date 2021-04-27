@@ -20,7 +20,7 @@ const config = {
     output: {
         path: resolve(__dirname, '../lib'),
         // assetModuleFilename: 'static/[name].[hash:5][ext][query]',
-        assetModuleFilename: 'static/[name][ext]',
+        assetModuleFilename: '../static/[name][ext]',
         filename: '[name]/index.js',
         library: '[name]',
         libraryTarget: 'umd',

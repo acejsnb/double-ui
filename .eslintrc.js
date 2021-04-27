@@ -63,6 +63,7 @@ module.exports = {
         'react/jsx-indent-props': ['error', 4],
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
+        'react/destructuring-assignment': 'warn',
         'import/no-dynamic-require': 0,
         'import/no-extraneous-dependencies': 0,
         'import/no-named-as-default': 0,
@@ -95,12 +96,17 @@ module.exports = {
         eqeqeq: 2,
         'no-multiple-empty-lines': [1, { max: 2 }],
         'no-trailing-spaces': 1,
+        'no-param-reassign': 0,
         'key-spacing': [0, { beforeColon: false, afterColon: true }],
         'padded-blocks': 2,
         'no-unused-vars': 0,
+        'no-plusplus': 0,
+        'no-lonely-if': 0,
+        'max-len': 0,
         'jsx-a11y/no-static-element-interactions': 0,
         'jsx-a11y/click-events-have-key-events': 0,
         'jsx-a11y/label-has-associated-control': 0,
-        'jsx-a11y/media-has-caption': 0
+        'jsx-a11y/media-has-caption': 0,
+        'jsx-a11y/mouse-events-have-key-events': 0
     }
 };

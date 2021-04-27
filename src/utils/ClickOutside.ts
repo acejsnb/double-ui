@@ -6,15 +6,16 @@
  * @constructor
  */
 type Fn = () => void;
-const ClickOutside = (e: any, dom: any, cb: Fn) => {
-    const { x, y } = e,
-        {
-            width, height, left, top
-        } = dom.getBoundingClientRect();
-    const elStartXPoint = left,
-        elEndXPoint = elStartXPoint + width,
-        elStartYPoint = top,
-        elEndYPoint = elStartYPoint + height;
+const ClickOutside = (e: Event, dom: HTMLElement, cb: Fn) => {
+    // @ts-ignore
+    const { x, y } = e;
+    const {
+        width, height, left, top
+    } = dom.getBoundingClientRect();
+    const elStartXPoint = left;
+    const elEndXPoint = elStartXPoint + width;
+    const elStartYPoint = top;
+    const elEndYPoint = elStartYPoint + height;
     if (
         x < elStartXPoint
         || x > elEndXPoint

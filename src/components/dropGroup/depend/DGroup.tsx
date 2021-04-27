@@ -7,7 +7,7 @@ import { OptionProps as Props, IItem } from '../Types';
 import Transition from '../../transition/Transition';
 
 const DGroup: FC<Props> = ({
-    show, setShow, value, data, left, top, position, maxWidth, change
+    show, setShow, value, data, left, top, position, maxWidth, underline = false, onChange
 }) => {
     const contentRef = useRef<HTMLDivElement>(null);
 
@@ -21,7 +21,7 @@ const DGroup: FC<Props> = ({
             }
         } = FindTarget(e.target, ['ARTICLE']);
         if (disabled && disabled === 'true') return;
-        change({ pid, id, name });
+        onChange({ pid, id, name });
     };
 
     const optionHover = (e: MouseEvent) => {
@@ -46,7 +46,8 @@ const DGroup: FC<Props> = ({
                 {
                     data.map((group: IItem) => (
                         <div key={group.id}>
-                            <section className="d-drop-item-title">{group.name}</section>
+                            {group.name && <section className="d-drop-item-title">{group.name}</section>}
+                            {underline && <article className="d-drop-item-underline" />}
                             {
                                 group.children?.map((item: IItem) => (
                                     <article

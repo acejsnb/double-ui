@@ -1,6 +1,6 @@
 {
   "name": "double-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react ui组件库",
   "main": "lib/index.js",
   "author": "xiongshuang",
@@ -11,6 +11,7 @@
     "components": "cross-env NODE_ENV=production webpack --mode production --config ./config/components.js",
     "single": "cross-env NODE_ENV=production webpack --mode production --config ./config/single.js",
     "baseCss": "cross-env NODE_ENV=production webpack --mode production --config ./config/baseCss.js",
+    "build:lib": "npm run components && npm run single && npm run baseCss",
     "addBaseCss": "node ./config/addBaseCss.js",
     "vite": "vite"
   },

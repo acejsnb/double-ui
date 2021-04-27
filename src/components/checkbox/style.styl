@@ -1,0 +1,77 @@
+.d-checkbox
+  display inline-flex
+  align-items center
+  min-width 16px
+  min-height 16px
+  vertical-align middle
+  cursor pointer
+  z-index 1
+  & + .d-checkbox
+    margin-left 8px
+  .d-checkbox-box
+    position relative
+    vertical-align middle
+    border-width 1px
+    border-style solid
+    border-color transparent
+    border-radius 2px
+    width 16px
+    height @width
+    transition all .3s
+    &:hover
+      box-shadow 0 0 4px 0 rgba(78, 131, 253, .4)
+    &::after
+      position absolute
+      background none
+      transition transform .2s ease-in-out
+      transform rotate(0) scale(0)
+      z-index 1
+      content ''
+      pointer-events none
+  .d-checkbox-uncheck
+    background-color var(--theme)
+    border-color var(--grey-400)
+    &:hover
+      border-color var(--blue-500)
+  .d-checkbox-checked
+    background-color var(--blue-500)
+    border-color var(--blue-500)
+    &::after
+      top 2px
+      left 5px
+      border-right 2px solid var(--white)
+      border-bottom 2px solid var(--white)
+      width 4px
+      height 8px
+      transform rotate(45deg) scale(1)
+  .d-checkbox-notNull
+    background-color var(--blue-500)
+    border-color var(--blue-500)
+    &::after
+      top 6px
+      left 3px
+      background-color var(--white)
+      width 8px
+      height 2px
+      transform scale(1)
+  .d-checkbox-text
+    padding-left 8px
+    width calc(100% - 16px)
+    color var(--grey-900)
+    font-size 14px
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+    user-select none
+.d-checkbox-disabled
+  cursor not-allowed
+  > i
+    pointer-events none
+  .d-checkbox-uncheck
+    background-color var(--grey-300)
+  .d-checkbox-checked
+    background-color var(--grey-400)
+    border-color var(--grey-400)
+  .d-checkbox-notNull
+    background-color var(--grey-400)
+    border-color var(--grey-400)

@@ -15,7 +15,7 @@ export interface Types {
     translateX?: string | number
     maxCount?: number
     maxWidth?: number
-    change: (item: Item) => void
+    onChange: (item: Item) => void
 }
 
 export interface IProps extends Types {

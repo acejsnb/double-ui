@@ -22,8 +22,9 @@ const DropGroup: FC<Props> = ({
     data,
     disabled,
     triangle = true,
-    maxWidth = 180,
-    change,
+    underline = false,
+    maxWidth = 120,
+    onChange = () => {},
     children
 }) => {
     const dropRef = useRef(null);
@@ -47,7 +48,7 @@ const DropGroup: FC<Props> = ({
     };
     const itemClick = (item: ClickItem): void => {
         setShow(false);
-        change(item);
+        onChange(item);
     };
 
     return (
@@ -69,12 +70,13 @@ const DropGroup: FC<Props> = ({
             {hasDrop && (
                 <Teleport
                     Component={DGroup}
+                    underline={underline}
                     show={show}
                     left={left}
                     top={top}
                     position={position}
                     setShow={setShow}
-                    change={itemClick}
+                    onChange={itemClick}
                     value={value}
                     data={data}
                 />

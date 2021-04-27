@@ -23,7 +23,6 @@ const Loading = ({
         document.body.appendChild(loadingEle);
     }
     const span: HTMLSpanElement = document.createElement('span');
-    span.style.marginBottom = '24px';
     if (loadingEle) loadingEle.appendChild(span);
     let timer: any;
     const close = () => {

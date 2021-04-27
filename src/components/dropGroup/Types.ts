@@ -13,13 +13,14 @@ export interface Types {
     data: IItem[]
     maxCount?: number
     maxWidth?: number
-    change(item: { pid?: string; id: string; name?: string }): void
+    onChange(item: { pid?: string; id: string; name?: string }): void
 }
 
 export interface IProps extends Types {
     triangle?: boolean
     trigger?: string
     disabled?: boolean
+    underline?: boolean
 }
 
 export interface OptionProps extends Types {
@@ -27,5 +28,6 @@ export interface OptionProps extends Types {
     left: number
     top: number
     position: boolean
+    underline?: boolean
     setShow(show: boolean): void
 }

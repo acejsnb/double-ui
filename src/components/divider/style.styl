@@ -1,0 +1,33 @@
+.d-divider-h
+  position relative
+  width 100%
+  height 28px
+  line-height @height
+  &:before
+    position absolute
+    top 0
+    left 24px
+    z-index 1
+    padding-left 8px
+    padding-right @padding-left
+    display inline-block
+    background-color var(--theme)
+    content attr(data-title)
+    font-size 14px
+    color var(--grey-900)
+  &:after
+    position absolute
+    left 0
+    top 49%
+    background-color var(--grey-400)
+    width 100%
+    height 1px
+    content ''
+.d-divider-v
+  display inline-block
+  margin-left 12px
+  margin-right 12px
+  background-color var(--grey-400)
+  width 1px
+  height 16px
+  font-size 0

@@ -15,7 +15,7 @@ const data = [
         ]
     },
     {
-        id: 'id_index',
+        id: 'fz1',
         name: '首页首页首页首页首页首页首页首页首页首页',
         children: [
             {
@@ -33,6 +33,38 @@ const data = [
                 id: 'aliyun',
                 url: 'https://www.aliyun.com/',
                 name: '阿里云'
+            }
+        ]
+    },
+    {
+        id: 'id_index',
+        // name: '分组一',
+        children: [
+            {
+                id: 'fz11',
+                url: 'https://cloud.tencent.com',
+                name: '分组一-1'
+            },
+            {
+                id: 'fz12',
+                url: 'https://daneden.github.io/animate.css',
+                name: '分组一-2'
+            }
+        ]
+    },
+    {
+        id: 'fz2',
+        // name: '分组二',
+        children: [
+            {
+                id: 'fz21',
+                url: 'https://cloud.tencent.com',
+                name: '分组二-1'
+            },
+            {
+                id: 'fz22',
+                url: 'https://daneden.github.io/animate.css',
+                name: '分组二-2'
             }
         ]
     }
@@ -55,7 +87,16 @@ const DropGroupView = () => {
             <DropGroup
                 value={value}
                 data={data}
-                change={change}
+                onChange={change}
+            >
+                {name}
+            </DropGroup>
+            <div className="component-br" />
+            <DropGroup
+                value={value}
+                data={data}
+                underline
+                onChange={change}
             >
                 {name}
             </DropGroup>

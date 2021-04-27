@@ -41,8 +41,12 @@ const MessageBox: FC<Props> = ({
     useEffect(() => {
         setTimeout(() => { setActive(true); }, 16);
         setTimeout(() => { setEnter(false); }, 316);
-        setTimeout(() => { setActive(false); }, seconds - 300);
+        const timer = setTimeout(() => { setActive(false); }, seconds - 300);
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
     }, []);
+
     return (
         <div
             ref={msgRef}

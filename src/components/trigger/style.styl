@@ -1,0 +1,80 @@
+.d-trigger
+  position relative
+  display inline-flex
+  //justify-content space-between
+  align-items flex-start
+  border 1px solid var(--grey-400)
+  border-radius 4px
+  width 120px
+  font-size 0
+  transition border-color .3s
+  cursor pointer
+  &:hover
+    border-color var(--blue-500)
+
+.d-trigger-disabled
+  background-color var(--grey-200)
+  cursor not-allowed
+  .p-trigger-title
+    color var(--grey-400)
+  .p-trigger-icon
+    color var(--grey-400)
+    svg
+      path
+        fill var(--grey-400)
+
+.d-trigger-pl
+  padding-left 8px
+
+.d-trigger-words
+  height 30px
+  line-height @height
+  font-size 14px
+
+.d-trigger-title
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+  color var(--grey-600)
+
+.d-trigger-text
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+  color var(--grey-900)
+.d-trigger-placeholder
+  color var(--grey-400)
+
+.d-trigger-icon
+  display flex
+  align-items center
+  justify-content center
+  margin-left auto
+  width 30px
+  height @width
+  overflow hidden
+  i
+    width 16px
+    height @width
+  svg
+    width 16px
+    height @width
+    path
+      transition fill .3s
+.d-trigger-triangle
+  transform rotate(180deg)
+  transition transform .3s
+  &.d-trigger-triangle-show
+    transform rotate(0)
+.d-trigger-del
+  display none
+  &:hover
+    path
+      fill var(--blue-500 )
+// 已选择
+.d-trigger-has-selected
+  &:hover
+    .d-trigger-triangle
+      display none
+    .d-trigger-del
+      display block

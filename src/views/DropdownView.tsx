@@ -49,10 +49,27 @@ const DropdownView = () => {
             <Dropdown
                 value={value}
                 data={dropData}
-                change={change}
+                onChange={change}
             >
                 {name}
             </Dropdown>
+
+            <div style={{ textAlign: 'right' }}>
+                <Dropdown
+                    maxWidth={240}
+                    maxCount={5}
+                    value={value2}
+                    data={dropData2}
+                    alignRight
+                    // openSearch={true}
+                    triangle={false}
+                    // disabled={true}
+                    placeholder="请搜索哟"
+                    onChange={change2}
+                >
+                    {name2}
+                </Dropdown>
+            </div>
             <div style={{ height: '800px' }} />
 
             <Dropdown
@@ -65,7 +82,7 @@ const DropdownView = () => {
                 triangle={false}
                 // disabled={true}
                 placeholder="请搜索哟"
-                change={change2}
+                onChange={change2}
             >
                 {name2}
             </Dropdown>

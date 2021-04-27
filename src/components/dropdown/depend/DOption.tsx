@@ -11,7 +11,7 @@ import { Item, OptionProps as Props } from '../Types';
 const DOption: FC<Props> = ({
     show, setShow, left, top, position,
     data, value, arrow, openSearch, placeholder, change,
-    maxWidth = 180, maxCount = 5
+    maxWidth = 120, maxCount = 5
 }) => {
     const contentRef = useRef<HTMLDivElement>(null);
     const [inputVal, setInputVal] = useState('');
@@ -131,24 +131,5 @@ const DOption: FC<Props> = ({
         </Transition>
     );
 };
-
-/* DOption.defaultProps = {
-    show: false,
-    setShow: () => {},
-    left: 0,
-    top: 0,
-    position: true,
-    data: [],
-    value: '',
-    trigger: 'hover', // 通过点击或hover打开下拉列表
-    openSearch: false,
-    placeholder: '请搜索',
-    alignRight: false, // 居右对齐
-    arrow: false, // 显示右上角箭头
-    translateX: 0, // X轴偏移量
-    maxCount: 5, // 下拉列表容纳最大条数
-    maxWidth: 180,
-    change: () => { }
-}; */
 
 export default DOption;
