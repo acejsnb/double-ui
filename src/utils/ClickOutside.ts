@@ -8,20 +8,7 @@
 type Fn = () => void;
 const ClickOutside = (e: Event, dom: HTMLElement, cb: Fn) => {
     // @ts-ignore
-    const { x, y } = e;
-    const {
-        width, height, left, top
-    } = dom.getBoundingClientRect();
-    const elStartXPoint = left;
-    const elEndXPoint = elStartXPoint + width;
-    const elStartYPoint = top;
-    const elEndYPoint = elStartYPoint + height;
-    if (
-        x < elStartXPoint
-        || x > elEndXPoint
-        || y < elStartYPoint
-        || y > elEndYPoint
-    ) cb();
+    if (!dom.contains(e.target)) cb();
 };
 
 export default ClickOutside;
