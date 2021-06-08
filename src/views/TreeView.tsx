@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Tree from '@/components/tree/Tree';
-import { TileItem, IMultiple } from '@/components/tree/Types';
+import { TileItem, IMultiple } from '../components/tree/types';
 
 const dataArr = [
     {

@@ -1,13 +1,8 @@
-import './style.styl';
 import { createElement } from 'react';
 import { render } from 'react-dom';
 import MessageBox from './MessageBox';
+import { Options } from './types';
 
-interface Options {
-    message: string
-    type: string
-    time?: number
-}
 
 let msgEle: HTMLDivElement;
 const Message = ({ type, message, time = 3.6 }: Options) => {

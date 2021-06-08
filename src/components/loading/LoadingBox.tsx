@@ -4,12 +4,7 @@ import React, { FC } from 'react';
 import LoadingPng from '@/assets/loading/loading-png.png';
 import LoadingMp4 from '@/assets/loading/loading-mp4.mp4';
 import LoadingWebm from '@/assets/loading/loading-webm.webm';
-
-interface Props {
-    width?: number
-    height?: number
-    type: string
-}
+import { Props } from './types';
 
 const LoadingBox: FC<Props> = ({ width = 60, height = 60, type = 'global' }) => (
     <div

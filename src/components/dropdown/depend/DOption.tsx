@@ -6,7 +6,7 @@ import ClearSvg from '@/assets/iconSvg/clear2.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
 import FindTarget from '@/utils/FindTarget';
 import Transition from '../../transition/Transition';
-import { Item, OptionProps as Props } from '../Types';
+import { Item, OptionProps as Props } from '../types';
 
 const DOption: FC<Props> = ({
     show, setShow, left, top, position,

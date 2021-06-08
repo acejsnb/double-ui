@@ -6,7 +6,7 @@ import React, {
 import Triangle from '@/assets/iconSvg/triangle.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
 import ResetPosition from './depend/ResetPosition';
-import { IProps as Props } from './Types';
+import { IProps as Props } from './types';
 
 import Teleport from '../teleport/Teleport';
 import DGroup from './depend/DGroup';

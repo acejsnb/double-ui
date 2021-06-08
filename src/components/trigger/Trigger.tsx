@@ -2,7 +2,7 @@ import './style.styl';
 import React, { FC, useState, useEffect } from 'react';
 import TriangleIcon from '@/assets/iconSvg/triangle.svg';
 import DeleteIcon from '@/assets/iconSvg/delete_icon.svg';
-import { Props } from './Type';
+import { Props } from './types';
 
 import GetCaptionWidth from './GetCaptionWidth';
 

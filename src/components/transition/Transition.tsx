@@ -1,17 +1,11 @@
 // 过度组件
 import React, {
-    FC, ReactElement, useState, cloneElement, useLayoutEffect
+    FC, useState, cloneElement, useLayoutEffect
 } from 'react';
 
 import ClickOutside from '@/utils/ClickOutside';
 
-interface Props {
-    show: boolean
-    setShow: (show: boolean) => void
-    classHidden: string
-    classPrefix: string
-    children: ReactElement
-}
+import { Props } from './types';
 
 // 自定义下拉弹窗动画
 const Transition: FC<Props> = ({

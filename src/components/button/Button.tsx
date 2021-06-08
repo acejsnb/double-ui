@@ -1,15 +1,6 @@
 import './style.styl';
 import React, { FC } from 'react';
-
-type Fn = () => void;
-
-type Props = {
-    type?: string
-    size?: string
-    disabled?: boolean
-    width?: number
-    click?: Fn
-}
+import { Props } from './types';
 
 const Button: FC<Props> = ({
     type = 'default',

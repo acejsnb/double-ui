@@ -1,15 +1,7 @@
 import { createElement } from 'react';
 import { render } from 'react-dom';
 import LoadingBox from './LoadingBox';
-
-interface Options {
-    width?: number
-    height?: number
-    ele?: HTMLElement | null | undefined
-}
-interface IOptions extends Options {
-    type: string
-}
+import { IOptions } from './types';
 
 let loadingEle: HTMLElement | undefined;
 const Loading = ({

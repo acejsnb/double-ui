@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+//    "outDir": "./lib",
     "paths": {
       "@/*": [
         "src/*"
@@ -21,8 +22,11 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "removeComments": true,
     "noEmit": false,
+    "experimentalDecorators": true,
     "declaration": false,
+//    "declarationDir": "./lib/types",
     "jsx": "react"
   },
   "include": ["./src", "./src/**/*.ts", "./src/**/*.tsx"],

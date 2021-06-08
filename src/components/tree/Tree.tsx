@@ -2,7 +2,6 @@ import './style.styl';
 import React, {
     FC, MouseEvent, Fragment, useState, useEffect
 } from 'react';
-
 import ArrowTriangle from '@/assets/iconSvg/arrow_triangle.svg';
 import MorePointSvg from '@/assets/iconSvg/morePoint.svg';
 
@@ -12,7 +11,8 @@ import Checkbox from '@/components/checkbox/Checkbox';
 import Dropdown from '@/components/dropdown/Dropdown';
 import {
     Item, Props, TileItem
-} from './Types';
+} from './types';
+
 import {
     TileTool, OpenNode, SetTileCheckedInit, SetChecked, SetCheckedSortByTree,
     StrategyChange
@@ -186,7 +186,7 @@ const Tree: FC<Props> = (props) => {
                                                             triangle={false}
                                                             data={dropdownData}
                                                             // onGetStatus={(status) => getStatus(status, item)}
-                                                            onChange={({ id }) => dropdownChange(id, item)}
+                                                            change={({ id }) => dropdownChange(id, item)}
                                                         >
                                                             <MorePointSvg />
                                                         </Dropdown>

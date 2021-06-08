@@ -49,7 +49,7 @@ const DropdownView = () => {
             <Dropdown
                 value={value}
                 data={dropData}
-                onChange={change}
+                change={change}
             >
                 {name}
             </Dropdown>
@@ -65,7 +65,7 @@ const DropdownView = () => {
                     triangle={false}
                     // disabled={true}
                     placeholder="请搜索哟"
-                    onChange={change2}
+                    change={change2}
                 >
                     {name2}
                 </Dropdown>
@@ -82,7 +82,7 @@ const DropdownView = () => {
                 triangle={false}
                 // disabled={true}
                 placeholder="请搜索哟"
-                onChange={change2}
+                change={change2}
             >
                 {name2}
             </Dropdown>

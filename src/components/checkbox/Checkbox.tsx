@@ -4,14 +4,7 @@ import React, {
 } from 'react';
 
 import TextEllipsis from '@/utils/TextEllipsis';
-
-interface Props {
-    checked?: string
-    disabled?: boolean
-    stopPropagation?: boolean
-    change?: (status: string, other: any) => void
-    [key: string]: any
-}
+import { Props } from './types';
 
 const Checkbox: FC<Props> = ({
     checked = 'uncheck', disabled = false, stopPropagation = false,

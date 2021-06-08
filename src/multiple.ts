@@ -11,7 +11,7 @@ import DropGroup from './components/dropGroup/DropGroup';
 import Loading from './components/loading/Loading';
 import Message from './components/message/Message';
 import Transition from './components/transition/Transition';
-import Tree from './components/tree/Tree';
+// import Tree from './components/tree/Tree';
 
 export default {
     Button,
@@ -21,6 +21,6 @@ export default {
     DropGroup,
     Loading,
     Message,
-    Transition,
-    Tree
+    Transition
+    // Tree
 };

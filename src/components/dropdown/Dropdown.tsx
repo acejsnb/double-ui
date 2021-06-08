@@ -5,7 +5,7 @@ import Triangle from '@/assets/iconSvg/triangle.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
 
 import Teleport from '../teleport/Teleport';
-import { IProps as Props, Item } from './Types';
+import { IProps as Props, Item } from './types';
 
 import DOption from './depend/DOption';
 
@@ -17,7 +17,7 @@ const Dropdown: FC<Props> = ({
     disabled = false,
     triangle = true,
     children,
-    onChange = () => {},
+    change = () => {},
     maxWidth = 120,
     openSearch = false,
     placeholder = '请搜索',
@@ -48,7 +48,7 @@ const Dropdown: FC<Props> = ({
     };
     const itemClick = (item: Item): void => {
         setShow(false);
-        onChange(item);
+        change(item);
     };
 
     return (

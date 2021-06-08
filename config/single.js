@@ -3,20 +3,24 @@ const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = require('./base');
-
 const EntryObj = require('../src/single.ts');
 
-const objEntry = {};
+const entry = {}, patterns = [];
 // eslint-disable-next-line no-restricted-syntax
 for (const key of Object.keys(EntryObj)) {
-    objEntry[key] = EntryObj[key];
+    entry[key] = resolve(__dirname, EntryObj[key]);
+    patterns.push({
+        from: resolve(__dirname, `${EntryObj[key].split(key)[0]}types.ts`),
+        to: resolve(__dirname, `../lib/${key}/index.d.ts`)
+    });
 }
 
 const config = {
     mode: 'production',
-    entry: objEntry,
+    entry,
     output: {
         path: resolve(__dirname, '../lib'),
         // assetModuleFilename: 'static/[name].[hash:5][ext][query]',
@@ -30,6 +34,9 @@ const config = {
     plugins: [
         new MiniCssExtractPlugin({ // 分离css
             filename: '[name]/style.css'
+        }),
+        new CopyPlugin({
+            patterns
         })
     ],
     optimization: {

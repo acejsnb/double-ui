@@ -6,7 +6,7 @@
 import DeWeight from '@/utils/DeWeight';
 import {
     ITag, Item, Props, TileItem, StringAny
-} from './Types';
+} from './types';
 
 
 // 数组去重

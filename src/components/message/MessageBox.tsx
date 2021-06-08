@@ -8,18 +8,13 @@ import HintError from '@/assets/iconSvg/hint_error.svg';
 import HintInfo from '@/assets/iconSvg/hint_info.svg';
 import HintSuccess from '@/assets/iconSvg/hint_success.svg';
 import HintWaring from '@/assets/iconSvg/hint_waring.svg';
+import { Props } from './types';
 
 enum ETypes {
     info = 'info',
     success = 'success',
     warning = 'warning',
     error = 'error'
-}
-interface Props {
-    type: string
-    message: string
-    time: number
-    remove(): void
 }
 
 const strategy = {
@@ -32,7 +27,7 @@ const strategy = {
 const typesArr: string[] = ['info', 'success', 'warning', 'error'];
 
 const MessageBox: FC<Props> = ({
-    type, message, time, remove
+    type, message, time = 3, remove
 }) => {
     const seconds = time * 1000;
     const msgRef = useRef<HTMLDivElement>(null);

@@ -2,7 +2,7 @@ import React, { FC, MouseEvent, useRef } from 'react';
 
 import TextEllipsis from '@/utils/TextEllipsis';
 import FindTarget from '@/utils/FindTarget';
-import { OptionProps as Props, IItem } from '../Types';
+import { OptionProps as Props, IItem } from '../types';
 
 import Transition from '../../transition/Transition';
 
