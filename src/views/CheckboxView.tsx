@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Checkbox from '../components/checkbox/Checkbox';
+import Checkbox from '@/components/checkbox/Checkbox';
 
 const CheckboxView = () => {
     const [checked2, setChecked2] = useState('uncheck');

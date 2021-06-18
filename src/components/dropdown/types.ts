@@ -25,9 +25,7 @@ export interface IProps extends Types {
 }
 
 export interface OptionProps extends Types {
-    show: boolean
     left: number
     top: number
     position: boolean
-    setShow: (show: boolean) => void
 }

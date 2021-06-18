@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Trigger from '../components/trigger/Trigger';
+import Trigger from '@/components/trigger/Trigger';
 
 const TriggerView = () => {
     const click = () => {

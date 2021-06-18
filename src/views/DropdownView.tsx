@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Dropdown from '../components/dropdown/Dropdown';
+import Dropdown from '@/components/dropdown/Dropdown';
 
 interface Item {
     id: string
@@ -31,9 +31,12 @@ const DropdownView = () => {
         setName(item.name);
     };
     useEffect(() => {
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             setDropData([...JSON.parse(JSON.stringify(data)), { id: 'lowerLevel667', name: '下级分项7' }]);
         }, 5000);
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
     }, []);
 
     const [value2, setValue2] = useState('singleParty');

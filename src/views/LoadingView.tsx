@@ -6,7 +6,7 @@ import React, { FC, useRef } from 'react';
 
 
 import Loading from '@/components/loading/Loading';
-import Button from '../components/button/Button';
+import Button from '@/components/button/Button';
 
 /* const poster = LoadingPng;
 const sources = [

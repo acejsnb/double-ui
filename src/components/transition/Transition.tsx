@@ -1,48 +1,43 @@
 // 过度组件
-import React, {
-    FC, useState, cloneElement, useLayoutEffect
-} from 'react';
-
+import React, { FC, PropsWithChildren, useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import ClickOutside from '@/utils/ClickOutside';
-
 import { Props } from './types';
 
 // 自定义下拉弹窗动画
 const Transition: FC<Props> = ({
-    show = false, setShow, classHidden, classPrefix, children
+    show = false, setShow, timeout, classPrefix, children
 }) => {
-    const oldClassName = children.props.className;
-    const [className, setClassName] = useState(oldClassName);
-    const cloneChildren: any = cloneElement(children, { className });
     // 关闭下拉弹窗
-    const closeDrop = () => { setShow(false); };
-    const clickOutside = (e: Event) => {
-        ClickOutside(e, cloneChildren.ref.current, closeDrop);
+    const closeDrop = () => {
+        setShow(false);
+    };
+    const clickOutside = (e: MouseEvent) => {
+        console.log(e);
+        const c = (children as PropsWithChildren<any>);
+        if (!c.ref) return;
+        ClickOutside(e, c.ref.current, closeDrop);
     };
 
-    useLayoutEffect(() => {
-        if (show) {
-            setClassName(`${oldClassName} ${classPrefix}-enter`);
-            setTimeout(() => {
-                setClassName(`${oldClassName} ${classPrefix}-enter ${classPrefix}-enter-active`);
-                setTimeout(() => { setClassName(`${oldClassName} ${classPrefix}-leave`); }, 300);
-                // 注册window事件
-                window.addEventListener('click', clickOutside, true);
-                window.addEventListener('blur', closeDrop, false);
-            }, 16);
-        } else {
-            setClassName(`${oldClassName} ${classPrefix}-leave ${classPrefix}-leave-active`);
-            setTimeout(() => {
-                setClassName(`${oldClassName} ${classPrefix}-enter ${classHidden}`);
-            }, 300);
-        }
+    useEffect(() => {
+        // 注册window事件
+        window.addEventListener('click', clickOutside, true);
+        window.addEventListener('blur', closeDrop, true);
         return () => {
-            window.removeEventListener('click', clickOutside);
-            window.removeEventListener('blur', closeDrop);
+            window.removeEventListener('click', clickOutside, true);
+            window.removeEventListener('blur', closeDrop, true);
         };
-    }, [show]);
+    }, []);
 
-    return cloneChildren;
+    return (
+        <CSSTransition
+            in={show}
+            timeout={timeout}
+            classNames={classPrefix}
+        >
+            {children}
+        </CSSTransition>
+    );
 };
 
 export default Transition;

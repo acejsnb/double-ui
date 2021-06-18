@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import DropGroup from '../components/dropGroup/DropGroup';
+import DropGroup from '@/components/dropGroup/DropGroup';
 
 const data = [
     {
@@ -87,7 +87,7 @@ const DropGroupView = () => {
             <DropGroup
                 value={value}
                 data={data}
-                onChange={change}
+                change={change}
             >
                 {name}
             </DropGroup>
@@ -96,7 +96,7 @@ const DropGroupView = () => {
                 value={value}
                 data={data}
                 underline
-                onChange={change}
+                change={change}
             >
                 {name}
             </DropGroup>

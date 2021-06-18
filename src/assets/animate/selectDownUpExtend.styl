@@ -1,20 +1,4 @@
 /*CSS动画*/
-// 向下弹出
-.d-transition-down-enter
-  opacity 0
-  transform translateY(-8px)
-.d-transition-down-enter-active
-  opacity 1
-  transform translateY(0)
-  transition opacity .3s, transform .3s
-.d-transition-down-leave
-  opacity 1
-  transform translateY(0)
-.d-transition-down-leave-active
-  opacity 0
-  transform translateY(-8px)
-  transition opacity .3s, transform .3s
-
 // 向上弹出
 .d-transition-up-enter
   opacity 0
@@ -22,11 +6,33 @@
 .d-transition-up-enter-active
   opacity 1
   transform translateY(0)
-  transition opacity .3s, transform .3s
-.d-transition-up-leave
+  transition opacity .12s, transform .12s
+
+.d-transition-up-exit
   opacity 1
   transform translateY(0)
-.d-transition-up-leave-active
+.d-transition-up-exit-active
   opacity 0
   transform translateY(8px)
-  transition opacity .3s, transform .3s
+  transition opacity .12s, transform .12s
+.d-transition-up-exit-done
+  display none
+
+// 向下弹出
+.d-transition-down-enter
+  opacity 0
+  transform translateY(-8px)
+.d-transition-down-enter-active
+  opacity 1
+  transform translateY(0)
+  transition opacity .12s, transform .12s
+
+.d-transition-down-exit
+  opacity 1
+  transform translateY(0)
+.d-transition-down-exit-active
+  opacity 0
+  transform translateY(-8px)
+  transition opacity .12s, transform .12s
+.d-transition-down-exit-done
+  display none

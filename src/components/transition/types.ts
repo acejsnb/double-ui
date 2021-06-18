@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 export interface Props {
     show: boolean
     setShow: (show: boolean) => void
-    classHidden: string
+    timeout: number
     classPrefix: string
     children: ReactElement
 }

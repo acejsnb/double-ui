@@ -1,3 +1,5 @@
+import TestView from '@/views/TestView';
+
 import ButtonView from '@/views/ButtonView';
 import CheckboxView from '@/views/CheckboxView';
 import DividerView from '@/views/DividerView';
@@ -15,6 +17,7 @@ export interface routerProps {
 }
 
 const routes: routerProps[] = [
+    { name: 'Test', path: '/testview', component: TestView },
     { name: 'Button', path: '/buttonview', component: ButtonView },
     { name: 'Checkbox', path: '/checkboxview', component: CheckboxView },
     { name: 'Divider', path: '/dividerview', component: DividerView },

@@ -6,9 +6,8 @@
  * @constructor
  */
 type Fn = () => void;
-const ClickOutside = (e: Event, dom: HTMLElement, cb: Fn) => {
-    // @ts-ignore
-    if (!dom.contains(e.target)) cb();
+const ClickOutside = (e: MouseEvent, dom: HTMLElement, cb: Fn) => {
+    if (!dom.contains(e.target as HTMLElement)) cb();
 };
 
 export default ClickOutside;

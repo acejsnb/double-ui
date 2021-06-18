@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Button from '../components/button/Button';
-import Message from '../components/message/Message';
-// import Message from '../components/message/MessageBox';
+import Button from '@/components/button/Button';
+import Message from '@/components/message/Message';
+// import Message from '@/components/message/MessageBox';
 
 const MessageView = () => {
     const click = () => {
