@@ -6,12 +6,14 @@
   "author": "xiongshuang",
   "license": "MIT",
   "scripts": {
+    "clean": "rimraf ./lib",
     "dev": "cross-env NODE_ENV=development webpack serve --mode development --config ./config/dev.js",
     "prod": "cross-env NODE_ENV=production webpack --mode production --config ./config/prod.js",
     "components": "cross-env NODE_ENV=production webpack --mode production --config ./config/components.js",
+    "libIndex": "node ./config/libIndex.js",
     "single": "cross-env NODE_ENV=production webpack --mode production --config ./config/single.js",
     "baseCss": "cross-env NODE_ENV=production webpack --mode production --config ./config/baseCss.js",
-    "build:lib": "npm run components && npm run single && npm run baseCss",
+    "build:lib": "npm run clean && npm run single && npm run baseCss && npm run libIndex",
     "addBaseCss": "node ./config/addBaseCss.js",
     "vite": "vite"
   },
