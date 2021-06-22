@@ -1,10 +1,16 @@
 export interface Props {
-    width?: number
-    height?: number
-    type: string
+    type?: string
+    size?: string | null
+    imgSrc: string
 }
 export interface IOptions extends Props {
-    ele?: HTMLElement | null | undefined
+    ele?: Element | DocumentFragment | null
 }
+
+interface IReturn {
+    close(): void
+}
+
+export type TLoading = (options: IOptions) => IReturn
 
 

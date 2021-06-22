@@ -1,27 +1,13 @@
 import './style.styl';
 import React, { FC } from 'react';
-
-import LoadingPng from '@/assets/loading/loading-png.png';
-import LoadingMp4 from '@/assets/loading/loading-mp4.mp4';
-import LoadingWebm from '@/assets/loading/loading-webm.webm';
 import { Props } from './types';
 
-const LoadingBox: FC<Props> = ({ width = 60, height = 60, type = 'global' }) => (
-    <div
-        className="d-loading"
-    >
-        <video
-            className="d-video"
-            autoPlay
-            loop
-            width={width}
-            height={height}
-            poster={LoadingPng}
-        >
-            <source src={LoadingMp4} type="video/mp4" />
-            <source src={LoadingWebm} type="video/webm" />
-            Your browser does not support the video tag.
-        </video>
+const LoadingBox: FC<Props> = ({ type = 'global', size = 60, imgSrc }) => (
+    <div className={['d-loading', `d-loading-${type}`].join(' ')}>
+        <section className="d-loading-bg" />
+        <div className="d-loading-item" style={{ width: `${size}px`, height: `${size}px` }}>
+            <img src={imgSrc} alt="loading-gif" />
+        </div>
     </div>
 );
 

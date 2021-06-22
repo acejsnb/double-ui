@@ -1,33 +1,28 @@
 import { createElement } from 'react';
-import { render } from 'react-dom';
+import { render, unmountComponentAtNode } from 'react-dom';
 import LoadingBox from './LoadingBox';
-import { IOptions } from './types';
+import { IOptions, TLoading } from './types';
 
-let loadingEle: HTMLElement | undefined;
-const Loading = ({
-    width, height, type, ele
+const Loading: TLoading = ({
+    type, size, ele, imgSrc
 }: IOptions) => {
+    const loadingEle: HTMLDivElement = document.createElement('div');
     const isLocal = type === 'local' && ele instanceof HTMLElement;
-    if (ele && isLocal) {
-        loadingEle = ele;
-    } else {
-        loadingEle = document.createElement('div');
-        document.body.appendChild(loadingEle);
-    }
-    const span: HTMLSpanElement = document.createElement('span');
-    if (loadingEle) loadingEle.appendChild(span);
-    let timer: any;
+    if (ele && isLocal) ele.appendChild(loadingEle);
+    else document.body.appendChild(loadingEle);
     const close = () => {
-        if (timer) clearTimeout(timer);
-        if (span && loadingEle) loadingEle.removeChild(span);
+        unmountComponentAtNode(loadingEle);
+        (loadingEle.parentNode as HTMLElement).removeChild(loadingEle);
     };
-    render(createElement(LoadingBox, { width, height, type }), span);
+    render(createElement(LoadingBox, { type, size, imgSrc }), loadingEle);
     return { close };
 };
 
-Loading.global = () => Loading({ width: 60, height: 60, type: 'global' });
-Loading.local = (ele: HTMLElement | null) => Loading({
-    width: 60, height: 60, ele, type: 'local'
+// @ts-ignore
+Loading.global = (imgSrc: string) => Loading({ type: 'global', imgSrc });
+// @ts-ignore
+Loading.local = (ele?: Element | DocumentFragment | null, imgSrc: string) => Loading({
+    type: 'local', ele, imgSrc
 });
 
 export default Loading;

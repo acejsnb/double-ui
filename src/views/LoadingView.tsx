@@ -8,6 +8,9 @@ import React, { FC, useRef } from 'react';
 import Loading from '@/components/loading/Loading';
 import Button from '@/components/button/Button';
 
+const imgGlobal = 'http://47.95.122.141:8200/persagy_ui_kit/loading-static/global-60.gif';
+const imgLocal = 'http://47.95.122.141:8200/persagy_ui_kit/loading-static/local.gif';
+
 /* const poster = LoadingPng;
 const sources = [
     { src: LoadingMp4, type: 'mp4' },
@@ -16,14 +19,14 @@ const sources = [
 const ButtonView: FC = () => {
     const divRef = useRef(null);
     const click = () => {
-        // const global = Loading.global();
-        const global = Loading({ type: 'global' });
+        const global = Loading({ imgSrc: imgGlobal });
         setTimeout(() => {
             global.close();
         }, 3000);
     };
     const clickLocal = () => {
-        const local = Loading.local(divRef.current);
+        // const local = Loading.local(divRef.current, imgLocal);
+        const local = Loading({ ele: divRef.current, imgSrc: imgLocal });
         setTimeout(() => {
             local.close();
         }, 3000);
@@ -40,7 +43,9 @@ const ButtonView: FC = () => {
                 style={{
                     position: 'relative', marginTop: '20px', width: '300px', height: '300px', background: 'blue'
                 }}
-            />
+            >
+                123456
+            </div>
         </div>
     );
 };

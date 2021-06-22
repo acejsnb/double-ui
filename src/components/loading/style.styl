@@ -1,15 +1,41 @@
 .d-loading
-  position absolute
-  top 0
-  left 0
-  z-index 800
   display flex
   align-items center
   justify-content center
+  font-size 0
+  z-index 800
+
+.d-loading-bg
+  position absolute
+  left 0
+  top 0
+  z-index 1
+  width 100%
+  height 100%
+
+// 全局
+.d-loading-global
+  position fixed
+  left 0
+  top 0
   background-color var(--theme)
   width 100%
   height 100%
-.d-loading-global
-  z-index 800
+
+.d-loading-item
+  z-index 2
+
+  img
+    width 100%
+    height 100%
+
+// 局部
 .d-loading-local
-  z-index 10
+  position absolute
+  left 0
+  top 0
+  width 100%
+  height 100%
+
+  .d-loading-bg
+    background-color var(--grey-50)
