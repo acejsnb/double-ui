@@ -25,12 +25,12 @@ const Teleport: FC<Props> = ({ isMounted, setShow, children }) => {
             document.body.appendChild(el.current);
             // 注册window事件
             window.addEventListener('click', clickOutside, true);
-            window.addEventListener('blur', closeDrop, true);
+            window.addEventListener('blur', closeDrop, false);
         }
         return () => {
             if (isMounted) {
                 window.removeEventListener('click', clickOutside, true);
-                window.removeEventListener('blur', closeDrop, true);
+                window.removeEventListener('blur', closeDrop, false);
                 document.body.removeChild(el.current);
             }
         };

@@ -1,5 +1,6 @@
 // drop触发器公共样式
 .d-drop
+  position relative
   display inline-block
   vertical-align middle
   font-size 0
@@ -32,6 +33,12 @@
     .d-drop-triangle
       path
         fill var(--blue-500)
+.d-drop-shade
+  position absolute
+  left 0
+  top 0
+  width 100%
+  height 100%
 .d-drop-show
   position relative
   &::after

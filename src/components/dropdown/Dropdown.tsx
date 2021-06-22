@@ -53,12 +53,8 @@ const Dropdown: FC<Props> = ({
 
     return (
         <>
-            <div
-                ref={triggerRef}
-                className={['d-drop', 'd-drop-light', show && 'd-drop-show', disabled && 'd-drop-disabled'].join(' ')}
-                onClick={openDrop}
-            >
-                <section className="d-drop-title">
+            <div className={['d-drop', 'd-drop-light', show && 'd-drop-show', disabled && 'd-drop-disabled'].join(' ')}>
+                <section className="d-drop-title" ref={triggerRef} onClick={openDrop}>
                     <article className="d-drop-title-content" onMouseEnter={(e) => { TextEllipsis(e, ['ARTICLE']); }}>{children}</article>
                     {triangle && (
                         <article
@@ -68,6 +64,7 @@ const Dropdown: FC<Props> = ({
                         </article>
                     )}
                 </section>
+                {show && <section className="d-drop-shade" />}
             </div>
             <CSSTransition in={show} timeout={120} classNames={`d-transition-${position ? 'down' : 'up'}`}>
                 <Teleport isMounted={isMounted} setShow={setShow}>

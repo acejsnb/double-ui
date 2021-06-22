@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import routes, { routerProps } from './utils/routes';
 
 const App = () => (
-    <div className="app">
+    <div className="app" onClick={(e) => { e.stopPropagation(); }}>
         <h1 className="title">App</h1>
         <HashRouter>
             <Switch>
