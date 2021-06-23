@@ -14,7 +14,7 @@ import {
 } from './types';
 
 import {
-    TileTool, OpenNode, SetTileCheckedInit, SetChecked, SetCheckedSortByTree,
+    TileTool, OpenChildNode, SetTileCheckedInit, SetChecked, SetCheckedSortByTree,
     StrategyChange
 } from './TreeHandle';
 
@@ -27,10 +27,10 @@ const dropdownData = [
 
 const Tree: FC<Props> = (props) => {
     const {
-        value, data, multiple = false,
+        value, data, multiple = false, omit = false,
         sameParams, sortByTree = false,
-        onChange = () => {},
-        onOpenNode = () => {}
+        change = () => {},
+        openNode = () => {}
     } = props;
     // 平铺列表
     const [tileList, setTileList] = useState<TileItem[]>([]);
@@ -61,13 +61,13 @@ const Tree: FC<Props> = (props) => {
     }, [value, data]);
 
     // 展开子项
-    const openNode = (item: TileItem) => {
+    const openChildNode = (item: TileItem) => {
         const { id, open } = item;
         const status = !open;
         item.open = status;
-        const tile = OpenNode(id, status, tileList);
+        const tile = OpenChildNode(id, status, tileList);
         setTileList(tile);
-        onOpenNode(JSON.parse(JSON.stringify(item)));
+        openNode(JSON.parse(JSON.stringify(item)));
     };
     // 点击每项 status=true表示需要向父级提交数据并带确定操作
     const itemClick = (item: TileItem, status?: boolean) => {
@@ -98,7 +98,7 @@ const Tree: FC<Props> = (props) => {
                 setTileList(tileData);
                 setCheckedData(checkedDataYet);
                 // 触发选中改变
-                onChange({
+                change({
                     item: curItem, checkedIds, checkedData: checkedDataYet
                 }, status);
             },
@@ -106,11 +106,10 @@ const Tree: FC<Props> = (props) => {
             false() {
                 setCurrentId(id);
                 // 点击的当前项
-                onChange(curItem);
+                change(curItem);
             }
         };
-        // @ts-ignore
-        strategy[multiple]();
+        strategy[`${multiple}`]();
     };
 
     // 通过类型设置选中状态
@@ -119,7 +118,7 @@ const Tree: FC<Props> = (props) => {
         setCheckedData(checkedData);
         setTileList(tileData);
         // emit('changeTileData', tileData);
-        onChange({
+        change({
             item, checkedIds, checkedData
         }, true);
     };
@@ -152,7 +151,7 @@ const Tree: FC<Props> = (props) => {
                                                     className={['d-tree-arrow-svg', item.open && 'd-tree-triangle'].join(' ')}
                                                     onClick={(e: MouseEvent<HTMLElement>) => {
                                                         e.stopPropagation();
-                                                        openNode(item);
+                                                        openChildNode(item);
                                                     }}
                                                 >
                                                     <ArrowTriangle />
@@ -175,7 +174,7 @@ const Tree: FC<Props> = (props) => {
                                         <section className={['d-tree-content', item.omit && 'd-tree-omit'].join(' ')}>
                                             <article className="d-tree-text" onMouseEnter={(e: MouseEvent<HTMLElement>) => { TextEllipsis(e, ['ARTICLE']); }}>{item.name}</article>
                                             {
-                                                item.omit && (
+                                                (multiple && omit) && (
                                                     <span
                                                         className={
                                                             ['d-tree-point-svg', item.omitStatus && 'd-tree-point-svg-active'].join(' ')

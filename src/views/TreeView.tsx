@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tree from '@/components/tree/Tree';
+import Tree from '@/components/tree';
 import { TileItem, IMultiple } from '../components/tree/types';
 
 const dataArr = [
@@ -62,17 +62,17 @@ const TreeView = () => {
     return (
         <div className="component-view">
             <Tree
-                omit
                 data={dataArr}
-                onChange={change}
-                onOpenNode={openNode}
+                change={change}
+                openNode={openNode}
             />
             <div style={{ height: '50px' }} />
             <Tree
                 multiple
+                omit
                 data={dataArr}
-                onChange={change}
-                onOpenNode={openNode}
+                change={change}
+                openNode={openNode}
             />
         </div>
     );

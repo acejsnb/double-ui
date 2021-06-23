@@ -1,5 +1,7 @@
 import './style.styl';
-import React, { FC, useState, useRef } from 'react';
+import React, {
+    FC, useState, useRef, MouseEvent
+} from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import Triangle from '@/assets/iconSvg/triangle.svg';
@@ -39,7 +41,8 @@ const Dropdown: FC<Props> = ({
         setShow(false);
         change(item);
     };
-    const openDrop = () => {
+    const openDrop = (e: MouseEvent) => {
+        e.stopPropagation();
         if (disabled) return;
         const { X, Y, P } = ResetPosition({
             maxWidth, maxCount, alignRight, data, tag: triggerRef

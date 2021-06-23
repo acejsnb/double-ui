@@ -23,7 +23,7 @@ const SetPadding: SetPaddingFn = (ind) => {
 };
 /** *
  * 设置是否是最后节点
- * @param item 当前项
+ * @param item 当前项f
  * @return boolean
  */
 type SetLastNodeFn = (item: Item) => boolean;
@@ -647,12 +647,12 @@ const SetCheckedSortByTree: SetCheckedFn = (item, tileData, props) => {
  * @constructor
  */
 type OpenNodeFn = (id: string, status: boolean, tileData: TileItem[]) => TileItem[];
-const OpenNode: OpenNodeFn = (id, status, tileData) => tileData.map((d) => {
+const OpenChildNode: OpenNodeFn = (id, status, tileData) => tileData.map((d) => {
     if (d.parentId === id) {
         d.show = status;
         if (!status && d.open) {
             d.open = false;
-            OpenNode(d.id, false, tileData);
+            OpenChildNode(d.id, false, tileData);
         }
     }
     return d;
@@ -796,7 +796,7 @@ const StrategyChange: StrategyChangeFn = (dropId, { id }, props, tileList) => {
 export {
     TileTool,
     PackageTool,
-    OpenNode,
+    OpenChildNode,
     SetTileCheckedInit,
     SetChecked,
     SetCheckedSortByTree,

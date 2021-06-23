@@ -53,8 +53,8 @@ export interface Props {
     linkage?: boolean
     sameParams?: boolean | undefined
     sortByTree?: boolean
-    onChange?: (item: TileItem | IMultiple, status?: boolean) => void
-    onOpenNode?: (item: TileItem) => void
+    change?: (item: TileItem | IMultiple, status?: boolean) => void
+    openNode?: (item: TileItem) => void
 }
 
 export interface StringAny {
