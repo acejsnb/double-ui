@@ -7,6 +7,7 @@ import DropdownView from '@/views/DropdownView';
 import DropGroupView from '@/views/DropGroupView';
 import LoadingView from '@/views/LoadingView';
 import MessageView from '@/views/MessageView';
+import ProgressView from '@/views/ProgressView';
 import TreeView from '@/views/TreeView';
 import TriggerView from '@/views/TriggerView';
 
@@ -25,6 +26,7 @@ const routes: routerProps[] = [
     { name: 'DropGroup', path: '/dropgroupview', component: DropGroupView },
     { name: 'Loading', path: '/loadingview', component: LoadingView },
     { name: 'Message', path: '/messageview', component: MessageView },
+    { name: 'Progress', path: '/progressview', component: ProgressView },
     { name: 'Tree', path: '/treeview', component: TreeView },
     { name: 'Trigger', path: '/triggerview', component: TriggerView }
 ];
