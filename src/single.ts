@@ -11,6 +11,7 @@ module.exports = {
     DropGroup: '../src/components/dropGroup/DropGroup.tsx',
     Loading: '../src/components/loading/Loading.ts',
     Message: '../src/components/message/Message.ts',
+    Teleport: '../src/components/teleport/Teleport.tsx',
     Transition: '../src/components/transition/Transition.tsx'
     // Tree: '../src/components/tree/Tree'
 };

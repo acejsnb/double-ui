@@ -13,6 +13,10 @@ const TriggerView = () => {
                 title="选择项目："
                 // text="下级分项"
             />
+            <div style={{ height: '60px' }} />
+            <Trigger
+                border={false}
+            />
         </div>
     );
 };

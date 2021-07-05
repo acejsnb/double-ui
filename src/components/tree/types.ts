@@ -53,7 +53,7 @@ export interface Props {
     linkage?: boolean
     sameParams?: boolean | undefined
     sortByTree?: boolean
-    change?: (item: TileItem | IMultiple, status?: boolean) => void
+    change: (item: TileItem | IMultiple, status?: boolean) => void
     openNode?: (item: TileItem) => void
 }
 

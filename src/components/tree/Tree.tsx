@@ -29,7 +29,7 @@ const Tree: FC<Props> = (props) => {
     const {
         value, data, multiple = false, omit = false,
         sameParams, sortByTree = false,
-        change = () => {},
+        change,
         openNode = () => {}
     } = props;
     // 平铺列表

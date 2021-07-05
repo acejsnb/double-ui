@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Tree from '@/components/tree';
+import TreeSelect from '@/components/treeSelect';
 import { TileItem, IMultiple } from '../components/tree/types';
 
 const dataArr = [
@@ -52,7 +52,7 @@ const dataArr = [
     }
 ];
 
-const TreeSelectView = () => {
+const TreeView = () => {
     const change = (item: TileItem | IMultiple) => {
         console.log('change===', item);
     };
@@ -61,21 +61,10 @@ const TreeSelectView = () => {
     };
     return (
         <div className="component-view">
-            <Tree
-                data={dataArr}
-                change={change}
-                openNode={openNode}
-            />
+            <TreeSelect data={dataArr} change={change} />
             <div style={{ height: '50px' }} />
-            <Tree
-                multiple
-                omit
-                data={dataArr}
-                change={change}
-                openNode={openNode}
-            />
         </div>
     );
 };
 
-export default TreeSelectView;
+export default TreeView;

@@ -3,11 +3,7 @@
   display inline-flex
   //justify-content space-between
   align-items flex-start
-  border 1px solid var(--grey-400)
-  border-radius 4px
-  width 120px
   font-size 0
-  transition border-color .3s
   cursor pointer
   &:hover
     border-color var(--blue-500)
@@ -23,12 +19,29 @@
       path
         fill var(--grey-400)
 
+.d-trigger-border
+  border 1px solid var(--grey-400)
+  border-radius 4px
+  width 120px
+  transition border-color .3s
+  .d-trigger-words
+    height 30px
+    line-height @height
+  .d-trigger-icon
+    width 30px
+    height 30px
+.d-trigger-no-border
+  .d-trigger-words
+    height 20px
+    line-height @height
+  .d-trigger-icon
+    width 20px
+    height 20px
+
 .d-trigger-pl
   padding-left 8px
 
 .d-trigger-words
-  height 30px
-  line-height @height
   font-size 14px
 
 .d-trigger-title
@@ -50,8 +63,6 @@
   align-items center
   justify-content center
   margin-left auto
-  width 30px
-  height @width
   overflow hidden
   i
     width 16px

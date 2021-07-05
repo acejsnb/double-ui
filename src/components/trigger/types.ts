@@ -1,3 +1,5 @@
+import { MouseEvent } from 'react';
+
 export interface Props {
     width?: number
     title?: string
@@ -5,4 +7,6 @@ export interface Props {
     text?: string
     disabled?: boolean
     show?: boolean
+    border?: boolean
+    triggerClick(e: MouseEvent): void
 }

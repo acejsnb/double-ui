@@ -9,6 +9,7 @@ import LoadingView from '@/views/LoadingView';
 import MessageView from '@/views/MessageView';
 import ProgressView from '@/views/ProgressView';
 import TreeView from '@/views/TreeView';
+import TreeSelectView from '@/views/TreeSelectView';
 import TriggerView from '@/views/TriggerView';
 
 export interface routerProps {
@@ -28,6 +29,7 @@ const routes: routerProps[] = [
     { name: 'Message', path: '/messageview', component: MessageView },
     { name: 'Progress', path: '/progressview', component: ProgressView },
     { name: 'Tree', path: '/treeview', component: TreeView },
+    { name: 'TreeSelect', path: '/treeselectview', component: TreeSelectView },
     { name: 'Trigger', path: '/triggerview', component: TriggerView }
 ];
 

@@ -5,6 +5,9 @@ import Dropdown from './dropdown';
 import DropGroup from './dropGroup';
 import Loading from './loading';
 import Message from './message';
+import Teleport from './teleport';
+import Tree from './Tree';
+import TreeSelect from './treeSelect';
 
 export {
     Button,
@@ -13,5 +16,8 @@ export {
     Dropdown,
     DropGroup,
     Loading,
-    Message
+    Message,
+    Teleport,
+    Tree,
+    TreeSelect
 };
