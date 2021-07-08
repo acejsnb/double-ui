@@ -1,5 +1,5 @@
 import React, {
-    ForwardRefRenderFunction, FormEvent, MouseEvent, UIEvent, useState, useEffect, forwardRef
+    FC, FormEvent, MouseEvent, UIEvent, useState, useEffect
 } from 'react';
 
 import ClearSvg from '@/assets/iconSvg/clear2.svg';
@@ -7,11 +7,10 @@ import TextEllipsis from '@/utils/TextEllipsis';
 import FindTarget from '@/utils/FindTarget';
 import { Item, OptionProps as Props } from '../types';
 
-const DOption: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
-    left, top, position,
-    data, value, arrow, openSearch, placeholder, change,
-    maxWidth = 120, maxCount = 5
-}, ref) => {
+const DOption: FC<Props> = ({
+    data, value, openSearch, placeholder, change,
+    maxCount = 5
+}) => {
     const [inputVal, setInputVal] = useState<string>('');
     const [scrollTop, setScrollTop] = useState<number>(0);
     const [optionData, setOptionData] = useState<Item[]>(data);
@@ -31,13 +30,13 @@ const DOption: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
             setOptionData(cloneData);
         }
     };
-    let timer: any;
+    let timer: number;
     // input输入回调
     const inputHandle = (e: FormEvent): void => {
         const inputValue = (e.target as HTMLInputElement).value;
         setInputVal(inputValue);
-        if (timer) clearTimeout(timer);
-        timer = setTimeout(() => {
+        if (timer) window.clearTimeout(timer);
+        timer = window.setTimeout(() => {
             searchHandle(inputValue);
         }, 300);
     };
@@ -65,20 +64,7 @@ const DOption: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
     };
 
     return (
-        <div
-            ref={ref}
-            className={[
-                'd-drop-content',
-                'd-drop-content-light',
-                arrow && (position ? 'd-drop-content-top-arrow' : 'd-drop-content-bottom-arrow')
-            ].join(' ')}
-            style={{
-                left: `${left}px`,
-                top: `${top}px`,
-                maxWidth: `${maxWidth}px`
-            }}
-            onWheel={(e) => { e.stopPropagation(); }}
-        >
+        <>
             <>
                 {
                     openSearch && (
@@ -120,8 +106,8 @@ const DOption: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
                     ))
                 }
             </div>
-        </div>
+        </>
     );
 };
 
-export default forwardRef(DOption);
+export default DOption;

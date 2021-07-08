@@ -1,13 +1,13 @@
-import Button from './button';
-import Checkbox from './checkbox';
-import Divider from './divider';
-import Dropdown from './dropdown';
-import DropGroup from './dropGroup';
-import Loading from './loading';
-import Message from './message';
-import Teleport from './teleport';
+import Button from './Button';
+import Checkbox from './Checkbox';
+import Divider from './Divider';
+import Dropdown from './Dropdown';
+import DropGroup from './DropGroup';
+import Loading from './Loading';
+import Message from './Message';
+import Teleport from './Teleport';
 import Tree from './Tree';
-import TreeSelect from './treeSelect';
+import TreeSelect from './TreeSelect';
 
 export {
     Button,

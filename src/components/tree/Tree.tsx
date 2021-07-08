@@ -50,7 +50,6 @@ const Tree: FC<Props> = (props) => {
             const nData = JSON.parse(strData);
             const tile = await TileTool([], nData, '-1', null, false, props);
             const { tileData, checkedData } = await SetTileCheckedInit(tile, props);
-            // console.log('tileData===', tileData);
             setTileList(tileData);
             setCheckedData(checkedData);
         }
@@ -172,6 +171,7 @@ const Tree: FC<Props> = (props) => {
                                             </section>
                                         )}
                                         <section className={['d-tree-content', item.omit && 'd-tree-omit'].join(' ')}>
+                                            {item.icon && <i className="d-tree-icon"><img src={item.icon} alt="" /></i>}
                                             <article className="d-tree-text" onMouseEnter={(e: MouseEvent<HTMLElement>) => { TextEllipsis(e, ['ARTICLE']); }}>{item.name}</article>
                                             {
                                                 (multiple && omit) && (

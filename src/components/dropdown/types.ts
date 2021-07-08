@@ -5,27 +5,21 @@ export interface Item {
     icon?: boolean
 }
 
-export interface Types {
+export interface OptionProps {
     data: Item[]
     value?: string | number
     openSearch?: boolean
     placeholder?: string
     alignRight?: boolean
-    arrow?: boolean
     translateX?: string | number
     maxCount?: number
-    maxWidth?: number
     change: (item: Item) => void
 }
 
-export interface IProps extends Types {
+export interface IProps extends OptionProps {
+    arrow?: boolean
     triangle?: boolean
     trigger?: string
     disabled?: boolean
-}
-
-export interface OptionProps extends Types {
-    left: number
-    top: number
-    position: boolean
+    maxWidth?: number
 }

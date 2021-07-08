@@ -8,5 +8,5 @@ export interface Props {
     disabled?: boolean
     show?: boolean
     border?: boolean
-    triggerClick(e: MouseEvent): void
+    triggerClick?: (e: MouseEvent) => void
 }

@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useRef, useState, MouseEvent
+    FC, useRef, useState, MouseEvent, useEffect
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
@@ -12,17 +12,17 @@ import ResetPosition from './ResetPosition';
 import { Props, TileItem, IMultiple } from './types';
 
 const TreeSelect: FC<Props> = ({
-    data, value = '', multiple = false,
+    data, value = '', name = '', multiple = false,
     omit = false, sameParams = false,
     sortByTree = false, disabled = false,
-    change
+    change, openNode
 }) => {
     const triggerRef = useRef<HTMLDivElement>(null);
     const dropRef = useRef<HTMLDivElement>(null);
     const [isMounted, setIsMounted] = useState(false);
     // 下拉弹窗显示
     const [show, setShow] = useState(false);
-    const [selectId, setSelectId] = useState(value);
+    const [selectId, setSelectId] = useState('');
     const [text, setText] = useState('');
 
     const [left, setLeft] = useState(0);
@@ -50,9 +50,12 @@ const TreeSelect: FC<Props> = ({
         setShow(false);
         change(item);
     };
-    const openNode = (item: TileItem) => {
-        console.log(item);
-    };
+    useEffect(() => {
+        setSelectId(value as string);
+    }, [value]);
+    useEffect(() => {
+        setText(name as string);
+    }, [name]);
 
     return (
         <>

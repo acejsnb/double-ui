@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import TreeSelect from '@/components/treeSelect';
-import { TileItem, IMultiple } from '../components/tree/types';
+import { TileItem, IMultiple } from '@/components/tree/types';
+import GlobalPng from '@/assets/images/global.png';
+import BuildingPng from '@/assets/images/building.png';
 
 const dataArr = [
     {
         id: '0',
         name: '顶级顶级顶级顶级顶级顶级顶级顶级顶级顶级顶级顶级',
         open: true,
+        icon: GlobalPng,
         children: [
             {
                 id: '1',
                 name: '一级1',
                 // open: true,
+                icon: BuildingPng,
                 children: [
                     { id: '12', name: '二级2' },
                     { id: '121', name: '二级3' },
@@ -53,6 +57,7 @@ const dataArr = [
 ];
 
 const TreeView = () => {
+    const [value] = useState('1');
     const change = (item: TileItem | IMultiple) => {
         console.log('change===', item);
     };
@@ -61,7 +66,7 @@ const TreeView = () => {
     };
     return (
         <div className="component-view">
-            <TreeSelect data={dataArr} change={change} />
+            <TreeSelect value={value} name="一级1" data={dataArr} change={change} />
             <div style={{ height: '50px' }} />
         </div>
     );

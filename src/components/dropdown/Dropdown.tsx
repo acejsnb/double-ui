@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useState, useRef, MouseEvent
+    FC, useState, useRef, MouseEvent, useEffect
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
@@ -71,24 +71,32 @@ const Dropdown: FC<Props> = ({
             </div>
             <CSSTransition in={show} timeout={120} classNames={`d-transition-${position ? 'down' : 'up'}`}>
                 <Teleport isMounted={isMounted} setShow={setShow}>
-                    <DOption
+                    <div
                         ref={dropRef}
-                        {...{
-                            left,
-                            top,
-                            position,
-                            value,
-                            data,
-                            openSearch,
-                            placeholder,
-                            alignRight,
-                            arrow,
-                            translateX,
-                            maxWidth,
-                            maxCount,
-                            change: itemClick
+                        className={[
+                            'd-drop-content',
+                            'd-drop-content-light',
+                            arrow && (position ? 'd-drop-content-top-arrow' : 'd-drop-content-bottom-arrow')
+                        ].join(' ')}
+                        style={{
+                            left: `${left}px`,
+                            top: `${top}px`,
+                            maxWidth: `${maxWidth}px`
                         }}
-                    />
+                    >
+                        <DOption
+                            {...{
+                                value,
+                                data,
+                                openSearch,
+                                placeholder,
+                                alignRight,
+                                translateX,
+                                maxCount,
+                                change: itemClick
+                            }}
+                        />
+                    </div>
                 </Teleport>
             </CSSTransition>
         </>

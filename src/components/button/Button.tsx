@@ -18,7 +18,10 @@ const Button: FC<Props> = ({
             `d-btn-${disabled ? 'disabled' : 'normal'}`
         ].join(' ')}
         style={{ width: `${width}px` }}
-        onClick={click}
+        onClick={() => {
+            if (disabled) return;
+            click();
+        }}
     >
         <section className="d-btn-content">
             <span className="d-btn-text">{children}</span>

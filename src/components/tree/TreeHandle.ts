@@ -127,6 +127,7 @@ const TileTool: TileToolFn = (
             // ...d,
             id: d.id,
             name: d.name,
+            icon: d.icon || '',
             sameId: d?.sameId || '',
             ...{
                 index: ind,

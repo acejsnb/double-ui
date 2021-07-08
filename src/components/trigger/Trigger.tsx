@@ -32,7 +32,7 @@ const Trigger: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
                 text
                     ? (
                         <div
-                            className={['d-trigger-words', 'd-trigger-text', !title && 'd-trigger-pl'].join(' ')}
+                            className={['d-trigger-words', 'd-trigger-text', (border && !title) && 'd-trigger-pl'].join(' ')}
                             style={border ? { width: `calc(100% - ${captionWidth + 30}px)` } : {}}
                         >
                             {text}

@@ -5,6 +5,7 @@ export interface ITag {
 export interface Item {
     id: string
     name: string
+    icon?: string
     open?: boolean
     defaultDisabled?: boolean
     showCheckbox?: boolean
@@ -21,6 +22,7 @@ export interface TileItem {
     index: string
     checked: string
     sameId?: string
+    icon?: string
     paddingLeft: number
     defaultDisabled: boolean
     disabled: boolean
