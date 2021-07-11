@@ -21,7 +21,7 @@ const Button: FC<Props> = ({
         ].join(' ')}
         style={{ width: `${width}px` }}
         onClick={() => {
-            if (disabled) return;
+            if (disabled || loading) return;
             click();
         }}
     >
