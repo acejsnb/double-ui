@@ -12,11 +12,17 @@
   + .d-btn
     margin-left 12px
   .d-btn-content
+    display flex
+    align-items center
+    justify-content center
     width 100%
 .d-btn-default
   background-color var(--theme)
   border-color var(--grey-400)
   color var(--grey-900)
+  .d-btn-loading
+    path
+      stroke var(--grey-400)
   &:hover
     border-color var(--blue-500)
     .d-btn-text
@@ -47,10 +53,14 @@
   &:active
     .d-btn-text
       color var(--blue-600)
+.d-btn-loading
+  margin-right 8px
+  width 16px
+  height @width
 .d-btn-text
-  display inline-block
-  vertical-align middle
-  width 100%
+  //display inline-block
+  //vertical-align middle
+  //width 100%
   user-select none
   overflow hidden
   text-overflow ellipsis

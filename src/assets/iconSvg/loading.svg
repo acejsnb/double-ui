@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g stroke="none" fill="none" transform="translate(1, 1)">
-        <path d="M 7 0 A 6 7 0 0 1 14 6" stroke-width="1" class="svg-stroke-white">
+    <g stroke="none" fill="none">
+        <path d="M 8 1 A 7 7 0 0 1 14 6" stroke-width="1" stroke="var(--theme)">
             <animateTransform
                     attributeName="transform"
                     type="rotate"
                     from="0 8 8"
                     to="360 8 8"
-                    dur="0.5s"
-                    repeatCount="indefinite"/>
+                    dur=".5s"
+                    repeatCount="indefinite"
+            />
         </path>
     </g>
 </svg>

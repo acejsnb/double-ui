@@ -4,3 +4,5 @@ yarn.lock
 .idea
 .vscode
 lib
+.DS_Store
+src/.DS_Store
