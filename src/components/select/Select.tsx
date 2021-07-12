@@ -1,26 +1,26 @@
 import './style.styl';
 import React, {
-    FC, useState, useRef, MouseEvent, useEffect
+    FC, useState, useRef, MouseEvent
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import Triangle from '@/assets/iconSvg/triangle.svg';
-import TextEllipsis from '@/utils/TextEllipsis';
-
+import Trigger from '@/components/trigger/Trigger';
 import Teleport from '@/components/teleport/Teleport';
 import { IProps as Props, Item } from './types';
 
 import DOption from './depend/DOption';
 import ResetPosition from './depend/ResetPosition';
 
-const Dropdown: FC<Props> = ({
+const Select: FC<Props> = ({
     value = '',
     data = [],
+    title = '',
+    width = 120,
+    border = true,
     disabled = false,
     triangle = true,
     children,
     change = () => {},
-    maxWidth = 120,
     openSearch = false,
     placeholder = '请搜索',
     alignRight = false,
@@ -45,7 +45,7 @@ const Dropdown: FC<Props> = ({
         e.stopPropagation();
         if (disabled) return;
         const { X, Y, P } = ResetPosition({
-            maxWidth, maxCount, alignRight, data, tag: triggerRef
+            width, maxCount, alignRight, data, tag: triggerRef
         });
         setLeft(X);
         setTop(Y);
@@ -53,22 +53,16 @@ const Dropdown: FC<Props> = ({
         if (!isMounted) setIsMounted(true);
         setShow(true);
     };
+    // 清除选中
+    const clear = (e: MouseEvent) => {
+        e.stopPropagation();
+        if (disabled) return;
+        change({ id: '', name: '' });
+    };
 
     return (
         <>
-            <div className={['d-drop', 'd-drop-light', show && 'd-drop-show', disabled && 'd-drop-disabled'].join(' ')}>
-                <section className="d-drop-title" ref={triggerRef} onClick={openDrop}>
-                    <article className="d-drop-title-content" onMouseEnter={(e) => { TextEllipsis(e, ['ARTICLE']); }}>{children}</article>
-                    {triangle && (
-                        <article
-                            className={['d-drop-triangle', !show && 'd-drop-triangle-rotate'].join(' ')}
-                        >
-                            <Triangle />
-                        </article>
-                    )}
-                </section>
-                {show && <section className="d-drop-shade" />}
-            </div>
+            <Trigger border={border} title={title} width={width} triangle={triangle} disabled={disabled} show={show} ref={triggerRef} click={openDrop} clear={clear}>{children}</Trigger>
             <CSSTransition in={show} timeout={120} classNames={`d-transition-${position ? 'down' : 'up'}`}>
                 <Teleport isMounted={isMounted} setShow={setShow}>
                     <div
@@ -81,7 +75,7 @@ const Dropdown: FC<Props> = ({
                         style={{
                             left: `${left}px`,
                             top: `${top}px`,
-                            maxWidth: `${maxWidth}px`
+                            width: `${width}px`
                         }}
                     >
                         <DOption
@@ -103,4 +97,4 @@ const Dropdown: FC<Props> = ({
     );
 };
 
-export default Dropdown;
+export default Select;

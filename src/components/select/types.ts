@@ -17,9 +17,11 @@ export interface OptionProps {
 }
 
 export interface IProps extends OptionProps {
+    border?: boolean
     arrow?: boolean
     triangle?: boolean
+    title?: string
     trigger?: string
     disabled?: boolean
-    maxWidth?: number
+    width?: number
 }

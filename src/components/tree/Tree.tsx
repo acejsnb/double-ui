@@ -8,7 +8,7 @@ import MorePointSvg from '@/assets/iconSvg/morePoint.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
 
 import Checkbox from '@/components/checkbox/Checkbox';
-import Dropdown from '@/components/dropdown/Dropdown';
+import Select from '@/components/select/Select';
 import {
     Item, Props, TileItem
 } from './types';
@@ -18,8 +18,8 @@ import {
     StrategyChange
 } from './TreeHandle';
 
-// Dropdown数据
-const dropdownData = [
+// Select数据
+const selectData = [
     { id: 'allChild', name: '选择所有子级' },
     { id: 'nextChild', name: '选择下一级' },
     { id: 'cancelAll', name: '取消所有子级' }
@@ -121,8 +121,8 @@ const Tree: FC<Props> = (props) => {
             item, checkedIds, checkedData
         }, true);
     };
-    // Dropdown选中状态改变回调
-    const dropdownChange = (id: string, item: TileItem) => {
+    // Select选中状态改变回调
+    const selectChange = (id: string, item: TileItem) => {
         strategyChange(id, item);
     };
 
@@ -180,15 +180,15 @@ const Tree: FC<Props> = (props) => {
                                                             ['d-tree-point-svg', item.omitStatus && 'd-tree-point-svg-active'].join(' ')
                                                         }
                                                     >
-                                                        <Dropdown
-                                                            trigger="click"
+                                                        <Select
+                                                            border={false}
                                                             triangle={false}
-                                                            data={dropdownData}
+                                                            data={selectData}
                                                             // onGetStatus={(status) => getStatus(status, item)}
-                                                            change={({ id }) => dropdownChange(id, item)}
+                                                            change={({ id }) => selectChange(id, item)}
                                                         >
                                                             <MorePointSvg />
-                                                        </Dropdown>
+                                                        </Select>
                                                     </span>
                                                 )
                                             }

@@ -59,7 +59,7 @@ const TreeSelect: FC<Props> = ({
 
     return (
         <>
-            <Trigger border={false} text={text} show={show} ref={triggerRef} triggerClick={openDrop} />
+            <Trigger border={false} show={show} ref={triggerRef} click={openDrop}>{text}</Trigger>
             <CSSTransition in={show} timeout={120} classNames={`d-transition-${position ? 'down' : 'up'}`}>
                 <Teleport isMounted={isMounted} setShow={setShow}>
                     <div

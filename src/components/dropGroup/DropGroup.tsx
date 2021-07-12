@@ -2,12 +2,10 @@ import './style.styl';
 import React, { FC, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import Triangle from '@/assets/iconSvg/triangle.svg';
-import TextEllipsis from '@/utils/TextEllipsis';
+import Trigger from '@/components/trigger/Trigger';
+import Teleport from '@/components/teleport/Teleport';
 import ResetPosition from './depend/ResetPosition';
 import { IProps as Props } from './types';
-
-import Teleport from '../teleport/Teleport';
 import DGroup from './depend/DGroup';
 
 interface ClickItem {
@@ -57,19 +55,7 @@ const DropGroup: FC<Props> = ({
 
     return (
         <>
-            <div className={['d-drop', 'd-drop-light', show && 'd-drop-show', disabled && 'd-drop-disabled'].join(' ')}>
-                <section className="d-drop-title" ref={triggerRef} onClick={openDrop}>
-                    <article className="d-drop-title-content" onMouseEnter={(e) => { TextEllipsis(e, ['ARTICLE']); }}>{children}</article>
-                    {triangle && (
-                        <article
-                            className={['d-drop-triangle', !show && 'd-drop-triangle-rotate'].join(' ')}
-                        >
-                            <Triangle />
-                        </article>
-                    )}
-                </section>
-                {show && <section className="d-drop-shade" />}
-            </div>
+            <Trigger border={false} triangle={triangle} disabled={disabled} show={show} ref={triggerRef} click={openDrop}>{children}</Trigger>
             <CSSTransition in={show} timeout={120} classNames={`d-transition-${position ? 'down' : 'up'}`}>
                 <Teleport isMounted={isMounted} setShow={setShow}>
                     <DGroup

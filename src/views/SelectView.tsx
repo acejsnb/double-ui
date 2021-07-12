@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Dropdown from '@/components/dropdown/Dropdown';
+import Select from '@/components/select/Select';
 
 interface Item {
     id: string
@@ -21,7 +21,7 @@ const data = [
     { id: 'lowerLevel451', name: '下级分项6' }
 ];
 
-const DropdownView = () => {
+const SelectView = () => {
     const [value, setValue] = useState('totalEnergy');
     const [name, setName] = useState('总量');
     const [dropData, setDropData] = useState(JSON.parse(JSON.stringify(data)));
@@ -49,48 +49,57 @@ const DropdownView = () => {
     };
     return (
         <div className="component-view">
-            <Dropdown
+            <Select
+                title="选择："
+                width={180}
+                disabled
                 value={value}
                 data={dropData}
                 change={change}
             >
                 {name}
-            </Dropdown>
+            </Select>
+            <div style={{ height: `${40}px` }} />
+            <Select
+                border={false}
+                value={value}
+                data={dropData}
+                change={change}
+            >
+                {name}
+            </Select>
 
             <div style={{ textAlign: 'right' }}>
-                <Dropdown
-                    maxWidth={240}
+                <Select
+                    width={180}
                     maxCount={5}
                     value={value2}
                     data={dropData2}
                     alignRight
                     // openSearch={true}
-                    triangle={false}
                     // disabled={true}
                     placeholder="请搜索哟"
                     change={change2}
                 >
                     {name2}
-                </Dropdown>
+                </Select>
             </div>
             <div style={{ height: '800px' }} />
 
-            <Dropdown
-                maxWidth={240}
+            <Select
                 maxCount={5}
-                value={value2}
+                value=""
                 data={dropData2}
                 // alignRight={true}
                 // openSearch={true}
-                triangle={false}
                 // disabled={true}
                 placeholder="请搜索哟"
                 change={change2}
             >
-                {name2}
-            </Dropdown>
+                {null}
+            </Select>
         </div>
     );
 };
 
-export default DropdownView;
+export default SelectView;

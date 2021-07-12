@@ -25,7 +25,7 @@ const GetWidth = (data: Item[], maxWidth: number): number => {
 
 interface XYP {X: number, Y: number, P: boolean}
 interface IOptions {
-    maxWidth: number
+    width: number
     maxCount: number
     alignRight: boolean
     data: Item[]
@@ -34,9 +34,9 @@ interface IOptions {
 
 const ResetPosition = (options: IOptions): XYP => {
     const {
-        maxWidth, maxCount, alignRight, data, tag
+        width, maxCount, alignRight, data, tag
     } = options;
-    const width = maxWidth || GetWidth(data, maxWidth);
+    // const w = width || GetWidth(data, width);
     // 18表示上下padding=8 + 上下border=1
     const h = data.length * 38 + 18;
     const maxHeiByCount = maxCount * 38 + 18; // 最大容纳高度

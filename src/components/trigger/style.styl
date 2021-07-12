@@ -8,17 +8,6 @@
   &:hover
     border-color var(--blue-500)
 
-.d-trigger-disabled
-  background-color var(--grey-200)
-  cursor not-allowed
-  .p-trigger-title
-    color var(--grey-400)
-  .p-trigger-icon
-    color var(--grey-400)
-    svg
-      path
-        fill var(--grey-400)
-
 .d-trigger-border
   border 1px solid var(--grey-400)
   border-radius 4px
@@ -42,6 +31,7 @@
   padding-left 8px
 
 .d-trigger-words
+  text-align left
   font-size 14px
 
 .d-trigger-title
@@ -89,3 +79,16 @@
       display none
     .d-trigger-del
       display block
+
+.d-trigger-disabled
+  background-color var(--grey-200)
+  cursor not-allowed
+  &.d-trigger-border
+    border 1px solid var(--grey-400)
+  .d-trigger-words
+    color var(--grey-400)
+  .d-trigger-icon
+    color var(--grey-400)
+    svg
+      path
+        fill var(--grey-400)

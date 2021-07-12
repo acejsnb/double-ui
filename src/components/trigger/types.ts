@@ -1,12 +1,16 @@
-import { MouseEvent } from 'react';
+import {
+    JSXElementConstructor, MouseEvent, ReactElement, ReactNode
+} from 'react';
 
 export interface Props {
     width?: number
     title?: string
     placeholder?: string
-    text?: string
+    triangle?: boolean
     disabled?: boolean
     show?: boolean
     border?: boolean
-    triggerClick?: (e: MouseEvent) => void
+    click?: (e: MouseEvent) => void
+    clear?: (e: MouseEvent) => void
+    children?: ReactElement<any, string | JSXElementConstructor<any>> | ReactNode | string | number | null | undefined
 }

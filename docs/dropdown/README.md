@@ -1,4 +1,4 @@
-# Dropdown
+# Select
 
 ### demo
 ```typescript jsx
@@ -24,11 +24,11 @@ const ButtonView = () => {
     };
     return (
         <div className="component-view">
-            <Dropdown
+            <Select
                 value={value}
                 data={dropData}
                 change={change}
-            >{name}</Dropdown>
+            >{name}</Select>
         </div>
     );
 };
