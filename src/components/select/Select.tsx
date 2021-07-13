@@ -26,7 +26,8 @@ const Select: FC<Props> = ({
     alignRight = false,
     arrow = false,
     translateX = 0,
-    maxCount = 5
+    maxCount = 5,
+    className
 }) => {
     const triggerRef = useRef<HTMLDivElement>(null);
     const dropRef = useRef<HTMLDivElement>(null);
@@ -70,7 +71,8 @@ const Select: FC<Props> = ({
                         className={[
                             'd-drop-content',
                             'd-drop-content-light',
-                            arrow && (position ? 'd-drop-content-top-arrow' : 'd-drop-content-bottom-arrow')
+                            arrow && (position ? 'd-drop-content-top-arrow' : 'd-drop-content-bottom-arrow'),
+                            className
                         ].join(' ')}
                         style={{
                             left: `${left}px`,

@@ -4,6 +4,7 @@ import Divider from './Divider';
 import DropGroup from './DropGroup';
 import Loading from './Loading';
 import Message from './Message';
+import Modal from './Modal';
 import Select from './Select';
 import Teleport from './Teleport';
 import Tree from './Tree';
@@ -16,6 +17,7 @@ export {
     DropGroup,
     Loading,
     Message,
+    Modal,
     Select,
     Teleport,
     Tree,

@@ -10,6 +10,7 @@ module.exports = {
     DropGroup: '../src/components/dropGroup/DropGroup.tsx',
     Loading: '../src/components/loading/Loading.ts',
     Message: '../src/components/message/Message.ts',
+    Modal: '../src/components/modal/Modal.tsx',
     Select: '../src/components/select/Select.tsx',
     Teleport: '../src/components/teleport/Teleport.tsx',
     Tree: '../src/components/tree/Tree.tsx',

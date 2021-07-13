@@ -22,6 +22,7 @@ export interface IProps extends OptionProps {
     triangle?: boolean
     title?: string
     trigger?: string
+    className?: string
     disabled?: boolean
     width?: number
 }

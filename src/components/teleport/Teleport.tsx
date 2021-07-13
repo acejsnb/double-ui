@@ -10,7 +10,7 @@ const Teleport: FC<Props> = ({ isMounted, setShow, children }) => {
     const el = useRef<HTMLDivElement>(document.createElement('div'));
     // 关闭下拉弹窗
     const closeDrop = () => {
-        setShow(false);
+        setShow?.(false);
     };
     const clickOutside = (e: MouseEvent) => {
         const c = (children as PropsWithChildren<any>);
@@ -19,16 +19,18 @@ const Teleport: FC<Props> = ({ isMounted, setShow, children }) => {
     };
     useEffect(() => {
         if (isMounted) {
-            el.current.style.position = 'absolute';
-            el.current.style.left = '0';
-            el.current.style.top = '0';
             document.body.appendChild(el.current);
-            // 注册window事件
-            window.addEventListener('click', clickOutside, true);
-            window.addEventListener('blur', closeDrop, false);
+            if (setShow) {
+                el.current.style.position = 'absolute';
+                el.current.style.left = '0';
+                el.current.style.top = '0';
+                // 注册window事件
+                window.addEventListener('click', clickOutside, true);
+                window.addEventListener('blur', closeDrop, false);
+            }
         }
         return () => {
-            if (isMounted) {
+            if (isMounted && setShow) {
                 window.removeEventListener('click', clickOutside, true);
                 window.removeEventListener('blur', closeDrop, false);
                 document.body.removeChild(el.current);

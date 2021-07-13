@@ -6,6 +6,7 @@ import DividerView from '@/views/DividerView';
 import DropGroupView from '@/views/DropGroupView';
 import LoadingView from '@/views/LoadingView';
 import MessageView from '@/views/MessageView';
+import ModalView from '@/views/ModalView';
 import ProgressView from '@/views/ProgressView';
 import TreeView from '@/views/TreeView';
 import SelectView from '@/views/SelectView';
@@ -26,6 +27,7 @@ const routes: routerProps[] = [
     { name: 'DropGroup', path: '/dropgroupview', component: DropGroupView },
     { name: 'Loading', path: '/loadingview', component: LoadingView },
     { name: 'Message', path: '/messageview', component: MessageView },
+    { name: 'Modal', path: '/modalview', component: ModalView },
     { name: 'Progress', path: '/progressview', component: ProgressView },
     { name: 'Tree', path: '/treeview', component: TreeView },
     { name: 'Select', path: '/selectview', component: SelectView },
