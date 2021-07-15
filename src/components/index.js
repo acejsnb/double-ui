@@ -1,7 +1,9 @@
 import Button from './Button';
 import Checkbox from './Checkbox';
 import Divider from './Divider';
+import Input from './Input';
 import DropGroup from './DropGroup';
+import Form from './Form';
 import Loading from './Loading';
 import Message from './Message';
 import Modal from './Modal';
@@ -15,6 +17,8 @@ export {
     Checkbox,
     Divider,
     DropGroup,
+    Form,
+    Input,
     Loading,
     Message,
     Modal,

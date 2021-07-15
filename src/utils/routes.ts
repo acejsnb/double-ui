@@ -4,6 +4,7 @@ import ButtonView from '@/views/ButtonView';
 import CheckboxView from '@/views/CheckboxView';
 import DividerView from '@/views/DividerView';
 import DropGroupView from '@/views/DropGroupView';
+import InputView from '@/views/InputView';
 import LoadingView from '@/views/LoadingView';
 import MessageView from '@/views/MessageView';
 import ModalView from '@/views/ModalView';
@@ -25,6 +26,7 @@ const routes: routerProps[] = [
     { name: 'Checkbox', path: '/checkboxview', component: CheckboxView },
     { name: 'Divider', path: '/dividerview', component: DividerView },
     { name: 'DropGroup', path: '/dropgroupview', component: DropGroupView },
+    { name: 'Input', path: '/inputview', component: InputView },
     { name: 'Loading', path: '/loadingview', component: LoadingView },
     { name: 'Message', path: '/messageview', component: MessageView },
     { name: 'Modal', path: '/modalview', component: ModalView },
