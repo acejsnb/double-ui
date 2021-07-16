@@ -1,13 +1,13 @@
 import './style.styl';
 import React, { FC, useContext } from 'react';
 import LoadingSvg from '@/assets/iconSvg/loading.svg';
-import { FormContext } from '@/components/form/Form';
+import { FormContext } from '@/components/form/Context';
 import { Props } from './types';
 
 const Button: FC<Props> = ({
     type = 'default',
     size = 'medium',
-    handleType = '',
+    handleType = '', // form表单按钮类型
     disabled = false,
     loading = false,
     width = 80,

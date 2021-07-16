@@ -1,15 +1,8 @@
 import React, {
-    createContext, FC, useContext, useEffect, useLayoutEffect, useState
+    FC, useContext, useEffect, useState
 } from 'react';
-import { ItemProps, ItemContext } from './types';
-import { FormContext } from './Form';
-
-const contextInit = {
-    value: '',
-    setValue: () => {},
-    reset: false
-};
-export const FormItemContext = createContext<ItemContext>(contextInit);
+import { ItemProps } from './types';
+import { FormContext, FormItemContext } from './Context';
 
 const Item: FC<ItemProps> = ({
     children,

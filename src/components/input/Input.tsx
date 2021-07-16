@@ -3,8 +3,7 @@ import React, {
     FC, FormEvent, useContext, useEffect, useState
 } from 'react';
 
-import { FormContext } from '@/components/form/Form';
-import { FormItemContext } from '@/components/form/Item';
+import { FormContext, FormItemContext } from '@/components/form/Context';
 
 import { Props } from './types';
 
@@ -14,6 +13,7 @@ const Input: FC<Props> = ({
     disabled = false,
     input, change, errText = ''
 }) => {
+    // Form表单操作
     const { isReset } = useContext(FormContext);
     const { value, setValue } = useContext(FormItemContext);
 
@@ -29,15 +29,6 @@ const Input: FC<Props> = ({
         setValue(v);
         change?.(v);
     };
-    useEffect(() => {
-        // 重置input的值
-        if (isReset) setInputValue('');
-    }, [isReset]);
-    useEffect(() => {
-        // 初始化input的值
-        if (value || defaultValue) setValue(value || defaultValue);
-    }, []);
-
     let timer: number;
     // input change事件触发
     const changeHandle = (e: FormEvent) => {
@@ -46,6 +37,19 @@ const Input: FC<Props> = ({
             setVal((e.target as HTMLInputElement).value);
         }, 300);
     };
+
+    useEffect(() => {
+        // 重置input的值
+        if (isReset && inputValue) {
+            setInputValue('');
+            setValue('');
+        }
+    }, [isReset]);
+    useEffect(() => {
+        // 初始化input的值
+        if (value || defaultValue) setValue(value || defaultValue);
+    }, []);
+
     return (
         <span className={['d-input', `d-input-${disabled ? 'disabled' : 'normal'}`].join(' ')}>
             <input

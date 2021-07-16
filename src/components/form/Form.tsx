@@ -1,22 +1,10 @@
 import './style.styl';
-import React, {
-    FC, createContext, useState, useRef
-} from 'react';
-import Item from './Item';
+import React, { FC, useState, useRef } from 'react';
 import {
-    Props, IForm, ItemProps, IFormContext, ParamItem
+    Props, IForm, ItemProps, ParamItem
 } from './types';
-
-const contextInit = {
-    setParam: () => {},
-    cancel: () => {},
-    reset: () => {},
-    confirm: () => {},
-    checkName: '',
-    isReset: false
-};
-
-export const FormContext = createContext<IFormContext>(contextInit);
+import Item from './Item';
+import { FormContext } from './Context';
 
 // layout = vertical | horizontal
 const Form: FC<Props> & IForm<FC<ItemProps>> = ({
@@ -47,7 +35,10 @@ const Form: FC<Props> & IForm<FC<ItemProps>> = ({
     };
     // 重置
     const reset = () => {
-        setIsReset((r) => !r);
+        setIsReset(true);
+        Promise.resolve().then(() => {
+            setIsReset(false);
+        });
         resetHandle?.();
     };
     // 确定
