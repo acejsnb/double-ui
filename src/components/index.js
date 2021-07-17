@@ -1,4 +1,5 @@
 import Button from './Button';
+import Cascade from './Cascade';
 import Checkbox from './Checkbox';
 import Divider from './Divider';
 import Input from './Input';
@@ -14,6 +15,7 @@ import TreeSelect from './TreeSelect';
 
 export {
     Button,
+    Cascade,
     Checkbox,
     Divider,
     DropGroup,

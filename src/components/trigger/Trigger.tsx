@@ -14,6 +14,7 @@ const Trigger: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
     disabled = false,
     show = false,
     border = true,
+    clearIcon = true,
     click = () => {},
     clear = () => {},
     children
@@ -25,7 +26,7 @@ const Trigger: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
     return (
         <div
             ref={ref}
-            className={['d-trigger', disabled && 'd-trigger-disabled', border ? 'd-trigger-border' : 'd-trigger-no-border'].join(' ')}
+            className={['d-trigger', disabled && 'd-trigger-disabled', border ? 'd-trigger-border' : 'd-trigger-no-border', show && 'd-trigger-active'].join(' ')}
             style={border ? { width: `${width}px` } : {}}
             onClick={click}
         >
@@ -44,7 +45,7 @@ const Trigger: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
             }
             <div className={['d-trigger-icon', (border && children && !disabled) && 'd-trigger-has-selected'].join(' ')}>
                 {triangle && <i className={['d-trigger-triangle', show && 'd-trigger-triangle-show'].join(' ')}><TriangleIcon /></i>}
-                {(border && !disabled) && <i className="d-trigger-del" onClick={clear}><DeleteIcon /></i>}
+                {(border && !disabled && clearIcon) && <i className="d-trigger-del" onClick={clear}><DeleteIcon /></i>}
             </div>
             {show && <section className="d-trigger-shade" />}
         </div>

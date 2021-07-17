@@ -1,6 +1,7 @@
 import TestView from '@/views/TestView';
 
 import ButtonView from '@/views/ButtonView';
+import CascadeView from '@/views/CascadeView';
 import CheckboxView from '@/views/CheckboxView';
 import DividerView from '@/views/DividerView';
 import DropGroupView from '@/views/DropGroupView';
@@ -23,6 +24,7 @@ export interface routerProps {
 const routes: routerProps[] = [
     { name: 'Test', path: '/testview', component: TestView },
     { name: 'Button', path: '/buttonview', component: ButtonView },
+    { name: 'Cascade', path: '/cascadeview', component: CascadeView },
     { name: 'Checkbox', path: '/checkboxview', component: CheckboxView },
     { name: 'Divider', path: '/dividerview', component: DividerView },
     { name: 'DropGroup', path: '/dropgroupview', component: DropGroupView },

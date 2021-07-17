@@ -5,6 +5,7 @@
 // @ts-ignore
 module.exports = {
     Button: '../src/components/button/Button.tsx',
+    Cascade: '../src/components/cascade/Cascade.tsx',
     Checkbox: '../src/components/checkbox/Checkbox.tsx',
     Divider: '../src/components/divider/Divider.tsx',
     DropGroup: '../src/components/dropGroup/DropGroup.tsx',

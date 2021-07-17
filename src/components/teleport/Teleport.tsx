@@ -24,6 +24,7 @@ const Teleport: FC<Props> = ({ isMounted, setShow, children }) => {
                 el.current.style.position = 'absolute';
                 el.current.style.left = '0';
                 el.current.style.top = '0';
+                el.current.style.width = '100%';
                 // 注册window事件
                 window.addEventListener('click', clickOutside, true);
                 window.addEventListener('blur', closeDrop, false);

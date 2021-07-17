@@ -18,11 +18,11 @@ const Select: FC<Props> = ({
     width = 120,
     border = true,
     disabled = false,
-    triangle = true,
+    triangle = true, // 显示下拉箭头
     children,
     change = () => {},
     openSearch = false,
-    placeholder = '请搜索',
+    placeholder = '请选择',
     alignRight = false,
     arrow = false,
     translateX = 0,
@@ -63,7 +63,7 @@ const Select: FC<Props> = ({
 
     return (
         <>
-            <Trigger border={border} title={title} width={width} triangle={triangle} disabled={disabled} show={show} ref={triggerRef} click={openDrop} clear={clear}>{children}</Trigger>
+            <Trigger border={border} title={title} placeholder={placeholder} width={width} triangle={triangle} disabled={disabled} show={show} ref={triggerRef} click={openDrop} clear={clear}>{children}</Trigger>
             <CSSTransition in={show} timeout={120} classNames={`d-transition-${position ? 'down' : 'up'}`}>
                 <Teleport isMounted={isMounted} setShow={setShow}>
                     <div

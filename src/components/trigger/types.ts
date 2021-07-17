@@ -10,6 +10,7 @@ export interface Props {
     disabled?: boolean
     show?: boolean
     border?: boolean
+    clearIcon?: boolean
     click?: (e: MouseEvent) => void
     clear?: (e: MouseEvent) => void
     children?: ReactElement<any, string | JSXElementConstructor<any>> | ReactNode | string | number | null | undefined
