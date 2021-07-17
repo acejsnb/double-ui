@@ -1,16 +1,12 @@
 export interface Props {
+    imgSrc: string
     type?: string
     size?: string | null
-    imgSrc: string
 }
 export interface IOptions extends Props {
     ele?: Element | DocumentFragment | null
 }
 
-interface IReturn {
+export interface IReturn {
     close(): void
 }
-
-export type TLoading = (options: IOptions) => IReturn
-
-

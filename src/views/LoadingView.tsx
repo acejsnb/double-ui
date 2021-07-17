@@ -25,8 +25,8 @@ const ButtonView: FC = () => {
         }, 3000);
     };
     const clickLocal = () => {
-        // const local = Loading.local(divRef.current, imgLocal);
-        const local = Loading({ ele: divRef.current, imgSrc: imgLocal });
+        const local = Loading.local(imgLocal, divRef.current);
+        // const local = Loading({ ele: divRef.current, imgSrc: imgLocal });
         setTimeout(() => {
             local.close();
         }, 3000);

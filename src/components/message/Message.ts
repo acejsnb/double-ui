@@ -34,9 +34,6 @@ const separate = (type: string) => (message: string, time: number) => Message({
     time
 });
 
-Message.info = separate('info');
-Message.success = separate('success');
-Message.warning = separate('warning');
-Message.error = separate('error');
+['info', 'success', 'warning', 'error'].forEach((type) => { Message[type] = separate[type]; });
 
 export default Message;

@@ -1,11 +1,11 @@
 import { createElement } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import LoadingBox from './LoadingBox';
-import { IOptions, TLoading } from './types';
+import { IOptions, IReturn } from './types';
 
-const Loading: TLoading = ({
-    type, size, ele, imgSrc
-}: IOptions) => {
+function Loading({
+    imgSrc, type, size, ele
+}: IOptions): IReturn {
     const loadingEle: HTMLDivElement = document.createElement('div');
     const isLocal = type === 'local' && ele instanceof HTMLElement;
     if (ele && isLocal) ele.appendChild(loadingEle);
@@ -16,12 +16,10 @@ const Loading: TLoading = ({
     };
     render(createElement(LoadingBox, { type, size, imgSrc }), loadingEle);
     return { close };
-};
+}
 
-// @ts-ignore
 Loading.global = (imgSrc: string) => Loading({ type: 'global', imgSrc });
-// @ts-ignore
-Loading.local = (ele?: Element | DocumentFragment | null, imgSrc: string) => Loading({
+Loading.local = (imgSrc: string, ele?: Element | DocumentFragment | null) => Loading({
     type: 'local', ele, imgSrc
 });
 
