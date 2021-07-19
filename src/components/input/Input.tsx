@@ -1,22 +1,16 @@
 import './style.styl';
 import React, {
-    FC, FormEvent, useContext, useEffect, useState
+    FC, FormEvent, useEffect, useState
 } from 'react';
-
-import { FormContext, FormItemContext } from '@/components/form/Context';
-
 import { Props } from './types';
 
 const Input: FC<Props> = ({
     defaultValue = '',
     type = 'text', placeholder = '请输入', maxLength = 20,
     disabled = false,
-    input, change, errText = ''
+    input, change, errText = '',
+    isReset, value, setValue
 }) => {
-    // Form表单操作
-    const { isReset } = useContext(FormContext);
-    const { value, setValue } = useContext(FormItemContext);
-
     // 输入框的值
     const [inputValue, setInputValue] = useState(value || defaultValue);
     // input input事件触发
@@ -26,7 +20,7 @@ const Input: FC<Props> = ({
         input?.(v);
     };
     const setVal = (v: string) => {
-        setValue(v);
+        setValue?.(v);
         change?.(v);
     };
     let timer: number;
@@ -42,16 +36,16 @@ const Input: FC<Props> = ({
         // 重置input的值
         if (isReset && inputValue) {
             setInputValue('');
-            setValue('');
+            setValue?.('');
         }
     }, [isReset]);
     useEffect(() => {
         // 初始化input的值
-        if (value || defaultValue) setValue(value || defaultValue);
+        if (value || defaultValue) setValue?.(value || defaultValue);
     }, []);
 
     return (
-        <span className={['d-input', `d-input-${disabled ? 'disabled' : 'normal'}`].join(' ')}>
+        <span className={['d-input', `d-input-${disabled ? 'disabled' : 'normal'}`, errText && 'd-input-err'].join(' ')}>
             <input
                 className="d-input-el"
                 value={inputValue}
@@ -62,7 +56,7 @@ const Input: FC<Props> = ({
                 onInput={inputHandle}
                 onChange={changeHandle}
             />
-            {errText && <span className="d-input-err">{errText}</span>}
+            {errText && <span className="d-input-err-text">{errText}</span>}
         </span>
     );
 };

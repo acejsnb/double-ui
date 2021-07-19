@@ -1,7 +1,6 @@
 import './style.styl';
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import LoadingSvg from '@/assets/iconSvg/loading.svg';
-import { FormContext } from '@/components/form/Context';
 import { Props } from './types';
 
 const Button: FC<Props> = ({
@@ -12,9 +11,14 @@ const Button: FC<Props> = ({
     loading = false,
     width = 80,
     children,
-    click = () => {}
+    click = () => {},
+    cancel = () => {},
+    reset = () => {},
+    confirm = () => {}
 }) => {
-    const context = useContext(FormContext);
+    const handle = {
+        cancel, reset, confirm
+    };
     return (
         <div
             className={[
@@ -27,7 +31,7 @@ const Button: FC<Props> = ({
             onClick={() => {
                 if (disabled || loading) return;
                 if (handleType) {
-                    context[handleType]?.();
+                    handle[handleType]?.();
                 } else {
                     click();
                 }

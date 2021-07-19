@@ -8,4 +8,7 @@ export type Props = {
     loading?: boolean
     width?: number
     click?: Fn
+    cancel?: Fn
+    reset?: Fn
+    confirm?: Fn
 }

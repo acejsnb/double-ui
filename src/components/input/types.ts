@@ -8,4 +8,8 @@ export interface Props {
     disabled?: boolean
     input?: (str: string) => void
     change?: (str: string) => void
+
+    isReset?: boolean
+    value?: string
+    setValue?: (str: string) => void
 }

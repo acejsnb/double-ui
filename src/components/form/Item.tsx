@@ -1,8 +1,8 @@
 import React, {
-    FC, useContext, useEffect, useState
+    FC, useContext, useEffect, useState, cloneElement, Children, useCallback
 } from 'react';
-import { ItemProps } from './types';
-import { FormContext, FormItemContext } from './Context';
+import { ItemProps, TChild } from './types';
+import { FormContext } from './Context';
 
 const Item: FC<ItemProps> = ({
     children,
@@ -10,7 +10,9 @@ const Item: FC<ItemProps> = ({
     className,
     rules = []
 }) => {
-    const { setParam, checkName } = useContext(FormContext);
+    const {
+        setParam, checkName, cancel, reset, confirm, isReset
+    } = useContext(FormContext);
     const [value, setValue] = useState('');
     const [message, setMessage] = useState('');
     // 当input输入的值改变后提交value
@@ -42,10 +44,18 @@ const Item: FC<ItemProps> = ({
     return (
         <div className={['d-form-item', className && className].join(' ')}>
             {label && <div className="d-form-item-label">{label}</div>}
-            <FormItemContext.Provider value={{ value, setValue }}>
-                <>{children}</>
-            </FormItemContext.Provider>
-            {message && <div className="d-form-item-message">{message}</div>}
+            {Children.map(children, (child) => (
+                cloneElement(
+                    child as TChild,
+                    (label && name)
+                        ? {
+                            value, setValue, isReset, errText: message
+                        }
+                        : {
+                            cancel, reset, confirm
+                        }
+                )
+            ))}
         </div>
     );
 };

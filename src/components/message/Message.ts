@@ -3,9 +3,8 @@ import { render } from 'react-dom';
 import MessageBox from './MessageBox';
 import { Options } from './types';
 
-
 let msgEle: HTMLDivElement;
-const Message = ({ type, message, time = 3.6 }: Options) => {
+function Message({ type, message, time = 3.6 }: Options) {
     if (!msgEle) {
         msgEle = document.createElement('div');
         msgEle.className = 'd-message-box';
@@ -26,7 +25,7 @@ const Message = ({ type, message, time = 3.6 }: Options) => {
         }), span);
         timer = setTimeout(remove, time * 1000);
     })();
-};
+}
 
 const separate = (type: string) => (message: string, time: number) => Message({
     type,
@@ -34,6 +33,11 @@ const separate = (type: string) => (message: string, time: number) => Message({
     time
 });
 
-['info', 'success', 'warning', 'error'].forEach((type) => { Message[type] = separate[type]; });
+// ['info', 'success', 'warning', 'error'].forEach((type) => { Message[type] = separate(type); });
+
+Message.info = separate('info');
+Message.success = separate('success');
+Message.warning = separate('warning');
+Message.error = separate('error');
 
 export default Message;

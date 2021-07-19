@@ -1,10 +1,14 @@
+import { JSXElementConstructor, ReactElement } from 'react';
+
 export interface Params {
     [key: string]: any
 }
+type Fn = () => void;
+
 export interface Props {
     layout?: string
-    reset?: () => void
-    cancel?: () => void
+    reset?: Fn
+    cancel?: Fn
     confirm?: (params: Params) => void
 }
 
@@ -27,6 +31,7 @@ interface Rules {
     message: string
     [key: string]: any
 }
+
 export interface ItemProps {
     label?: string
     name?: string
@@ -43,3 +48,5 @@ export interface ItemContext {
     value?: string
     setValue: (v: string) => void
 }
+
+export type TChild = ReactElement<any, string | JSXElementConstructor<any>>;
