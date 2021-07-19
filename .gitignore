@@ -6,3 +6,4 @@ yarn.lock
 lib
 .DS_Store
 src/.DS_Store
+production
