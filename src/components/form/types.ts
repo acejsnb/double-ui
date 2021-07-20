@@ -1,30 +1,34 @@
 import { JSXElementConstructor, ReactElement } from 'react';
 
 export interface Params {
-    [key: string]: any
+    [key: string]: string
 }
 type Fn = () => void;
 
 export interface Props {
+    name?: string
     layout?: string
     reset?: Fn
     cancel?: Fn
-    confirm?: (params: Params) => void
+    submit?: (params: Params) => void
 }
 
 export interface IFormContext {
     setParam(name: string, value: string, checked: boolean): void
     cancel(): void
     reset(): void
-    confirm(): void
+    submit(): void
     checkName: string
     isReset: boolean
 }
 
-export interface ParamItem {
+export interface ParamItemValue {
     key: string
     value: string
     checked: boolean
+}
+export interface ParamItem {
+    [key: string]: ParamItemValue
 }
 
 interface Rules {

@@ -8,44 +8,41 @@ const Input: FC<Props> = ({
     defaultValue = '',
     type = 'text', placeholder = '请输入', maxLength = 20,
     disabled = false,
-    input, change, errText = '',
-    isReset, value, setValue
+    input, message = '',
+    isReset = false, value, setValue
 }) => {
     // 输入框的值
-    const [inputValue, setInputValue] = useState(value || defaultValue);
+    const [inputValue, setInputValue] = useState('');
     // input input事件触发
+    let timer: number;
     const inputHandle = (e: FormEvent) => {
         const v = (e.target as HTMLInputElement).value;
         setInputValue(v);
         input?.(v);
-    };
-    const setVal = (v: string) => {
-        setValue?.(v);
-        change?.(v);
-    };
-    let timer: number;
-    // input change事件触发
-    const changeHandle = (e: FormEvent) => {
         if (timer) window.clearTimeout(timer);
         timer = window.setTimeout(() => {
-            setVal((e.target as HTMLInputElement).value);
+            setValue?.((e.target as HTMLInputElement).value);
         }, 300);
     };
 
     useEffect(() => {
         // 重置input的值
-        if (isReset && inputValue) {
+        // if (isReset && inputValue) {
+        if (inputValue) {
             setInputValue('');
             setValue?.('');
         }
     }, [isReset]);
     useEffect(() => {
         // 初始化input的值
-        if (value || defaultValue) setValue?.(value || defaultValue);
+        if (defaultValue) {
+            setInputValue(defaultValue);
+            setValue?.(defaultValue);
+        }
     }, []);
 
     return (
-        <span className={['d-input', `d-input-${disabled ? 'disabled' : 'normal'}`, errText && 'd-input-err'].join(' ')}>
+        <span className={['d-input', `d-input-${disabled ? 'disabled' : 'normal'}`, message && 'd-input-err'].join(' ')}>
             <input
                 className="d-input-el"
                 value={inputValue}
@@ -54,9 +51,8 @@ const Input: FC<Props> = ({
                 maxLength={maxLength}
                 disabled={disabled}
                 onInput={inputHandle}
-                onChange={changeHandle}
             />
-            {errText && <span className="d-input-err-text">{errText}</span>}
+            {message && <span className="d-input-err-text">{message}</span>}
         </span>
     );
 };

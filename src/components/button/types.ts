@@ -3,12 +3,12 @@ type Fn = () => void;
 export type Props = {
     type?: string
     size?: string
-    handleType?: string
+    htmlType?: 'button' | 'submit' | 'reset' | undefined
     disabled?: boolean
     loading?: boolean
     width?: number
     click?: Fn
     cancel?: Fn
     reset?: Fn
-    confirm?: Fn
+    submit?: Fn
 }

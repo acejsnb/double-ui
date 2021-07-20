@@ -64,6 +64,7 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
         'react/destructuring-assignment': 'warn',
+        'react/button-has-type': 'warn',
         'import/no-dynamic-require': 0,
         'import/no-extraneous-dependencies': 0,
         'import/no-named-as-default': 0,

@@ -6,42 +6,43 @@ import { Props } from './types';
 const Button: FC<Props> = ({
     type = 'default',
     size = 'medium',
-    handleType = '', // form表单按钮类型
+    htmlType = 'button', // form表单按钮类型
     disabled = false,
     loading = false,
-    width = 80,
+    width = 0,
     children,
     click = () => {},
     cancel = () => {},
     reset = () => {},
-    confirm = () => {}
+    submit = () => {}
 }) => {
     const handle = {
-        cancel, reset, confirm
+        button: cancel, reset, submit
     };
     return (
-        <div
+        <button
             className={[
                 'd-btn',
                 `d-btn-${type}`,
                 `d-btn-${size}`,
                 `d-btn-${disabled ? 'disabled' : 'normal'}`
             ].join(' ')}
-            style={{ width: `${width}px` }}
+            style={width ? { width: `${width}px` } : {}}
             onClick={() => {
                 if (disabled || loading) return;
-                if (handleType) {
-                    handle[handleType]?.();
+                if (htmlType) {
+                    handle[htmlType]?.();
                 } else {
                     click();
                 }
             }}
+            type={htmlType}
         >
             <section className="d-btn-content">
                 {loading && <span className="d-btn-loading"><LoadingSvg /></span>}
                 <span className="d-btn-text">{children}</span>
             </section>
-        </div>
+        </button>
     );
 };
 

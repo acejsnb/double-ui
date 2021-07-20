@@ -2,12 +2,11 @@ export interface Props {
     defaultValue?: string
     type?: string
     placeholder?: string
-    errText?: string
+    message?: string
     maxLength?: number
     width?: number
     disabled?: boolean
     input?: (str: string) => void
-    change?: (str: string) => void
 
     isReset?: boolean
     value?: string
