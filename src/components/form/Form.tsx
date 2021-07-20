@@ -1,9 +1,7 @@
 import './style.styl';
-import React, {
-    FC, useState, useRef, useCallback, useEffect
-} from 'react';
+import React, { FC, useState } from 'react';
 import {
-    Props, IForm, ItemProps, ParamItem, ParamItemValue
+    Props, IForm, ItemProps, ParamItem
 } from './types';
 import Item from './Item';
 import { FormContext } from './Context';
