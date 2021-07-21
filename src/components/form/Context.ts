@@ -12,6 +12,7 @@ const FormContext = createContext<IFormContext>({
 });
 
 const FormItemContext = createContext<ItemContext>({
+    message: '', // 错误信息
     value: '', // 当前输入的值
     setValue: () => {} // 设置value
 });

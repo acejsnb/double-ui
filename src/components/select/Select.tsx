@@ -23,7 +23,7 @@ const Select: FC<Props> = ({
     change = () => {},
     openSearch = false,
     placeholder = '请选择',
-    alignRight = false,
+    reverse = false,
     arrow = false,
     translateX = 0,
     maxCount = 5,
@@ -46,7 +46,7 @@ const Select: FC<Props> = ({
         e.stopPropagation();
         if (disabled) return;
         const { X, Y, P } = ResetPosition({
-            width, maxCount, alignRight, data, tag: triggerRef
+            width, maxCount, reverse, data, tag: triggerRef
         });
         setLeft(X);
         setTop(Y);
@@ -75,7 +75,7 @@ const Select: FC<Props> = ({
                             className
                         ].join(' ')}
                         style={{
-                            left: `${left}px`,
+                            [reverse ? 'right' : 'left']: `${left}px`,
                             top: `${top}px`,
                             width: `${width}px`
                         }}
@@ -86,7 +86,7 @@ const Select: FC<Props> = ({
                                 data,
                                 openSearch,
                                 placeholder,
-                                alignRight,
+                                reverse,
                                 translateX,
                                 maxCount,
                                 change: itemClick

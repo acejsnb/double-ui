@@ -11,7 +11,7 @@ import ListenEsc from './Tools';
 
 
 const Modal: FC<Props> = ({
-    show, esc = false, shade = false,
+    show, esc = false, shade = false, footer = true,
     title, mode = 'default',
     close, confirm,
     children
@@ -56,10 +56,15 @@ const Modal: FC<Props> = ({
                             <span className="d-modal-icon" onClick={close}><CloseSvg /></span>
                         </header>
                         <main className="d-modal-main d-modal-main-mh" ref={refMain}>{children}</main>
-                        <footer className={['d-modal-footer', hasShade && 'd-modal-footer-bs'].join(' ')}>
-                            <Button click={close}>取消</Button>
-                            <Button type="blue" click={confirm}>确定</Button>
-                        </footer>
+                        {
+                            (typeof footer === 'boolean' && footer)
+                                && (
+                                    <footer className={['d-modal-footer', hasShade && 'd-modal-footer-bs'].join(' ')}>
+                                        <Button click={close}>取消</Button>
+                                        <Button type="blue" click={confirm}>确定</Button>
+                                    </footer>
+                                )
+                        }
                     </div>
                 </div>
             </CSSTransition>

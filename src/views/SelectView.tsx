@@ -75,7 +75,7 @@ const SelectView = () => {
                     maxCount={5}
                     value={value2}
                     data={dropData2}
-                    alignRight
+                    reverse
                     // openSearch={true}
                     // disabled={true}
                     placeholder="请搜索哟"

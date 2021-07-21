@@ -129,11 +129,6 @@ const config = {
             banner,
             test: /\.js$/
         }),
-        new webpack.BannerPlugin({
-            banner: '@import "../base/style.css";',
-            raw: true,
-            test: /\.css$/
-        }),
         new ProgressBarPlugin(
             {
                 format: chalk.blue(`[  build :bar ${chalk.green.bold(':percent')} (:elapsed seconds) ]`),

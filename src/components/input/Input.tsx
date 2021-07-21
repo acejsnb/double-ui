@@ -1,16 +1,18 @@
 import './style.styl';
 import React, {
-    FC, FormEvent, useEffect, useState
+    FC, FormEvent, useEffect, useState, useContext
 } from 'react';
+import { FormContext, FormItemContext } from '@/components/form/Context';
 import { Props } from './types';
 
 const Input: FC<Props> = ({
     defaultValue = '',
     type = 'text', placeholder = '请输入', maxLength = 20,
     disabled = false,
-    input, message = '',
-    isReset = false, value, setValue
+    input, message = ''
 }) => {
+    const { isReset } = useContext(FormContext);
+    const { value, setValue, message: formMessage } = useContext(FormItemContext);
     // 输入框的值
     const [inputValue, setInputValue] = useState('');
     // input input事件触发
@@ -42,7 +44,7 @@ const Input: FC<Props> = ({
     }, []);
 
     return (
-        <span className={['d-input', `d-input-${disabled ? 'disabled' : 'normal'}`, message && 'd-input-err'].join(' ')}>
+        <span className={['d-input', `d-input-${disabled ? 'disabled' : 'normal'}`, (message || formMessage) && 'd-input-err'].join(' ')}>
             <input
                 className="d-input-el"
                 value={inputValue}

@@ -10,7 +10,7 @@ export interface OptionProps {
     value?: string | number
     openSearch?: boolean
     placeholder?: string
-    alignRight?: boolean
+    reverse?: boolean
     translateX?: string | number
     maxCount?: number
     change: (item: Item) => void

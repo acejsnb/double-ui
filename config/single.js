@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -34,6 +35,11 @@ const config = {
     plugins: [
         new MiniCssExtractPlugin({ // 分离css
             filename: '[name]/style.css'
+        }),
+        new webpack.BannerPlugin({
+            banner: '@import "../base/style.css";',
+            raw: true,
+            test: /\.css$/
         }),
         new CopyPlugin({
             patterns

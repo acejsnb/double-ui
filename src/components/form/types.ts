@@ -49,6 +49,7 @@ export interface IForm<T> {
 }
 
 export interface ItemContext {
+    message?: string
     value?: string
     setValue: (v: string) => void
 }

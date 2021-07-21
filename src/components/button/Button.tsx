@@ -1,23 +1,32 @@
 import './style.styl';
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import LoadingSvg from '@/assets/iconSvg/loading.svg';
+import { FormContext } from '@/components/form/Context';
 import { Props } from './types';
 
 const Button: FC<Props> = ({
     type = 'default',
     size = 'medium',
-    htmlType = 'button', // form表单按钮类型
+    htmlType, // form表单按钮类型
     disabled = false,
     loading = false,
     width = 0,
     children,
-    click = () => {},
-    cancel = () => {},
-    reset = () => {},
-    submit = () => {}
+    click = () => {}
 }) => {
+    const { cancel, reset, submit } = useContext(FormContext);
     const handle = {
         button: cancel, reset, submit
+    };
+    // const btnClick = (e: MouseEvent<HTMLButtonElement>) => {
+    //     e.preventDefault();
+    const btnClick = () => {
+        if (disabled || loading) return;
+        if (htmlType) {
+            handle[htmlType]?.();
+        } else {
+            click();
+        }
     };
     return (
         <button
@@ -28,15 +37,8 @@ const Button: FC<Props> = ({
                 `d-btn-${disabled ? 'disabled' : 'normal'}`
             ].join(' ')}
             style={width ? { width: `${width}px` } : {}}
-            onClick={() => {
-                if (disabled || loading) return;
-                if (htmlType) {
-                    handle[htmlType]?.();
-                } else {
-                    click();
-                }
-            }}
-            type={htmlType}
+            onClick={btnClick}
+            type="button"
         >
             <section className="d-btn-content">
                 {loading && <span className="d-btn-loading"><LoadingSvg /></span>}

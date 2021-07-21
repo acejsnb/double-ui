@@ -1,6 +1,6 @@
 type CB = () => void;
-const ListenEsc = (e: KeyboardEvent, cb: CB) => {
-    if (e.keyCode) cb();
+const ListenEsc = (e: KeyboardEvent, cb: CB | undefined) => {
+    if (e.keyCode) cb?.();
 };
 
 export default ListenEsc;

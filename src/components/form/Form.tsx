@@ -5,7 +5,6 @@ import {
 } from './types';
 import Item from './Item';
 import { FormContext } from './Context';
-import useParams from './useParams';
 
 // layout = vertical | horizontal
 const Form: FC<Props> & IForm<FC<ItemProps>> = ({
@@ -14,26 +13,31 @@ const Form: FC<Props> & IForm<FC<ItemProps>> = ({
     layout = 'vertical',
     cancel: cancelHandle,
     reset: resetHandle,
-    submit: confirmHandle
+    submit: submitHandle
 }) => {
     // 设置重置副作用
     const [isReset, setIsReset] = useState(false);
     // 改变checkName以达到check的目的
     const [checkName, setCheckName] = useState('');
     // params数据
-    const { params, setParams } = useParams();
+    const [params, setParams] = useState<ParamItem>({});
 
     // 验证输入参数是通过
-    const validateChecked = (pms?: ParamItem) => {
-        const p = pms ?? params;
-        const item = Object.values(p).filter((d) => !d.checked)?.[0] || null;
-        // console.log('===========', item);
-        if (item) {
-            setCheckName(item?.key || '');
-            return false;
+    const validateChecked = () => {
+        const list = Object.values(params);
+        if (list.length) {
+            const item = list.find((d) => !d.checked);
+            if (item) {
+                setCheckName(item?.key || '');
+                return false;
+            }
+            setCheckName('');
+            return true;
         }
-        return true;
+        setCheckName('checked');
+        return false;
     };
+
     // 设置参数
     const setParam = (name: string, value: string, checked: boolean) => {
         let pms = {};
@@ -50,20 +54,18 @@ const Form: FC<Props> & IForm<FC<ItemProps>> = ({
     };
     // 重置
     const reset = () => {
-        setIsReset((status) => !status);
+        setIsReset(!isReset);
+        setParams({});
         resetHandle?.();
     };
     // 确定
     const submit = () => {
         if (!validateChecked()) return;
-
-        Promise.resolve().then(() => {
-            const obj = {};
-            Object.values(params).forEach((d) => {
-                obj[d.key] = d.value;
-            });
-            confirmHandle?.(obj);
+        const obj = {};
+        Object.values(params).forEach((d) => {
+            obj[d.key] = d.value;
         });
+        submitHandle?.(obj);
     };
 
     return (

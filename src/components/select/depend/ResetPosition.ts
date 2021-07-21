@@ -27,14 +27,14 @@ interface XYP {X: number, Y: number, P: boolean}
 interface IOptions {
     width: number
     maxCount: number
-    alignRight: boolean
+    reverse: boolean
     data: Item[]
     tag: any
 }
 
 const ResetPosition = (options: IOptions): XYP => {
     const {
-        width, maxCount, alignRight, data, tag
+        width, maxCount, reverse, data, tag
     } = options;
     // const w = width || GetWidth(data, width);
     // 18表示上下padding=8 + 上下border=1
@@ -43,7 +43,7 @@ const ResetPosition = (options: IOptions): XYP => {
     let height;
     if (h < maxHeiByCount) height = h;
     else height = maxHeiByCount;
-    const { X, Y, P } = CalcTargetPosition(tag.current, height, width, alignRight);
+    const { X, Y, P } = CalcTargetPosition(tag.current, height, width, reverse);
 
     // X-left位置，Y-top位置，P-动画执行方向
     return { X, Y, P };

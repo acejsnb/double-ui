@@ -2,13 +2,11 @@ import React, {
     FC,
     useContext,
     useEffect,
-    useState,
-    cloneElement,
-    Children
+    useState
 } from 'react';
-import Validate from '@/utils/CheckText';
-import { ItemProps, TChild } from './types';
-import { FormContext } from './Context';
+import Validate from './Validate';
+import { ItemProps } from './types';
+import { FormContext, FormItemContext } from './Context';
 
 const Item: FC<ItemProps> = ({
     children,
@@ -16,9 +14,7 @@ const Item: FC<ItemProps> = ({
     className,
     rules = []
 }) => {
-    const {
-        setParam, checkName, cancel, reset, submit, isReset
-    } = useContext(FormContext);
+    const { setParam, checkName } = useContext(FormContext);
     const [value, setValue] = useState('');
     const [message, setMessage] = useState('');
     // 当input输入的值改变后提交value
@@ -47,27 +43,10 @@ const Item: FC<ItemProps> = ({
     return (
         <div className={['d-form-item', className && className].join(' ')}>
             {label && <div className="d-form-item-label">{label}</div>}
-            {Children.map(children, (child) => {
-                const { type: { name = '' }, props: { htmlType = 'button' } } = child as any;
-                let props;
-                if (name === 'Input') {
-                    props = {
-                        value, setValue, isReset, message
-                    };
-                } else {
-                    if (htmlType === 'submit') {
-                        props = { submit };
-                    } else if (htmlType === 'reset') {
-                        props = { reset };
-                    } else {
-                        props = { cancel };
-                    }
-                }
-                return cloneElement(
-                    child as TChild,
-                    props
-                );
-            })}
+            <FormItemContext.Provider value={{ value, setValue, message }}>
+                <>{children}</>
+            </FormItemContext.Provider>
+            {message && <div className="d-form-item-message">{message}</div>}
         </div>
     );
 };

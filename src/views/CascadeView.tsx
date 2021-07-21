@@ -42,7 +42,7 @@ const CascadeView = () => {
     };
     return (
         <div className="component-view">
-            <Cascade data={data} />
+            <Cascade data={data}>aaaaa</Cascade>
             <div style={{ paddingTop: '40px', textAlign: 'right' }}>
                 <Cascade width={240} border={false} data={data} reverse change={change} />
             </div>

@@ -23,11 +23,11 @@ const InputView = () => {
             {/* <Input disabled /> */}
             <h3 style={{ marginTop: `${32}px` }}>Form</h3>
             <Form name="idForm" reset={reset} submit={submit}>
-                <Form.Item label="手机号" name="phone" rules={[{ check: 'required', message: '请输入手机号' }, { check: 'phone', message: '手机号不正确' }]}>
+                <Form.Item label="手机号" name="phone" rules={[{ check: 'required', message: '请输入手机号' }]}>
                     {/* <Form.Item label="手机号" name="phone" rules={[{ check: 'required', message: '请输入手机号' }]}> */}
                     <Input maxLength={11} />
                 </Form.Item>
-                <Form.Item label="密码" name="password" rules={[{ check: 'required', message: '请输入密码' }, { check: 'password', message: '密码不正确' }]}>
+                <Form.Item label="密码" name="password" rules={[{ check: 'required', message: '请输入密码' }]}>
                     <Input type="password" maxLength={20} defaultValue="123" />
                 </Form.Item>
                 <Form.Item className="custom-form-item">

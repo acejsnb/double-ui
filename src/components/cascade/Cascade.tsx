@@ -21,7 +21,8 @@ const Cascade: FC<Props> = ({
     triangle = true,
     reverse = false,
     maxCount = 5,
-    change
+    change,
+    children
 }) => {
     const triggerRef = useRef<HTMLDivElement>(null);
     const dropRef = useRef<HTMLDivElement>(null);
@@ -69,7 +70,7 @@ const Cascade: FC<Props> = ({
 
     return (
         <>
-            <Trigger border={border} title={title} placeholder={placeholder} width={width} triangle={triangle} disabled={disabled} show={show} ref={triggerRef} click={openDrop} clear={clear}>{selectedName}</Trigger>
+            <Trigger border={border} title={title} placeholder={placeholder} width={width} triangle={triangle} disabled={disabled} show={show} ref={triggerRef} click={openDrop} clear={clear}>{children || selectedName}</Trigger>
             <CSSTransition in={show} timeout={120} classNames={`d-transition-${position ? 'down' : 'up'}`}>
                 <Teleport isMounted={isMounted} setShow={setShow}>
                     <div
