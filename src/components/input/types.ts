@@ -7,4 +7,7 @@ export interface Props {
     width?: number
     disabled?: boolean
     input?: (str: string) => void
+
+    isReset?: boolean
+    setValue?: (val: string) => void
 }

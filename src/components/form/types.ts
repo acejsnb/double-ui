@@ -39,10 +39,19 @@ interface Rules {
 export interface ItemProps {
     label?: string
     name?: string
-    message?: string
+    confirm?: string
     className?: string
     rules?: Rules[]
     formValues?: (name: string, value: string) => void
+
+    setParam?: (name: string, value: string, checked: boolean, confirm?: string) => void
+    checkName?: string
+    setCheckName?: (value: string) => void
+    isReset?: boolean
+    reset?: Fn
+    cancel?: Fn
+    submit?: (params: Params) => void
+    getFieldValue?: (key: string) => string | void
 }
 export interface IForm<T> {
     Item: T

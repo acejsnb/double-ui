@@ -15,21 +15,34 @@ const ValidateStrategy = {
     CheckPasswordBest
 };
 
+type TGetFieldValue = (key: string) => string | void
 // 表单验证
 type TRule = {
-    validate?: (value: string) => boolean
+    validate?: (value: string, getFieldValue?: TGetFieldValue) => boolean
     check?: string
     message?: string
 }
 type CBFn = (value: string, message?: string) => void;
 
-type TCheckRule = (rule: TRule, value: string, success?: CBFn, fail?: CBFn) => boolean | void;
+interface RuleOption {
+    rule: TRule, value: string, success?: CBFn, fail?: CBFn
+    getFieldValue?: TGetFieldValue
+}
+type TCheckRule = (option: RuleOption) => boolean | void;
 
-const CheckRule: TCheckRule = (rule, value, success, fail) => {
+// type TCheckKey = (obj: TRule, key: string) => boolean;
+// const checkKey: TCheckKey = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
+const CheckRule: TCheckRule = ({
+    rule,
+    value,
+    success,
+    fail,
+    getFieldValue = () => {}
+}) => {
     const { validate, check = '', message = '' } = rule;
     if (validate) {
         if (typeof validate === 'function') {
-            if (validate?.(value)) {
+            if (validate(value, getFieldValue)) {
                 success?.(value);
                 return true;
             }
@@ -62,13 +75,26 @@ const CheckRule: TCheckRule = (rule, value, success, fail) => {
     return false;
 };
 
-type TValidate = (rules: TRule[], value: string, success?: CBFn, fail?: CBFn) => void | boolean;
-const Validate: TValidate = (rules, value, success, fail) => {
-    // const arr = [];
+interface IValidate {
+    rules: TRule[]
+    value: string
+    success?: CBFn
+    fail?: CBFn
+    getFieldValue?: TGetFieldValue
+}
+type TValidate = (option: IValidate) => void | boolean;
+const Validate: TValidate = ({
+    rules,
+    value,
+    success,
+    fail,
+    getFieldValue
+}) => {
     const len = rules?.length || 0;
     for (let i = 0; i < len; i++) {
-        const status = CheckRule(rules[i], value, success, fail);
-        // arr.push(status);
+        const status = CheckRule({
+            rule: rules[i], value, success, fail, getFieldValue
+        });
         if (!status) return false;
     }
     return true;

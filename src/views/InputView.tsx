@@ -8,6 +8,12 @@ interface Params {
     [key: string]: any
 }
 
+const validate = (value: string, getFieldValue?: (value: string) => string | void) => {
+    console.log(value);
+    console.log(getFieldValue?.('password'));
+    return !(getFieldValue?.('password') === value);
+};
+
 const InputView = () => {
     const reset = () => {
         console.log('reset');
@@ -27,8 +33,11 @@ const InputView = () => {
                     {/* <Form.Item label="手机号" name="phone" rules={[{ check: 'required', message: '请输入手机号' }]}> */}
                     <Input maxLength={11} />
                 </Form.Item>
-                <Form.Item label="密码" name="password" rules={[{ check: 'required', message: '请输入密码' }]}>
-                    <Input type="password" maxLength={20} defaultValue="123" />
+                <Form.Item label="密码" name="password" confirm="password2" rules={[{ check: 'required', message: '请输入密码' }]}>
+                    <Input type="password" maxLength={20} />
+                </Form.Item>
+                <Form.Item label="确认密码" name="password2" rules={[{ check: 'required', message: '请输入密码' }, { validate, message: '两次输入的密码不能相同' }]}>
+                    <Input type="password" maxLength={20} />
                 </Form.Item>
                 <Form.Item className="custom-form-item">
                     <Button type="blue" htmlType="submit">确定</Button>

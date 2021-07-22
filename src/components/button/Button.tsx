@@ -1,7 +1,6 @@
 import './style.styl';
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import LoadingSvg from '@/assets/iconSvg/loading.svg';
-import { FormContext } from '@/components/form/Context';
 import { Props } from './types';
 
 const Button: FC<Props> = ({
@@ -12,9 +11,9 @@ const Button: FC<Props> = ({
     loading = false,
     width = 0,
     children,
-    click = () => {}
+    click = () => {},
+    cancel, reset, submit
 }) => {
-    const { cancel, reset, submit } = useContext(FormContext);
     const handle = {
         button: cancel, reset, submit
     };
