@@ -36,11 +36,11 @@ const config = {
         new MiniCssExtractPlugin({ // 分离css
             filename: '[name]/style.css'
         }),
-        new webpack.BannerPlugin({
+        /*new webpack.BannerPlugin({
             banner: '@import "../base/style.css";',
             raw: true,
             test: /\.css$/
-        }),
+        }),*/
         new CopyPlugin({
             patterns
         })
