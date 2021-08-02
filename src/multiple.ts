@@ -3,12 +3,12 @@
  */
 
 import './components/base';
-import Button from './components/button/Button';
-import Checkbox from './components/checkbox/Checkbox';
-import Divider from './components/divider/Divider';
-import DropGroup from './components/dropGroup/DropGroup';
-import Loading from './components/loading/Loading';
-import Message from './components/message/Message';
+import Button from './components/button';
+import Checkbox from './components/checkbox';
+import Divider from './components/divider';
+import DropGroup from './components/dropGroup';
+import Loading from './components/loading';
+import Message from './components/message';
 import Transition from './components/transition/Transition';
 // import Tree from './components/tree/Tree';
 

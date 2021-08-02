@@ -5,12 +5,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清理垃圾文件
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseConfig = require('./base');
 
 const config = {
     entry: {
-        // index: ['core-js/stable', 'regenerator-runtime/runtime', '../src/main.js'] // 入口文件
         index: resolve(__dirname, '../src/main.tsx') // 入口文件
     },
     output: {
@@ -38,6 +38,22 @@ const config = {
         }),
         new MiniCssExtractPlugin({ // 分离css
             filename: 'stylesheets/[name].[contenthash:5].css'
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: resolve(__dirname, '../node_modules/react/umd/react.production.min.js'),
+                    to: 'modules'
+                },
+                {
+                    from: resolve(__dirname, '../node_modules/react-dom/umd/react-dom.production.min.js'),
+                    to: 'modules'
+                },
+                {
+                    from: resolve(__dirname, '../node_modules/react-router-dom/umd/react-router-dom.min.js'),
+                    to: 'modules'
+                }
+            ]
         })
     ],
     optimization: { // 抽离第三方插件
@@ -71,17 +87,13 @@ const config = {
                     chunks: 'all',
                     enforce: true
                 }
-                /*
-                app: {
-                    // test: /[\\/]src[\\/]assets[\\/]|[\\/]src[\\/]pages[\\/]|[\\/]src[\\/]views[\\/]/,
-                    test: /[\\/]src[\\/]/,
-                    name: 'app',
-                    enforce: true
-                }
-                */
             }
         }
-        // runtimeChunk: { name: 'runtime' } // 为每个入口提取出webpack runtime模块
+    },
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        'react-router-dom': 'ReactRouterDOM'
     },
     target: ['web', 'es5']
 };

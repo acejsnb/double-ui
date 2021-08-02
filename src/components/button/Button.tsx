@@ -17,8 +17,6 @@ const Button: FC<Props> = ({
     const handle = {
         button: cancel, reset, submit
     };
-    // const btnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    //     e.preventDefault();
     const btnClick = () => {
         if (disabled || loading) return;
         if (htmlType) {

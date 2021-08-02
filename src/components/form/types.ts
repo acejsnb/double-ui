@@ -53,9 +53,6 @@ export interface ItemProps {
     submit?: (params: Params) => void
     getFieldValue?: (key: string) => string | void
 }
-export interface IForm<T> {
-    Item: T
-}
 
 export interface ItemContext {
     message?: string

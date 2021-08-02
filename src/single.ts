@@ -4,18 +4,18 @@
 
 // @ts-ignore
 module.exports = {
-    Button: '../src/components/button/Button.tsx',
-    Cascade: '../src/components/cascade/Cascade.tsx',
-    Checkbox: '../src/components/checkbox/Checkbox.tsx',
-    Divider: '../src/components/divider/Divider.tsx',
-    DropGroup: '../src/components/dropGroup/DropGroup.tsx',
-    Form: '../src/components/form/Form.tsx',
-    Input: '../src/components/input/Input.tsx',
-    Loading: '../src/components/loading/Loading.ts',
-    Message: '../src/components/message/Message.ts',
-    Modal: '../src/components/modal/Modal.tsx',
-    Select: '../src/components/select/Select.tsx',
-    Teleport: '../src/components/teleport/Teleport.tsx',
-    Tree: '../src/components/tree/Tree.tsx',
-    TreeSelect: '../src/components/treeSelect/TreeSelect.tsx'
+    Button: '../src/components/button',
+    Cascade: '../src/components/cascade',
+    Checkbox: '../src/components/checkbox',
+    Divider: '../src/components/divider',
+    DropGroup: '../src/components/dropGroup',
+    Form: '../src/components/form',
+    Input: '../src/components/input',
+    Loading: '../src/components/loading',
+    Message: '../src/components/message',
+    Modal: '../src/components/modal',
+    Select: '../src/components/select',
+    Teleport: '../src/components/teleport',
+    Tree: '../src/components/tree',
+    TreeSelect: '../src/components/treeSelect'
 };

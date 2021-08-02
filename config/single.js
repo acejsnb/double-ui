@@ -14,7 +14,7 @@ const entry = {}, patterns = [];
 for (const key of Object.keys(EntryObj)) {
     entry[key] = resolve(__dirname, EntryObj[key]);
     patterns.push({
-        from: resolve(__dirname, `${EntryObj[key].split(key)[0]}types.ts`),
+        from: resolve(__dirname, `${EntryObj[key].split(key)[0]}/types.ts`),
         to: resolve(__dirname, `../lib/${key}/index.d.ts`)
     });
 }
@@ -67,10 +67,16 @@ const config = {
             amd: 'react'
         },
         'react-dom': {
-            root: 'ReactDom',
+            root: 'ReactDOM',
             commonjs2: 'react-dom',
             commonjs: 'react-dom',
             amd: 'react-dom'
+        },
+        'react-router-dom': {
+            root: 'ReactRouterDOM',
+            commonjs2: 'react-router-dom',
+            commonjs: 'react-router-dom',
+            amd: 'react-router-dom'
         }
     },
     target: ['web', 'es5']

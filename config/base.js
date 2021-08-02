@@ -137,11 +137,6 @@ const config = {
             }
         )
     ],
-    externals: {
-        react: 'React',
-        'react-dom': 'ReactDom',
-        'react-router-dom': 'ReactRouterDom',
-    },
     bail: true, // 在第一个错误出现时抛出失败结果
     target: 'web'
 };

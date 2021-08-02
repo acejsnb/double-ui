@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 自动生成index.html
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseConfig = require('./base');
 
@@ -24,7 +25,7 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: join(__dirname, '../src/index.html'), // 引入模版
+            template: join(__dirname, '../src/index2.html'), // 引入模版
             favicon: join(__dirname, '../src/assets/favicon.ico'),
             filename: 'index.html',
             minify: { // 对index.html压缩
@@ -33,6 +34,22 @@ const config = {
             },
             hash: true, // 去掉上次浏览器的缓存（使浏览器每次获取到的是最新的html）
             inlineSource: '.(js|css)'
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: resolve(__dirname, '../node_modules/react/umd/react.development.js'),
+                    to: 'modules'
+                },
+                {
+                    from: resolve(__dirname, '../node_modules/react-dom/umd/react-dom.development.js'),
+                    to: 'modules'
+                },
+                {
+                    from: resolve(__dirname, '../node_modules/react-router-dom/umd/react-router-dom.js'),
+                    to: 'modules'
+                }
+            ]
         }),
         new ProgressBarPlugin(
             {

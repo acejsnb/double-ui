@@ -3,12 +3,11 @@ import React, {
     FC, useRef, useState, Children, cloneElement
 } from 'react';
 import {
-    Props, IForm, ItemProps, ParamItem, TChild
+    Props, ParamItem, TChild
 } from './types';
-import Item from './Item';
 
 // layout = vertical | horizontal
-const Form: FC<Props> & IForm<FC<ItemProps>> = ({
+const Form: FC<Props> = ({
     children,
     name = 'duiForm',
     layout = 'vertical',
@@ -85,7 +84,5 @@ const Form: FC<Props> & IForm<FC<ItemProps>> = ({
         </form>
     );
 };
-
-Form.Item = Item;
 
 export default Form;

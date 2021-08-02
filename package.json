@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf ./lib",
+    "clean:prod": "rimraf ./production",
     "dev": "cross-env NODE_ENV=development webpack serve --mode development --config ./config/dev.js",
-    "prod": "cross-env NODE_ENV=production webpack --mode production --config ./config/prod.js",
+    "prod": "npm run clean:prod && cross-env NODE_ENV=production webpack --mode production --config ./config/prod.js",
     "components": "cross-env NODE_ENV=production webpack --mode production --config ./config/components.js",
     "libIndex": "node ./config/libIndex.js",
     "single": "cross-env NODE_ENV=production webpack --mode production --config ./config/single.js",
