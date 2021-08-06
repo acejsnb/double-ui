@@ -15,13 +15,13 @@ import SelectView from '@/views/SelectView';
 import TreeSelectView from '@/views/TreeSelectView';
 import TriggerView from '@/views/TriggerView';
 
-export interface routerProps {
+interface RouteItem {
     name: string
     path: string
     component: any
 }
 
-const routes: routerProps[] = [
+const routes: RouteItem[] = [
     { name: 'Test', path: '/testview', component: TestView },
     { name: 'Button', path: '/buttonview', component: ButtonView },
     { name: 'Cascade', path: '/cascadeview', component: CascadeView },
@@ -39,4 +39,5 @@ const routes: routerProps[] = [
     { name: 'Trigger', path: '/triggerview', component: TriggerView }
 ];
 
+export type { RouteItem };
 export default routes;

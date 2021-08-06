@@ -1,7 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
-// @ts-ignore
 import reactSvgPlugin from 'vite-plugin-react-svg';
 
 const port = 6006;
