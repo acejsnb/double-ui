@@ -53,7 +53,13 @@ const config = {
                 terserOptions: {
                     toplevel: true, // 最高级别，删除无用代码
                     // ie8: true,
-                    safari10: true
+                    safari10: true,
+                    /*compress: {
+                        warnings: true,
+                        drop_console: true,
+                        drop_debugger: true,
+                        pure_funcs: ['console.log', "console.table"] // 删除console
+                    }*/
                 }
             }),
             new CssMinimizerPlugin()
