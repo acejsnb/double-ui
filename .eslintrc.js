@@ -23,6 +23,7 @@ module.exports = {
         }
     },
     globals: {
+        NodeJS: true,
         Babel: true,
         React: true,
         ReactDOM: true,
@@ -80,6 +81,7 @@ module.exports = {
         'no-shadow': 0,
         'comma-dangle': [2, 'never'],
         'no-use-before-define': 'off',
+        'global-require': 'off',
         'import/extensions': ['error', {
             js: 'never',
             ts: 'never',
