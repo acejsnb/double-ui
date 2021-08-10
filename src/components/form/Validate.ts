@@ -1,3 +1,4 @@
+import { Rule } from './types';
 // 表单验证
 import {
     CheckEmail,
@@ -15,34 +16,29 @@ const ValidateStrategy = {
     CheckPasswordBest
 };
 
-type TGetFieldValue = (key: string) => string | void
+// type TGetFieldValue = (key: string) => string | void
 // 表单验证
-type TRule = {
-    validate?: (value: string, getFieldValue?: TGetFieldValue) => boolean
-    check?: string
-    message?: string
-}
 type CBFn = (value: string, message?: string) => void;
 
 interface RuleOption {
-    rule: TRule, value: string, success?: CBFn, fail?: CBFn
-    getFieldValue?: TGetFieldValue
+    rule: Rule, value: string, success?: CBFn, fail?: CBFn
+    confirmValue?: string
 }
 type TCheckRule = (option: RuleOption) => boolean | void;
 
-// type TCheckKey = (obj: TRule, key: string) => boolean;
+// type TCheckKey = (obj: Rule, key: string) => boolean;
 // const checkKey: TCheckKey = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
 const CheckRule: TCheckRule = ({
     rule,
     value,
     success,
     fail,
-    getFieldValue = () => {}
+    confirmValue = ''
 }) => {
     const { validate, check = '', message = '' } = rule;
     if (validate) {
         if (typeof validate === 'function') {
-            if (validate(value, getFieldValue)) {
+            if (validate(value, confirmValue)) {
                 success?.(value);
                 return true;
             }
@@ -76,11 +72,11 @@ const CheckRule: TCheckRule = ({
 };
 
 interface IValidate {
-    rules: TRule[]
+    rules: Rule[]
     value: string
     success?: CBFn
     fail?: CBFn
-    getFieldValue?: TGetFieldValue
+    confirmValue?: string
 }
 type TValidate = (option: IValidate) => void | boolean;
 const Validate: TValidate = ({
@@ -88,12 +84,12 @@ const Validate: TValidate = ({
     value,
     success,
     fail,
-    getFieldValue
-}) => {
+    confirmValue
+}): boolean => {
     const len = rules?.length || 0;
     for (let i = 0; i < len; i++) {
         const status = CheckRule({
-            rule: rules[i], value, success, fail, getFieldValue
+            rule: rules[i], value, success, fail, confirmValue
         });
         if (!status) return false;
     }

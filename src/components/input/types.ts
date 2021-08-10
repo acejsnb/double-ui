@@ -3,11 +3,10 @@ export interface Props {
     type?: string
     placeholder?: string
     message?: string
+    name?: string
     maxLength?: number
     width?: number
     disabled?: boolean
-    input?: (str: string) => void
-
     isReset?: boolean
-    setValue?: (val: string) => void
+    change?: (str: string) => void
 }

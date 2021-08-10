@@ -1,39 +1,31 @@
-import { JSXElementConstructor, ReactElement } from 'react';
-
-export interface Params {
+export interface SubmitParams {
     [key: string]: string
 }
 type Fn = () => void;
 
 export interface Props {
     name?: string
-    layout?: string
+    layout?: 'vertical' | 'horizontal'
     reset?: Fn
-    cancel?: Fn
-    submit?: (params: Params) => void
+    submit?: (params: { [key: string]: string }) => void
+}
+
+export interface CheckList {
+    [key: string]: boolean
 }
 
 export interface IFormContext {
-    setParam(name: string, value: string, checked: boolean): void
-    cancel(): void
-    reset(): void
-    submit(): void
-    checkName: string
+    params: SubmitParams
+    openCheck: boolean
     isReset: boolean
+    setCheckList(key: string, v: boolean): void
+    setParam(name: string, v: string): void
 }
 
-export interface ParamItemValue {
-    key: string
-    value: string
-    checked: boolean
-}
-export interface ParamItem {
-    [key: string]: ParamItemValue
-}
-
-interface Rules {
+export interface Rule {
+    check?: 'required' | 'phone' | 'email' | 'password' | 'passwordBetter' | 'passwordBest'
+    validate?: (value: string, confirmValue: string) => boolean
     message: string
-    [key: string]: any
 }
 
 export interface ItemProps {
@@ -41,23 +33,12 @@ export interface ItemProps {
     name?: string
     confirm?: string
     className?: string
-    rules?: Rules[]
-    formValues?: (name: string, value: string) => void
-
-    setParam?: (name: string, value: string, checked: boolean, confirm?: string) => void
-    checkName?: string
-    setCheckName?: (value: string) => void
-    isReset?: boolean
-    reset?: Fn
-    cancel?: Fn
-    submit?: (params: Params) => void
+    rules?: Rule[]
     getFieldValue?: (key: string) => string | void
 }
 
-export interface ItemContext {
-    message?: string
-    value?: string
-    setValue: (v: string) => void
+// ItemContext
+export interface IItemContext {
+    name?: string | undefined
+    change(v: string): void
 }
-
-export type TChild = ReactElement<any, string | JSXElementConstructor<any>>;

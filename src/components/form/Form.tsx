@@ -1,86 +1,77 @@
 import './style.styl';
 import React, {
-    FC, useRef, useState, Children, cloneElement
+    FC, FormEvent, useRef, useState
 } from 'react';
 import {
-    Props, ParamItem, TChild
+    Props, SubmitParams, CheckList
 } from './types';
+import FormContext from './FormContext';
+import FormHandle, { CheckKeyStatus } from './utils';
 
-// layout = vertical | horizontal
 const Form: FC<Props> = ({
     children,
     name = 'duiForm',
     layout = 'vertical',
-    cancel: cancelHandle,
-    reset: resetHandle,
-    submit: submitHandle
+    reset,
+    submit
 }) => {
+    const formRef = useRef<HTMLFormElement>(null);
+    FormContext.displayName = name;
     // 设置重置副作用
     const [isReset, setIsReset] = useState(false);
     // 改变checkName以达到check的目的
-    const [checkName, setCheckName] = useState('');
-    // params数据
-    // const [params, setParams] = useState<ParamItem>({});
-    const params = useRef<ParamItem>({});
+    const checkList = useRef<CheckList>({});
+    const setCheckList = (name: string, v: boolean) => {
+        checkList.current[name] = v;
+    };
 
-    // 验证输入参数是通过
-    const validateChecked = () => {
-        const list = Object.values(params.current);
-        if (list.length) {
-            const item = list.find((d) => !d.checked);
-            if (item) {
-                setCheckName(item?.key || '');
-                return false;
-            }
-            // setCheckName('');
-            return true;
+    const [params, setParams] = useState<SubmitParams>({});
+    const setParam = (name: string, v: string) => {
+        setOpenCheck(false);
+        setParams((params) => ({ ...params, [name]: v }));
+    };
+    // 开启验证
+    const [openCheck, setOpenCheck] = useState(false);
+
+    const checkParams = async (params: SubmitParams) => {
+        const status = await CheckKeyStatus(params, checkList.current);
+        if (status) {
+            submit?.(params);
+            return;
         }
-        setCheckName('checked');
-        return false;
+        setOpenCheck(true);
     };
 
-    // 设置参数
-    const setParam = (name: string, value: string, checked: boolean, confirm?: string) => {
-        params.current[name] = { key: name, value, checked };
-        const item = params.current?.[confirm || ''];
-        if (confirm && item) {
-            const { key, value } = item;
-            if (value) {
-                params.current[confirm].checked = false;
-                setCheckName(key);
-            }
-        }
-        // setCheckName('');
+    // 提交
+    const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const params = await FormHandle(e.target, 'submit');
+        await checkParams(params);
     };
 
-    // 根据key获取输入的value
-    const getFieldValue = (key: string) => params.current[key].value;
-
-    // 取消
-    const cancel = () => {
-        cancelHandle?.();
-    };
     // 重置
-    const reset = () => {
-        // params.current = {};
-        setIsReset(!isReset);
-        resetHandle?.();
-    };
-    // 确定
-    const submit = () => {
-        if (!validateChecked()) return;
-        const obj = {};
-        Object.values(params.current).forEach((d) => {
-            obj[d.key] = d.value;
-        });
-        submitHandle?.(obj);
+    const onReset = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsReset(true);
+        await FormHandle(e.target, 'reset');
+        setOpenCheck(false);
+        setIsReset(false);
+        setParams({});
+        reset?.();
     };
 
     return (
-        <form id={name} className={['d-form', `d-form-${layout}`].join(' ')}>
-            {Children.map(children, (child) => cloneElement(child as TChild, {
-                setParam, cancel, reset, submit, checkName, setCheckName, isReset, getFieldValue
-            }))}
+        <form ref={formRef} onSubmit={onSubmit} onReset={onReset} name={name} className={['d-form', `d-form-${layout}`].join(' ')}>
+            <FormContext.Provider value={{
+                params,
+                openCheck,
+                isReset,
+                setCheckList,
+                setParam
+            }}
+            >
+                {children}
+            </FormContext.Provider>
         </form>
     );
 };

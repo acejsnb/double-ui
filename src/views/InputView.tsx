@@ -1,17 +1,16 @@
 import React from 'react';
 
 import Button from '@/components/button/Button';
-import Input from '@/components/input/Input';
 import Form from '@/components/form';
 
 interface Params {
     [key: string]: any
 }
 
-const validate = (value: string, getFieldValue?: (value: string) => string | void) => {
-    console.log(value);
-    console.log(getFieldValue?.('password'));
-    return !(getFieldValue?.('password') === value);
+const validate = (value: string, confirmValue: string) => {
+    console.log('value', value);
+    console.log('FieldValue', confirmValue);
+    return !(confirmValue === value);
 };
 
 const InputView = () => {
@@ -28,16 +27,16 @@ const InputView = () => {
             <div style={{ height: '40px' }} />
             {/* <Input disabled /> */}
             <h3 style={{ marginTop: `${32}px` }}>Form</h3>
-            <Form name="idForm" reset={reset} submit={submit}>
+            <Form reset={reset} submit={submit}>
                 <Form.Item label="手机号" name="phone" rules={[{ check: 'required', message: '请输入手机号' }]}>
                     {/* <Form.Item label="手机号" name="phone" rules={[{ check: 'required', message: '请输入手机号' }]}> */}
-                    <Input maxLength={11} />
+                    <Form.Input defaultValue="123" maxLength={11} />
                 </Form.Item>
-                <Form.Item label="密码" name="password" confirm="password2" rules={[{ check: 'required', message: '请输入密码' }]}>
-                    <Input type="password" maxLength={20} />
+                <Form.Item label="密码" name="password" rules={[{ check: 'required', message: '请输入密码' }]}>
+                    <Form.Input type="password" maxLength={20} />
                 </Form.Item>
-                <Form.Item label="确认密码" name="password2" rules={[{ check: 'required', message: '请输入密码' }, { validate, message: '两次输入的密码不能相同' }]}>
-                    <Input type="password" maxLength={20} />
+                <Form.Item label="确认密码" name="password2" confirm="password" rules={[{ check: 'required', message: '请输入密码' }, { validate, message: '两次输入的密码不能相同' }]}>
+                    <Form.Input type="password" maxLength={20} />
                 </Form.Item>
                 <Form.Item className="custom-form-item">
                     <Button type="blue" htmlType="submit">确定</Button>

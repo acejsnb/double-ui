@@ -11,19 +11,11 @@ const Button: FC<Props> = ({
     loading = false,
     width = 0,
     children,
-    click = () => {},
-    cancel, reset, submit
+    click = () => {}
 }) => {
-    const handle = {
-        button: cancel, reset, submit
-    };
     const btnClick = () => {
-        if (disabled || loading) return;
-        if (htmlType) {
-            handle[htmlType]?.();
-        } else {
-            click();
-        }
+        if (disabled || loading || htmlType) return;
+        click();
     };
     return (
         <button
@@ -35,7 +27,7 @@ const Button: FC<Props> = ({
             ].join(' ')}
             style={width ? { width: `${width}px` } : {}}
             onClick={btnClick}
-            type="button"
+            type={htmlType ?? 'button'}
         >
             <section className="d-btn-content">
                 {loading && <span className="d-btn-loading"><LoadingSvg /></span>}
