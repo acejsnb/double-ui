@@ -1,24 +1,16 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    //    "outDir": "./lib",
+    "baseUrl": "/",
+    // "outDir": "./lib",
     "paths": {
-      "@/*": [
-        "src/*"
+      "@": [
+        "src"
       ]
     },
     "target": "ESNext",
     "module": "ESNext",
-    //    "module": "commonjs",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
-    "types": [
-      "node",
-      "vite/client"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["node", "vite/client"],
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,
@@ -27,17 +19,15 @@
     "forceConsistentCasingInFileNames": true,
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "removeComments": true,
-    "noEmit": false,
     "experimentalDecorators": true,
     "declaration": false,
-    //    "declarationDir": "./lib/types",
+    // "declarationDir": "./lib/types",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
     "jsx": "react"
   },
-  "include": [
-    "./src"
-  ]
-  //  "exclude": ["node_modules", "lib"]
+  "include": ["./src"],
+  "exclude": ["node_modules", "lib"]
 }
