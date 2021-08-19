@@ -27,13 +27,11 @@ function Message({ type, message, time = 3.6 }: Options) {
     })();
 }
 
-const separate = (type: string) => (message: string, time: number) => Message({
+const separate = (type: string) => (message: string, time?: number) => Message({
     type,
     message,
     time
 });
-
-// ['info', 'success', 'warning', 'error'].forEach((type) => { Message[type] = separate(type); });
 
 Message.info = separate('info');
 Message.success = separate('success');

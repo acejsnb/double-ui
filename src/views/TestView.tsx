@@ -47,6 +47,28 @@ const TestView: FC = () => {
             <button type="button" onClick={mount2}>挂载2</button>
             <button type="button" onClick={update2}>更新2</button>
             <button type="button" onClick={unmount2}>卸载2</button>
+            <br />
+            <br />
+            <div style={{
+                marginBottom: '12px', width: '300px', height: '40px', backgroundColor: 'var(--blue-500)'
+            }}
+            />
+            <div style={{
+                marginBottom: '12px', width: '300px', height: '40px', backgroundColor: 'var(--green-500)'
+            }}
+            />
+            <div style={{
+                marginBottom: '12px', width: '300px', height: '40px', backgroundColor: 'var(--orange-500)'
+            }}
+            />
+            <div style={{
+                marginBottom: '12px', width: '300px', height: '40px', backgroundColor: 'var(--red-500)'
+            }}
+            />
+            <div style={{
+                marginBottom: '12px', width: '300px', height: '40px', backgroundColor: 'var(--grey-500)'
+            }}
+            />
         </div>
     );
 };

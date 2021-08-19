@@ -1,23 +1,31 @@
 import React from 'react';
 
-import Button from '@/components/button/Button';
+import Button from '@/components/button';
 import Message from '@/components/message';
-// import Message from '@/components/message/MessageBox';
 
 const MessageView = () => {
-    const click = () => {
-        console.log('click');
-        // console.log(Message);
-        Message.success('success', 5);
-        /* Message({
+    const info = () => {
+        Message({
             message: 'aaaaaaaaaaaa',
-            type: 'success',
+            type: 'info',
             time: 5
-        }); */
+        });
+    };
+    const success = () => {
+        Message.success('success', 5);
+    };
+    const warning = () => {
+        Message.warning('warning', 5);
+    };
+    const error = () => {
+        Message.error('error', 10);
     };
     return (
         <div className="component-view">
-            <Button width={90} click={click}>按钮</Button>
+            <Button type="blue" click={info}>info</Button>
+            <Button click={success}>success</Button>
+            <Button click={warning}>warning</Button>
+            <Button click={error}>error</Button>
         </div>
     );
 };
