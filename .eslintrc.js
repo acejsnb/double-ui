@@ -88,6 +88,7 @@ module.exports = {
             tsx: 'never',
             svg: 'always',
             styl: 'always',
+            jpg: 'always',
             png: 'always',
             mp4: 'always',
             webm: 'always'

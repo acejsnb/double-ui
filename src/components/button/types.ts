@@ -1,15 +1,11 @@
 type Fn = () => void;
 
 export type Props = {
-    type?: string
+    type?: 'default' | 'blue' | 'green' | 'orange' | 'red' | 'word'
     size?: string
     htmlType?: 'button' | 'submit' | 'reset'
     disabled?: boolean
     loading?: boolean
     width?: number
     click?: Fn
-
-    cancel?: Fn
-    reset?: Fn
-    submit?: Fn
 }

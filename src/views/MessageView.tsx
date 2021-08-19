@@ -23,9 +23,9 @@ const MessageView = () => {
     return (
         <div className="component-view">
             <Button type="blue" click={info}>info</Button>
-            <Button click={success}>success</Button>
-            <Button click={warning}>warning</Button>
-            <Button click={error}>error</Button>
+            <Button type="green" click={success}>success</Button>
+            <Button type="orange" click={warning}>warning</Button>
+            <Button type="red" click={error}>error</Button>
         </div>
     );
 };

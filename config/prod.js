@@ -21,7 +21,7 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: join(__dirname, '../src/index.html'), // 引入模版
+            template: join(__dirname, '../src/indexProd.html'), // 引入模版
             favicon: join(__dirname, '../src/assets/favicon.ico'),
             filename: 'index.html',
             minify: { // 对index.html压缩

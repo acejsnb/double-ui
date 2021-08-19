@@ -1,31 +1,18 @@
 import React, { FC, useRef } from 'react';
-
-// import LoadingPng from '@/assets/loading/loading-png.png';
-// import LoadingMp4 from '@/assets/loading/loading-mp4.mp4';
-// import LoadingWebm from '@/assets/loading/loading-webm.webm';
-
-
 import Loading from '@/components/loading/Loading';
 import Button from '@/components/button/Button';
+import AvatarImg from '@/assets/images/avatarimg.jpg';
 
-const imgGlobal = 'http://47.95.122.141:8200/persagy_ui_kit/loading-static/global-60.gif';
-const imgLocal = 'http://47.95.122.141:8200/persagy_ui_kit/loading-static/local.gif';
-
-/* const poster = LoadingPng;
-const sources = [
-    { src: LoadingMp4, type: 'mp4' },
-    { src: LoadingWebm, type: 'webm' }
-]; */
 const ButtonView: FC = () => {
     const divRef = useRef(null);
     const click = () => {
-        const global = Loading({ imgSrc: imgGlobal });
+        const global = Loading({ imgSrc: AvatarImg });
         setTimeout(() => {
             global.close();
         }, 3000);
     };
     const clickLocal = () => {
-        const local = Loading.local(imgLocal, divRef.current);
+        const local = Loading.local(AvatarImg, divRef.current);
         // const local = Loading({ ele: divRef.current, imgSrc: imgLocal });
         setTimeout(() => {
             local.close();
