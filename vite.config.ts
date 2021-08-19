@@ -6,7 +6,10 @@ import reactSvgPlugin from 'vite-plugin-react-svg';
 const port = 6006;
 
 export default defineConfig({
-    plugins: [reactRefresh(), reactSvgPlugin({ defaultExport: 'component' })],
+    plugins: [
+        reactRefresh(),
+        reactSvgPlugin({ defaultExport: 'component' })
+    ],
     resolve: {
         extensions: ['.js', '.ts', '.tsx'], // import引入文件的时候不用加后缀
         alias: {
