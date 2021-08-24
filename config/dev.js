@@ -71,16 +71,17 @@ const config = {
     cache: true,
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: join(__dirname, '../development'), // 将 dist 目录下的文件，作为可访问文件。
+        static: {
+            directory: join(__dirname, '../development'),
+        },
         compress: true, // 开启Gzip压缩
         host: '0.0.0.0', // 设置服务器的ip地址，默认localhost
         port, // 端口号
         hot: true,
-        noInfo: true,
-        overlay: { // 当出现编译器错误或警告时，就在网页上显示一层黑色的背景层和错误信息
-            errors: true
-        },
-        disableHostCheck: true //  不检查主机
+        client: {
+            overlay: true,
+            progress: true
+        }
         // historyApiFallback: { // 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 /
         //     rewrites: [{ from: /./, to: '/' }]
         // }

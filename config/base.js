@@ -8,7 +8,7 @@ const {
     name, version, author, license
 } = require('../package.json');
 
-const { NODE_ENV } = process.env;
+const { WEBPACK_SERVE } = process.env;
 
 // 获取时间
 const TimeFn = require('../get_time');
@@ -23,7 +23,7 @@ ${TimeFn()}`;
  * @type {boolean}
  * isProd为true表示生产
  */
-const isProd = NODE_ENV === 'production';
+const isProd = !WEBPACK_SERVE;
 
 /**
  *  css和stylus开发、生产依赖
