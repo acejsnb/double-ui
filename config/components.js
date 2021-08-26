@@ -38,9 +38,9 @@ const config = {
         minimizer: [
             new TerserPlugin({
                 extractComments: false, // 不生成LICENSE.txt
+                parallel: true,
                 terserOptions: {
                     toplevel: true, // 最高级别，删除无用代码
-                    // ie8: true,
                     safari10: true
                 }
             }),
@@ -65,6 +65,12 @@ const config = {
             commonjs2: 'react-router-dom',
             commonjs: 'react-router-dom',
             amd: 'react-router-dom'
+        },
+        'react-transition-group': {
+            root: 'ReactTransitionGroup',
+            commonjs2: 'react-transition-group',
+            commonjs: 'react-transition-group',
+            amd: 'react-transition-group'
         }
     },
     target: ['web', 'es5']

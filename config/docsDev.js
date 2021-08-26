@@ -5,27 +5,23 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const baseConfig = require('./base');
-
+const baseConfig = require('./docsBase');
 // 获取本机ip
 const getIp = require('../get_ip');
 
-const port = 6006;
+const port = 6008;
 
 const config = {
-    entry: {
-        index: resolve(__dirname, '../src/main.tsx') // 入口文件
-    },
     output: {
-        path: resolve(__dirname, '../development'),
+        path: resolve(__dirname, '../docs/dist'),
         filename: '[name].js', // [name] 是entry的key
         publicPath: '/',
         assetModuleFilename: 'images/[name].[ext][query]'
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: join(__dirname, '../src/index.html'), // 引入模版
-            favicon: join(__dirname, '../src/assets/favicon.ico'),
+            template: resolve(__dirname, '../docs/index.html'), // 引入模版
+            favicon: resolve(__dirname, '../docs/public/favicon.ico'),
             filename: 'index.html',
             minify: { // 对index.html压缩
                 collapseWhitespace: false, // 去掉index.html的空格
@@ -71,11 +67,9 @@ const config = {
             }
         )
     ],
-    cache: true,
-    devtool: 'inline-source-map',
     devServer: {
         static: {
-            directory: join(__dirname, '../development'),
+            directory: resolve(__dirname, '../docs/dist'),
         },
         compress: true, // 开启Gzip压缩
         host: '0.0.0.0', // 设置服务器的ip地址，默认localhost
@@ -83,11 +77,8 @@ const config = {
         hot: true,
         client: {
             overlay: true,
-            progress: true
+            progress: false
         }
-        // historyApiFallback: { // 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 /
-        //     rewrites: [{ from: /./, to: '/' }]
-        // }
     }
 };
 

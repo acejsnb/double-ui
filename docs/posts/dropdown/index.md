@@ -1,7 +1,7 @@
 # Select
 
 ### demo
-```typescript jsx
+```tsx
 const data = [
     { id: 'totalEnergy', name: '总量' },
     { id: 'singleParty', name: '单平米' },

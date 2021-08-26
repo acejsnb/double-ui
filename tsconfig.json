@@ -5,12 +5,15 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "docs/*": [
+        "docs/*"
       ]
     },
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["node", "vite/client"],
+    "types": ["node", "webpack-env" ,"vite/client"],
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,
@@ -28,6 +31,6 @@
     "noEmit": false,
     "jsx": "react"
   },
-  "include": ["./src"],
+  "include": ["./src", "./docs", "./docs/posts/*.md", "./docs/posts/**/*.md"],
   "exclude": ["node_modules", "lib"]
 }

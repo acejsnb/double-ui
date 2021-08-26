@@ -1,7 +1,7 @@
 # Button
 
 ### demo
-```typescript jsx
+```tsx
 const ButtonView = () => {
     const click = () => {
         console.log('click');

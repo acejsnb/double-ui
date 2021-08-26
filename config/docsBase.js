@@ -13,22 +13,12 @@ const { WEBPACK_SERVE } = process.env;
 // 获取时间
 const TimeFn = require('../get_time');
 
-const banner = `@${name} v${version}
+const banner = `@${name}-docs v${version}
 (c) 2020-2021 ${author}
 Released under the ${license} License.
 ${TimeFn()}`;
 
-/**
- * 判断是生产环境还是开发环境
- * @type {boolean}
- * isProd为true表示生产
- */
 const isProd = !WEBPACK_SERVE;
-
-/**
- *  css和stylus开发、生产依赖
- *  生产分离css
- */
 const cssConfig = [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
     {
@@ -63,6 +53,9 @@ const stylusConfig = [
 ];
 
 const config = {
+    entry: {
+        index: resolve(__dirname, '../docs/main.tsx') // 入口文件
+    },
     module: {
         rules: [
             {
@@ -73,7 +66,7 @@ const config = {
             {
                 test: /\.styl(us)?$/,
                 use: stylusConfig,
-                include: [resolve(__dirname, '../src')],
+                include: [resolve(__dirname, '../docs')],
                 exclude: /node_modules/
             },
             {
@@ -81,7 +74,7 @@ const config = {
                 use: [
                     'ts-loader'
                 ],
-                include: [resolve(__dirname, '../src')]
+                include: [resolve(__dirname, '../docs')]
             },
             {
                 test: /\.tsx$/,
@@ -89,7 +82,7 @@ const config = {
                     'babel-loader',
                     'ts-loader'
                 ],
-                include: [resolve(__dirname, '../src')]
+                include: [resolve(__dirname, '../docs')]
             },
             {
                 test: /\.svg$/,
@@ -102,27 +95,23 @@ const config = {
                         }
                     }
                 ],
-                include: [resolve(__dirname, '../src')]
+                include: [resolve(__dirname, '../docs')]
             },
             {
                 test: /\.(png|jpe?g|gif|bmp|webm|mp4)$/,
-                // type: 'asset/resource',
                 type: 'asset/inline',
-                include: [resolve(__dirname, '../src/assets')]
+                include: [resolve(__dirname, '../docs')]
+            },
+            {
+                test: /\.mdx?$/,
+                use: [
+                    'babel-loader',
+                    {
+                        loader: '@mdx-js/loader'
+                    }
+                ]
             }
         ]
-    },
-    resolve: { // 配置路径别名
-        extensions: ['.js', '.ts', '.tsx'], // import引入文件的时候不用加后缀
-        modules: [
-            'node_modules',
-            resolve(__dirname, '../src/assets'),
-            resolve(__dirname, '../src/static'),
-            resolve(__dirname, '../src/utils')
-        ],
-        alias: {
-            '@': resolve(__dirname, '../src')
-        }
     },
     plugins: [
         new webpack.BannerPlugin({
@@ -137,12 +126,23 @@ const config = {
             }
         )
     ],
-    externals: {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'react-router-dom': 'ReactRouterDOM',
-        'react-transition-group': 'ReactTransitionGroup'
+    resolve: {
+        extensions: ['.js', '.ts', '.tsx'], // import引入文件的时候不用加后缀
+        alias: {
+            'docs': resolve(__dirname, '../docs')
+        },
+        /*fallback: {
+            fs: false,
+            path: require.resolve('path-browserify'),
+            crypto: require.resolve('crypto-browserify'),
+            assert: require.resolve('assert/'),
+            os: require.resolve('os-browserify/browser'),
+            stream: require.resolve('stream-browserify'),
+            constants: require.resolve('constants-browserify'),
+        }*/
     },
+    cache: true,
+    devtool: 'inline-source-map',
     bail: true, // 在第一个错误出现时抛出失败结果
     target: 'web'
 };

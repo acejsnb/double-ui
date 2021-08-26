@@ -7,22 +7,19 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清理垃圾�
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const baseConfig = require('./base');
+const baseConfig = require('./docsBase');
 
 const config = {
-    entry: {
-        index: resolve(__dirname, '../src/main.tsx') // 入口文件
-    },
     output: {
-        path: resolve(__dirname, '../production'),
+        path: resolve(__dirname, '../docs/dist'),
         filename: 'javascript/[name].[contenthash:5].js', // [name] 是entry的key
         publicPath: './',
         assetModuleFilename: 'images/[name].[hash:5][ext][query]'
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: join(__dirname, '../src/indexProd.html'), // 引入模版
-            favicon: join(__dirname, '../src/assets/favicon.ico'),
+            template: join(__dirname, '../docs/indexProd.html'), // 引入模版
+            favicon: join(__dirname, '../docs/public/favicon.ico'),
             filename: 'index.html',
             minify: { // 对index.html压缩
                 collapseWhitespace: true, // 去掉index.html的空格
@@ -34,7 +31,7 @@ const config = {
         new CleanWebpackPlugin({
             verbose: true, // 打印被删除的文件
             protectWebpackAssets: false, // 允许删除cleanOnceBeforeBuildPatterns中的文件
-            cleanOnceBeforeBuildPatterns: [resolve(__dirname, '../production')]
+            cleanOnceBeforeBuildPatterns: [resolve(__dirname, '../docs/dist')]
         }),
         new MiniCssExtractPlugin({ // 分离css
             filename: 'stylesheets/[name].[contenthash:5].css'

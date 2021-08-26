@@ -91,7 +91,8 @@ module.exports = {
             jpg: 'always',
             png: 'always',
             mp4: 'always',
-            webm: 'always'
+            webm: 'always',
+            md: 'always'
         }],
         quotes: [1, 'single'],
         'eol-last': 2,

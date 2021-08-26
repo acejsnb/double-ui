@@ -1,5 +1,4 @@
 const { resolve } = require('path');
-const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -50,16 +49,10 @@ const config = {
         minimizer: [
             new TerserPlugin({
                 extractComments: false, // 不生成LICENSE.txt
+                parallel: true,
                 terserOptions: {
                     toplevel: true, // 最高级别，删除无用代码
-                    // ie8: true,
-                    safari10: true,
-                    /*compress: {
-                        warnings: true,
-                        drop_console: true,
-                        drop_debugger: true,
-                        pure_funcs: ['console.log', "console.table"] // 删除console
-                    }*/
+                    safari10: true
                 }
             }),
             new CssMinimizerPlugin()
@@ -83,6 +76,12 @@ const config = {
             commonjs2: 'react-router-dom',
             commonjs: 'react-router-dom',
             amd: 'react-router-dom'
+        },
+        'react-transition-group': {
+            root: 'ReactTransitionGroup',
+            commonjs2: 'react-transition-group',
+            commonjs: 'react-transition-group',
+            amd: 'react-transition-group'
         }
     },
     target: ['web', 'es5']
