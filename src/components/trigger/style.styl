@@ -95,6 +95,13 @@
   cursor not-allowed
   &.d-trigger-border
     border 1px solid var(--grey-400)
+  &:hover
+    .d-trigger-words
+      color var(--grey-400)
+    .d-trigger-icon
+      .d-trigger-triangle
+        path
+          fill var(--grey-400)
   .d-trigger-words
     color var(--grey-400)
   .d-trigger-icon
@@ -102,3 +109,10 @@
     svg
       path
         fill var(--grey-400)
+
+.d-trigger-shade
+  position absolute
+  left 0
+  top 0
+  width 100%
+  height 100%

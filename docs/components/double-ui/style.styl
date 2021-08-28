@@ -1,0 +1,38 @@
+.dui
+  display flex
+  margin-top 12px
+  width 100%
+  height calc(100vh - 68px)
+.dui-menu
+  border-right 1px solid var(--grey-300)
+  width 228px
+  height 100%
+  overflow no-content auto
+.dui-menu-item
+  padding-left 32px
+  width 100%
+  height 44px
+  line-height @height
+  cursor pointer
+  transition color .12s, background-color .12s
+  &:hover
+    color var(--blue-500)
+.dui-menu-active
+  position relative
+  background-color var(--blue-50)
+  color var(--blue-500)
+  &:after
+    content ''
+    position absolute
+    top 0
+    right -1px
+    display block
+    background-color var(--blue-500)
+    width 2px
+    height 100%
+.dui-main
+  padding-left 24px
+  padding-right 24px
+  width calc(100% - 228px)
+  height 100%
+  overflow hidden auto

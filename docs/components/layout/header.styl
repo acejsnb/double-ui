@@ -1,0 +1,50 @@
+.docs-header
+  display flex
+  justify-content space-between
+  align-items center
+  padding-left 1.5em
+  padding-right 1.5em
+  height 56px
+.docs-header-shadow
+  box-shadow var(--box-shadow-bottom)
+  transition box-shadow .3s
+.docs-title
+  position relative
+  width 101px
+  line-height 24px
+  font-size 16px
+  overflow hidden
+  transition transform .2s
+  &:hover
+    text-decoration underline
+  &:active
+    transform scale(.9)
+  a
+    color var(--grey-900)
+.docs-link
+  display flex
+  align-items center
+  height 28px
+  line-height @height
+.docs-link-item
+  display flex
+  align-items center
+  color var(--grey-900)
+  transition color .2s
+  &:hover
+    color var(--orange-500)
+  + .docs-link-item
+    margin-left 20px
+  i
+    font-style normal
+  span
+    margin-left 4px
+    font-size 14px
+.docs-link-github
+  font-size 0
+  svg
+    vertical-align middle
+.docs-theme
+  margin-left 40px
+  cursor pointer
+  user-select none

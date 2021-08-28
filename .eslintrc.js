@@ -27,7 +27,8 @@ module.exports = {
         Babel: true,
         React: true,
         ReactDOM: true,
-        mountNode: true
+        mountNode: true,
+        JSX: true
     },
     plugins: [
         'react', 'babel', '@typescript-eslint', 'react-hooks'
@@ -89,10 +90,12 @@ module.exports = {
             svg: 'always',
             styl: 'always',
             jpg: 'always',
+            jpeg: 'always',
             png: 'always',
             mp4: 'always',
             webm: 'always',
-            md: 'always'
+            md: 'always',
+            css: 'always'
         }],
         quotes: [1, 'single'],
         'eol-last': 2,

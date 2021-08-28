@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const {
     name, version, author, license
@@ -66,23 +67,20 @@ const config = {
             {
                 test: /\.styl(us)?$/,
                 use: stylusConfig,
-                include: [resolve(__dirname, '../docs')],
                 exclude: /node_modules/
             },
             {
                 test: /\.ts$/,
                 use: [
                     'ts-loader'
-                ],
-                include: [resolve(__dirname, '../docs')]
+                ]
             },
             {
                 test: /\.tsx$/,
                 use: [
                     'babel-loader',
                     'ts-loader'
-                ],
-                include: [resolve(__dirname, '../docs')]
+                ]
             },
             {
                 test: /\.svg$/,
@@ -94,22 +92,19 @@ const config = {
                             jsx: true
                         }
                     }
-                ],
-                include: [resolve(__dirname, '../docs')]
+                ]
             },
             {
                 test: /\.(png|jpe?g|gif|bmp|webm|mp4)$/,
-                type: 'asset/inline',
-                include: [resolve(__dirname, '../docs')]
+                type: 'asset/inline'
             },
             {
                 test: /\.mdx?$/,
                 use: [
                     'babel-loader',
-                    {
-                        loader: '@mdx-js/loader'
-                    }
-                ]
+                    '@mdx-js/loader'
+                ],
+                include: [resolve(__dirname, '../docs')]
             }
         ]
     },
@@ -117,6 +112,18 @@ const config = {
         new webpack.BannerPlugin({
             banner,
             test: /\.js$/
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: resolve(__dirname, '../docs/public/light.css'),
+                    to: 'modules'
+                },
+                {
+                    from: resolve(__dirname, '../docs/public/dark.css'),
+                    to: 'modules'
+                }
+            ]
         }),
         new ProgressBarPlugin(
             {
@@ -129,6 +136,7 @@ const config = {
     resolve: {
         extensions: ['.js', '.ts', '.tsx'], // import引入文件的时候不用加后缀
         alias: {
+            '@': resolve(__dirname, '../src'),
             'docs': resolve(__dirname, '../docs')
         },
         /*fallback: {

@@ -1,8 +1,7 @@
-import React from 'react';
-
+import React, { FC } from 'react';
 import Button from '@/components/button';
 
-const ButtonView = () => {
+const ButtonView: FC = () => {
     const click = () => {
         console.log('click');
     };

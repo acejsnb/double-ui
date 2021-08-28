@@ -1,26 +1,53 @@
 body
   background-color var(--theme)
-  font-family PingFangSC_boldface
+  transition background-color .3s
+  color var(--grey-900)
 
-.title
+.docs-app
+  margin-left auto
+  margin-right auto
   width 100%
-  height 48px
-  line-height @height
-  font-size 14px
-  text-align center
-  box-shadow var(--box-shadow-bottom)
-.route-link
-  padding-left 12px
-  height 40px
-  line-height @height
-  font-size 16px
-  border-bottom 1px solid var(--grey-200)
-.component-view
-  padding 20px
-.component-br
-  width 100%
-  height 40px
-
-.custom-form-item
-  display flex
-  justify-content flex-end
+  //max-width 1200px
+  .docs-content
+    padding 20px 24px
+  h2
+    margin-top 24px
+    margin-bottom 12px
+    padding-left 12px
+    border-left 4px solid var(--orange-500)
+    line-height 32px
+  h3
+    margin-top 24px
+    margin-bottom 12px
+    padding-left 12px
+    border-left 4px solid var(--orange-500)
+    line-height 28px
+  pre
+    padding 16px 0
+    background-color var(--code-bg)
+    width 100%
+    overflow auto
+    color var(--blue-200)
+  table
+    border 1px solid var(--grey-200)
+    width 100%
+    thead
+      background-color var(--grey-100)
+      border-bottom 1px solid var(--grey-300)
+      height 40px
+      tr
+        th
+          //padding 0 12px
+          + th
+            border-left 1px solid var(--grey-300)
+    tbody
+      tr
+        height 56px
+        &:hover
+          background-color var(--grey-200)
+        + tr
+          border-top 1px solid var(--grey-300)
+        td
+          padding 0 12px
+          + td
+            border-left 1px solid var(--grey-300)

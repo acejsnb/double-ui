@@ -1,4 +1,4 @@
-const { resolve, join } = require('path');
+const { resolve } = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 自动生成index.html
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');

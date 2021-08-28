@@ -1,0 +1,84 @@
+.docs-h
+  height calc(100vh - 128px)
+  overflow auto
+
+.docs-home
+  width 100%
+
+.docs-main
+  display flex
+  align-items center
+  justify-content center
+  flex-direction column
+  button
+    height 32px
+.docs-head-portrait
+  border 4px solid var(--grey-200)
+  border-radius 50%
+  width 120px
+  height @width
+  overflow hidden
+  cursor all-scroll
+  transition transform .3s
+  &:hover
+    transform scale(1.1)
+  img
+    width 100%
+.docs-username
+  margin-top 16px
+  font-size 16px
+
+@keyframes descBorder
+  from
+    border-color var(--grey-900)
+  to
+    border-color transparent
+@keyframes descWidth
+  from
+    width 0
+  to
+    width 23ch
+.docs-desc
+  margin-top 12px
+  margin-bottom 12px
+  border-right 2px solid var(--grey-900)
+  //width 23ch
+  font-size 12px
+  letter-spacing 3px
+  white-space nowrap
+  overflow hidden
+  transform scale(.8)
+  animation descBorder .7s infinite normal
+//animation descBorder .7s infinite normal, descWidth 4s steps(11)
+.docs-desc-play
+  animation descBorder .7s infinite normal, descWidth 4s steps(11)
+
+.docs-entry
+  display flex
+  align-items center
+  justify-content center
+  width 100px
+  height 28px
+  cursor pointer
+  &:hover
+    color var(--blue-500)
+    .docs-soon
+      transform translateX(4px)
+    .docs-start
+      color var(--orange-500)
+  .docs-soon
+    width 16px
+    transition transform .3s
+  .docs-start
+    margin-left 8px
+    color var(--orange-400)
+    transition color .2s
+
+.docs-tip
+  margin-top 12px
+  margin-bottom 20px
+  font-size 14px
+  text-decoration underline
+  transition letter-spacing .2s
+  &:hover
+    letter-spacing 3px

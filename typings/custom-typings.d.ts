@@ -10,3 +10,8 @@ declare module '*.json' {
   export const version: string;
   export default value;
 }
+
+// declare const JSX: any;
+
+declare module 'index.js';
+declare module 'docs/lib/Button/index.js';

@@ -1,0 +1,15 @@
+:root {
+    --theme: #262b30;
+    --blue-500: #0091ff;
+    --blue-200: #bae0fd;
+
+    --orange-500: #f58300;
+    --orange-400: #ffa53d;
+
+    --grey-900: #e4e5e7;
+    --grey-300: #e4e5e7;
+    --grey-200: #eff0f1;
+    --grey-100: #4c4d4e;
+
+    --code-bg: #283643;
+}

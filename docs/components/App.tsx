@@ -1,27 +1,26 @@
 import 'docs/public/app.styl';
 import React from 'react';
 import {
-    HashRouter, Route, Switch, Redirect
+    HashRouter, Switch, Route, Redirect
 } from 'react-router-dom';
-import Home from 'docs/components/Home';
-import Layout from 'docs/components/Layout';
-import Routes from 'docs/utils/routes';
+import Header from 'docs/components/layout/Header';
+// import Footer from './layout/Footer';
+import Home from './layout/Home';
+import DoubleUI from './double-ui/DoubleUI';
+import Blog from './blog/Blog';
 
-const routes = Routes();
 const App = () => (
     <div className="docs-app">
         <HashRouter>
+            <Header />
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route path="/layout" render={() => <Layout routes={routes} />} />
-                {
-                    routes.map(({ id, path, component: Component }) => (
-                        <Route key={id} path={path} render={() => <Component />} />
-                    ))
-                }
+                <Route path="/double-ui" component={DoubleUI} />
+                <Route path="/blog" component={Blog} />
                 <Redirect to="/" />
             </Switch>
         </HashRouter>
+        {/* <Footer /> */}
     </div>
 );
 

@@ -10,20 +10,20 @@ interface Item {
 }
 
 const data = [
-    { id: 'totalEnergy', name: '总量' },
-    { id: 'singleParty', name: '单平米' },
-    { id: 'lowerLevel', name: '下级分项下级分项下级分项下级分项下级分项' },
-    { id: 'lowerLevel2', name: '下级分项2' },
-    { id: 'lowerLevel3', name: '下级分项3' },
-    { id: 'lowerLevel4', name: '下级分项4' },
-    { id: 'lowerLevel45', name: '下级分项5' },
-    { id: 'average', name: '滑动平均滑动平均滑动平均滑动平均滑动平均滑动平均滑动平均滑动平均', disabled: true },
-    { id: 'lowerLevel451', name: '下级分项6' }
+    { id: '1', name: 'AAA' },
+    { id: '2', name: 'BBB' },
+    { id: '3', name: 'CCCCCCCCCCCCCCCCCC' },
+    { id: '4', name: 'DDD' },
+    { id: '5', name: 'EEE' },
+    { id: '6', name: 'FFFF' },
+    { id: '7', name: 'GGGGGGG' },
+    { id: '8', name: 'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH', disabled: true },
+    { id: '9', name: 'IIIIIIIIIIIIIIIIIII' }
 ];
 
 const SelectView = () => {
-    const [value, setValue] = useState('totalEnergy');
-    const [name, setName] = useState('总量');
+    const [value, setValue] = useState('4');
+    const [name, setName] = useState('DDD');
     const [dropData, setDropData] = useState(JSON.parse(JSON.stringify(data)));
     const change = (item: Item) => {
         console.log(item);
@@ -32,15 +32,15 @@ const SelectView = () => {
     };
     useEffect(() => {
         const timer = setTimeout(() => {
-            setDropData([...JSON.parse(JSON.stringify(data)), { id: 'lowerLevel667', name: '下级分项7' }]);
+            setDropData([...JSON.parse(JSON.stringify(data)), { id: '10', name: 'JJJJJJJJ' }]);
         }, 5000);
         return () => {
             if (timer) clearTimeout(timer);
         };
     }, []);
 
-    const [value2, setValue2] = useState('singleParty');
-    const [name2, setName2] = useState('单平米');
+    const [value2, setValue2] = useState('7');
+    const [name2, setName2] = useState('GGGGGGG');
     const [dropData2, setDropData2] = useState(JSON.parse(JSON.stringify(data)));
     const change2 = (item: Item) => {
         console.log(item);
@@ -84,7 +84,7 @@ const SelectView = () => {
                     {name2}
                 </Select>
             </div>
-            <div style={{ height: '800px' }} />
+            {/* <div style={{ height: '800px' }} /> */}
 
             <Select
                 maxCount={5}
