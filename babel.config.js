@@ -1,23 +1,15 @@
 module.exports = {
     presets: [
         [
-            '@babel/preset-env',
-            {
+            '@babel/preset-env'
+            // https://babeljs.io/docs/en/babel-polyfill#docsNav
+            // 本项目 - 不需要处理兼容
+            /* {
                 loose: true,
                 modules: false,
                 useBuiltIns: 'usage',
-                corejs: 3,
-                targets: {
-                    browsers: [
-                        'last 2 versions',
-                        'Firefox ESR',
-                        '> 1%',
-                        'ie >= 11',
-                        'iOS >= 8',
-                        'Android >= 4'
-                    ]
-                }
-            }
+                corejs: 3
+            } */
         ],
         ['@babel/preset-react', { runtime: 'automatic' }]
     ],

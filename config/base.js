@@ -29,33 +29,17 @@ const isProd = !WEBPACK_SERVE;
  *  css和stylus开发、生产依赖
  *  生产分离css
  */
-const cssConfig = [
+const cssConfig = (step = 1) => [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
     {
         loader: 'css-loader',
         options: {
-            importLoaders: 1,
+            importLoaders: step,
             sourceMap: !isProd
         }
     },
     {
         loader: 'postcss-loader',
-        options: {
-            sourceMap: !isProd
-        }
-    }
-];
-const stylusConfig = [
-    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-    {
-        loader: 'css-loader',
-        options: {
-            importLoaders: 1,
-            sourceMap: !isProd
-        }
-    },
-    {
-        loader: 'stylus-loader',
         options: {
             sourceMap: !isProd
         }
@@ -67,12 +51,20 @@ const config = {
         rules: [
             {
                 test: /\.css$/i,
-                use: cssConfig,
+                use: cssConfig(1),
                 exclude: /node_modules/
             },
             {
                 test: /\.styl(us)?$/,
-                use: stylusConfig,
+                use: [
+                    ...cssConfig(2),
+                    {
+                        loader: 'stylus-loader',
+                        options: {
+                            sourceMap: !isProd
+                        }
+                    }
+                ],
                 include: [resolve(__dirname, '../src')],
                 exclude: /node_modules/
             },
@@ -81,7 +73,8 @@ const config = {
                 use: [
                     'ts-loader'
                 ],
-                include: [resolve(__dirname, '../src')]
+                include: [resolve(__dirname, '../src')],
+                exclude: /node_modules/
             },
             {
                 test: /\.tsx$/,
@@ -89,7 +82,8 @@ const config = {
                     'babel-loader',
                     'ts-loader'
                 ],
-                include: [resolve(__dirname, '../src')]
+                include: [resolve(__dirname, '../src')],
+                exclude: /node_modules/
             },
             {
                 test: /\.svg$/,

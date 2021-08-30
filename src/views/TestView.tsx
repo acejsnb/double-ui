@@ -38,7 +38,7 @@ const TestView: FC = () => {
     }, []);
     return (
         <div className="component-view">
-            <h3>测试</h3>
+            <h3 className="test-title">测试</h3>
             <button type="button" onClick={mount1}>挂载1</button>
             <button type="button" onClick={update1}>更新1</button>
             <button type="button" onClick={unmount1}>卸载1</button>

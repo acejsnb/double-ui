@@ -1,22 +1,55 @@
 :root {
     --white: #fff;
     --theme: var(--white);
+
+    --blue-900: #004275;
+    --blue-800: #00518f;
+    --blue-700: #0065b3;
+    --blue-600: #007cdb;
     --blue-500: #0091ff;
+    --blue-400: #4eb1fd;
+    --blue-300: #82c7fc;
     --blue-200: #bae0fd;
     --blue-100: #e1f2ff;
     --blue-50: #f0f9ff;
 
+    --green-900: #124b0c;
+    --green-800: #186010;
+    --green-700: #237b19;
+    --green-600: #2ea121;
     --green-500: #34c724;
+    --green-400: #62d256;
     --green-300: #8ee085;
+    --green-200: #b7edb1;
     --green-100: #d9f5d6;
+    --green-50: #f0fbef;
 
+    --orange-900: #6b3900;
+    --orange-800: #8f4f04;
+    --orange-700: #b26206;
+    --orange-600: #de7802;
     --orange-500: #f58300;
     --orange-400: #ffa53d;
+    --orange-300: #ffba6b;
+    --orange-200: #fed4a4;
+    --orange-100: #feead2;
+    --orange-50: #fff6eb;
 
+    --red-900: #621c18;
+    --red-800: #812520;
+    --red-700: #ac2f28;
+    --red-600: #d83931;
     --red-500: #f54e45;
     --red-400: #f76b64;
+    --red-300: #f9908b;
+    --red-200: #eff0f1;
+    --red-100: #fde3e2;
+    --red-50: #fef2f1;
 
     --grey-900: #1f2429;
+    --grey-800: #333940;
+    --grey-700: #454d54;
+    --grey-600: #646c73;
     --grey-500: #8d9399;
     --grey-400: #c3c7cb;
     --grey-300: #e4e5e7;
@@ -30,7 +63,7 @@
     --hover-color-blue: var(--blue-100);
     --hover-color-grey: var(--grey-100);
 
-    --code-bg: #283643;
+    --code-bg: #263238;
 }
 
 /* svg fill/stroke的颜色 */

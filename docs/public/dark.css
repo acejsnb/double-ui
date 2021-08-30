@@ -1,15 +1,116 @@
 :root {
     --theme: #262b30;
-    --blue-500: #0091ff;
-    --blue-200: #bae0fd;
 
+    --blue-900: #f0f9ff;
+    --blue-800: #e1f2ff;
+    --blue-700: #bae0fd;
+    --blue-600: #007cdb;
+    --blue-500: #0091ff;
+    --blue-400: #4eb1fd;
+    --blue-300: #82c7fc;
+    --blue-300: #82c7fc;
+    --blue-200: #0065b3;
+    --blue-100: #00518f;
+    --blue-50: #004275;
+
+    --green-900: #124b0c;
+    --green-800: #186010;
+    --green-700: #237b19;
+    --green-600: #2ea121;
+    --green-500: #34c724;
+    --green-400: #62d256;
+    --green-300: #8ee085;
+    --green-200: #b7edb1;
+    --green-100: #d9f5d6;
+    --green-50: #f0fbef;
+
+    --orange-900: #6b3900;
+    --orange-800: #8f4f04;
+    --orange-700: #b26206;
+    --orange-600: #de7802;
     --orange-500: #f58300;
     --orange-400: #ffa53d;
+    --orange-300: #ffba6b;
+    --orange-200: #fed4a4;
+    --orange-100: #feead2;
+    --orange-50: #fff6eb;
 
-    --grey-900: #e4e5e7;
-    --grey-300: #e4e5e7;
-    --grey-200: #eff0f1;
-    --grey-100: #4c4d4e;
+    --red-900: #621c18;
+    --red-800: #812520;
+    --red-700: #ac2f28;
+    --red-600: #d83931;
+    --red-500: #f54e45;
+    --red-400: #f76b64;
+    --red-300: #f9908b;
+    --red-200: #eff0f1;
+    --red-100: #fde3e2;
+    --red-50: #fef2f1;
 
-    --code-bg: #283643;
+    --grey-900: #FAFAFA;
+    --grey-800: #F4F4F5;
+    --grey-700: #E4E4E7;
+    --grey-600: #D4D4D8;
+    --grey-500: #A1A1AA;
+    --grey-400: #71717A;
+    --grey-300: #52525B;
+    --grey-200: #3F3F46;
+    --grey-100: #27272A;
+    --grey-50: #18181B;
+
+    /* hover-color */
+    --hover-color-blue: var(--blue-100);
+    --hover-color-grey: var(--grey-100);
+
+    --code-bg: #263238;
+}
+
+/* svg fill/stroke的颜色 */
+.svg-fill-grey-800 {
+    fill: var(--grey-800);
+}
+.svg-stroke-grey-800 {
+    stroke: var(--grey-800);
+}
+.svg-fill-grey-500 {
+    fill: var(--grey-500);
+}
+.svg-stroke-grey-500 {
+    stroke: var(--grey-500);
+}
+.svg-fill-grey-400 {
+    fill: var(--grey-400);
+}
+.svg-stroke-grey-400 {
+    stroke: var(--grey-400);
+}
+.svg-stroke-grey-50 {
+    stroke: var(--grey-50);
+}
+
+.svg-fill-blue-500 {
+    fill: var(--blue-500);
+}
+
+.svg-fill-green-500 {
+    fill: var(--green-500);
+}
+.svg-fill-green-300 {
+    fill: var(--green-300);
+}
+.svg-fill-green-100 {
+    fill: var(--green-100);
+}
+
+.svg-fill-red-500 {
+    fill: var(--red-500);
+}
+.svg-fill-red-400 {
+    fill: var(--red-400);
+}
+
+.svg-fill-white {
+    fill: var(--white);
+}
+.svg-stroke-white {
+    stroke: var(--white);
 }
