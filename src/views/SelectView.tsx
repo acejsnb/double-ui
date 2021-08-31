@@ -76,28 +76,13 @@ const SelectView = () => {
                     value={value2}
                     data={dropData2}
                     reverse
-                    // openSearch={true}
-                    // disabled={true}
+                    openSearch
                     placeholder="请搜索哟"
                     change={change2}
                 >
                     {name2}
                 </Select>
             </div>
-            {/* <div style={{ height: '800px' }} /> */}
-
-            <Select
-                maxCount={5}
-                value=""
-                data={dropData2}
-                // alignRight={true}
-                // openSearch={true}
-                // disabled={true}
-                placeholder="请搜索哟"
-                change={change2}
-            >
-                {null}
-            </Select>
         </div>
     );
 };

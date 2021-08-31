@@ -1,33 +1,29 @@
 import './style.styl';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-    HashRouter, Link, Route, Switch, Redirect, useHistory
+    HashRouter, Link, Route, Switch, Redirect, useLocation
 } from 'react-router-dom';
 import Routes from 'docs/routes';
 import Log from 'docs/pages/log';
 import Footer from '../layout/Footer';
 
 const routes = Routes();
-const basenameUI = '/double-ui';
 const DoubleUI = () => {
-    const history = useHistory();
-    const [active, setActive] = useState('log');
-    const pushHistory = (id: string, path: string) => {
-        setActive(id);
-        history.push(basenameUI + path);
-    };
+    const { pathname } = useLocation();
+    const [active, setActive] = useState('/log');
+    useEffect(() => {
+        const path = pathname.split('/')[2];
+        setActive(`/${path}`);
+    }, [pathname]);
+
     return (
         <div className="dui">
             <HashRouter basename="/double-ui">
                 <div className="dui-menu">
-                    <section className={['dui-menu-item', active === 'log' && 'dui-menu-active'].join(' ')} onClick={() => pushHistory('log', '/log')}>
-                        Log
-                    </section>
+                    <Link className={['dui-menu-item', active === '/log' && 'dui-menu-active'].join(' ')} to="/log">Log</Link>
                     {
                         routes.map(({ id, path, name }) => (
-                            <section className={['dui-menu-item', active === id && 'dui-menu-active'].join(' ')} key={id} onClick={() => pushHistory(id, path)}>
-                                {name}
-                            </section>
+                            <Link key={id} className={['dui-menu-item', active === path && 'dui-menu-active'].join(' ')} to={path}>{name}</Link>
                         ))
                     }
                 </div>

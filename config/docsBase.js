@@ -94,7 +94,7 @@ const config = {
                 test: /\.mdx?$/,
                 use: [
                     'babel-loader',
-                    '@mdx-js/loader'
+                    'md-util-loader'
                 ],
                 include: [resolve(__dirname, '../docs')]
             }
@@ -114,6 +114,10 @@ const config = {
                 {
                     from: resolve(__dirname, '../docs/public/dark.css'),
                     to: 'modules'
+                },
+                {
+                    from: resolve(__dirname, '../docs/posts/images'),
+                    to: 'images'
                 }
             ]
         }),

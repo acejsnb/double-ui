@@ -1,21 +1,26 @@
+import './style.styl';
 import React from 'react';
 import {
-    HashRouter, Link, Route, Switch, Redirect
+    HashRouter, Route, Switch, Redirect
 } from 'react-router-dom';
 import { BlogRoutes } from 'docs/routes';
+import Index from './index';
 
 const routes = BlogRoutes();
 const Blog = () => (
-    <HashRouter basename="/blog">
-        <Switch>
-            {
-                routes.map(({ id, path, component }) => (
-                    <Route key={id} path={path} component={component} />
-                ))
-            }
-            <Redirect to={routes[0].path} />
-        </Switch>
-    </HashRouter>
+    <div className="blog">
+        <HashRouter basename="/blog">
+            <Switch>
+                <Route path="/index" render={() => <Index routes={routes} />} />
+                {
+                    routes.map(({ id, path, component }) => (
+                        <Route key={id} path={path} component={component} />
+                    ))
+                }
+                <Redirect to="/index" />
+            </Switch>
+        </HashRouter>
+    </div>
 );
 
 export default Blog;

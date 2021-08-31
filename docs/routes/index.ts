@@ -15,12 +15,12 @@ const getModules = (files: any) => {
     return modules;
 };
 const Routes = () => {
-    const files = require.context('docs/pages/md', true, /index.tsx$/);
+    const files = require.context('docs/pages/md', true, /\.tsx$/);
     return getModules(files);
 };
 
 const BlogRoutes = () => {
-    const files = require.context('docs/posts', true, /index.md$/);
+    const files = require.context('docs/posts', true, /\.md$/);
     return getModules(files);
 };
 

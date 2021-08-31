@@ -1,6 +1,5 @@
 ## Select
-
-```tsx
+```ts
     import { Button } from 'double-ui';
     const data = [
         { id: '1', name: 'AAA' },
@@ -21,6 +20,8 @@
         setValue(item.id);
         setName(item.name);
     };
+```
+```tsx
     <Select
         value={value}
         data={dropData}
