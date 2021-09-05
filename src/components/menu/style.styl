@@ -1,0 +1,118 @@
+@import "../../assets/animate/slideToRight.styl"
+.d-menu
+  padding-top 8px
+  padding-bottom @padding-top
+  width 100%
+  //transition width .12s
+.d-menu-collapsed
+  .d-sub-item
+    padding-right 0
+  .d-sub-triangle
+    display none
+  .d-sub-icon
+    & + .d-menu-text
+      display none
+.d-sub-menu
+  width 100%
+  & + .d-sub-menu
+    margin-top 8px
+.d-sub-item
+  display flex
+  align-items center
+  //padding-left 8px
+  padding-right 12px
+  width 100%
+  height 32px
+  cursor pointer
+  &:hover
+    .d-sub-icon
+      path
+        fill var(--blue-500)
+    .d-menu-text
+      color var(--blue-500)
+.d-sub-item-active
+  .d-sub-icon
+    path
+      fill var(--blue-500)
+  .d-menu-text
+    font-weight bold
+    color var(--blue-500)
+
+.d-sub-item-has-child
+  .d-menu-text
+    width calc(100% - 60px)
+.d-sub-item-no-child
+  .d-menu-text
+    width calc(100% - 48px)
+
+.d-sub-item-active-position
+  background-color var(--blue-100)
+.d-sub-item-selected
+  background-color var(--blue-100)
+.d-sub-icon
+  width 48px
+  height 16px
+  text-align center
+  font-size 0
+  svg
+    width 10px
+    height 12px
+    path
+      transition fill .2s
+.d-sub-triangle
+  margin-left auto
+  width 16px
+  height @width
+  font-size 0
+  transition transform .2s
+  transform rotate(90deg)
+.d-sub-triangle-open
+  transform rotate(180deg)
+
+.d-sub-menu-children
+  padding-left 8px
+  padding-right @padding-left
+  width 100%
+  overflow hidden
+  transition height .12s
+  .d-sub-menu
+    margin-top 8px
+    margin-bottom @margin-top
+    .d-sub-item
+      padding-left 32px
+      padding-right 8px
+.d-sub-menu-children-position
+  position fixed
+  padding 8px
+  background-color var(--theme)
+  border-radius 8px
+  max-width 160px
+  box-shadow var(--box-shadow-bottom)
+  .d-menu-item
+    padding-left 8px
+
+.d-menu-item
+  display flex
+  align-items center
+  padding-left 32px
+  width 100%
+  height 32px
+  cursor pointer
+  &:hover
+    .d-menu-text
+      color var(--blue-500)
+  & + .d-menu-item
+    margin-top 8px
+.d-menu-item-active
+  background-color var(--blue-100)
+  border-radius 4px
+  .d-menu-text
+    color var(--blue-500)
+
+.d-menu-text
+  font-size 14px
+  color var(--grey-600)
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+  transition color .2s

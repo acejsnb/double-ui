@@ -95,6 +95,7 @@ const config = {
                 use: [
                     'babel-loader',
                     'md-util-loader'
+                    // resolve(__dirname, '../docs/utils/loader.js')
                 ],
                 include: [resolve(__dirname, '../docs')]
             }

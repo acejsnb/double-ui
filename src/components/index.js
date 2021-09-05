@@ -6,6 +6,7 @@ import Input from './Input';
 import DropGroup from './DropGroup';
 import Form from './Form';
 import Loading from './Loading';
+import Menu from './Menu';
 import Message from './Message';
 import Modal from './Modal';
 import Select from './Select';
@@ -22,6 +23,7 @@ export {
     Form,
     Input,
     Loading,
+    Menu,
     Message,
     Modal,
     Select,

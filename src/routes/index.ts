@@ -8,6 +8,7 @@ import DropGroupView from '@/views/DropGroupView';
 import InputView from '@/views/InputView';
 import LoadingView from '@/views/LoadingView';
 import MessageView from '@/views/MessageView';
+import MenuView from '@/views/MenuView';
 import ModalView from '@/views/ModalView';
 import ProgressView from '@/views/ProgressView';
 import TreeView from '@/views/TreeView';
@@ -30,6 +31,7 @@ const routes: RouteItem[] = [
     { name: 'DropGroup', path: '/dropgroupview', component: DropGroupView },
     { name: 'Input', path: '/inputview', component: InputView },
     { name: 'Loading', path: '/loadingview', component: LoadingView },
+    { name: 'Menu', path: '/menuview', component: MenuView },
     { name: 'Message', path: '/messageview', component: MessageView },
     { name: 'Modal', path: '/modalview', component: ModalView },
     { name: 'Progress', path: '/progressview', component: ProgressView },

@@ -31,15 +31,15 @@
 
 ### attributes
 
-| 参数     | 说明  | 类型    | 默认值  | 必须    |
-| ------- | ---- | ------ | ------- | ------ |
-| data    | 数据 | array | [] | yes     |
-| value   | 选中的项 | string | '' | no |
-| maxWidth   | 最大宽度 | number | 180 | no   |
-| triangle   | 是否显示右边三角形icon | boolean | true | no   |
-| openSearch   | 开启搜索 | boolean | false | no   |
-| placeholder   | 输入框占位符 | string | 请搜索 | no   |
-| disabled   | 是否禁用 | boolean | false | no   |
-| maxCount   | 下拉列表容纳最大条数 | number | 5 | no   |
-| children   | content | any | button | no   |
-| change   | 选中提交的事件 | function | (item) => {} | yes   |
+| 参数 | 说明 | 类型 | 默认值 | 必须 |
+| ---- | ---- | ---- | ---- | ---- |
+| data | 数据 | array | [] | yes |
+| value | 选中的项 | string | '' | no |
+| maxWidth | 最大宽度 | number | 180 | no |
+| triangle | 是否显示右边三角形icon | boolean | true | no |
+| openSearch | 开启搜索 | boolean | false | no |
+| placeholder | 输入框占位符 | string | 请搜索 | no |
+| disabled | 是否禁用 | boolean | false | no |
+| maxCount | 下拉列表容纳最大条数 | number | 5 | no |
+| children | content | any | button | no |
+| change | 选中提交的事件 | function | (item) => {} | yes |
