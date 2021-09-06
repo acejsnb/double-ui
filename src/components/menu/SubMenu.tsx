@@ -16,7 +16,7 @@ const SubMenu: FC<SubMenuProps> = ({
     layout = 'tile',
     children
 }) => {
-    const { state: { openIds, collapsed = false } } = useContext(Context);
+    const { state: { selectedIds, openIds, collapsed = false } } = useContext(Context);
     const titleRef = useRef<HTMLDivElement | null>(null);
     const [style, setStyle] = useState({});
     const [show, setShow] = useState(false);
@@ -24,17 +24,14 @@ const SubMenu: FC<SubMenuProps> = ({
     // 设置定位
     const setPositionStyle = () => {
         const { top = 0, right = 0 } = titleRef.current?.getBoundingClientRect() as DOMRect;
-        setStyle({ top: `${top}px`, left: `${right + 20}px` });
+        setStyle({ top: `${top}px`, left: `${right + (collapsed ? 8 : 20)}px`, maxHeight: '100vh' });
     };
     // 设置style样式
     const changeStyle = (status: boolean) => {
-        setStyle({ height: status ? `${Children.count(children) * 40}px` : 0 });
+        if (status) setStyle({ maxHeight: '100vh' });
+        else setStyle({ maxHeight: 0 });
     };
 
-    useEffect(() => {
-        if (layout === 'position') return;
-        changeStyle(!collapsed && openIds.includes(id));
-    }, [collapsed]);
     // 监听展开项数据ids
     useEffect(() => {
         if (layout === 'position') {
@@ -47,14 +44,14 @@ const SubMenu: FC<SubMenuProps> = ({
     // 监听鼠标在当前title上移入移除
     const mouseHandle = (status: boolean) => {
         if (status) {
-            if (DUI_ITEM_TITLE_LEAVE) window.clearTimeout(DUI_ITEM_TITLE_LEAVE);
             DUI_ITEM_TITLE_ENTER = window.setTimeout(() => {
+                if (DUI_ITEM_TITLE_LEAVE) window.clearTimeout(DUI_ITEM_TITLE_LEAVE);
                 setShow(status);
                 setPositionStyle();
             }, 300);
         } else {
+            if (DUI_ITEM_TITLE_ENTER) window.clearTimeout(DUI_ITEM_TITLE_ENTER);
             DUI_ITEM_TITLE_LEAVE = window.setTimeout(() => {
-                if (DUI_ITEM_TITLE_ENTER) window.clearTimeout(DUI_ITEM_TITLE_ENTER);
                 setShow(status);
             }, 300);
         }
@@ -67,6 +64,11 @@ const SubMenu: FC<SubMenuProps> = ({
     const childrenLeave = () => {
         mouseHandle(false);
     };
+
+    useEffect(() => () => {
+        // 选中
+        setShow(false);
+    }, [selectedIds]);
 
     useEffect(() => () => {
         if (DUI_ITEM_TITLE_ENTER) window.clearTimeout(DUI_ITEM_TITLE_ENTER);
@@ -92,7 +94,9 @@ const SubMenu: FC<SubMenuProps> = ({
                         ? (
                             <CSSTransition in={show} timeout={120} mountOnEnter classNames="d-transition-menu">
                                 <div
-                                    className="d-sub-menu-children d-sub-menu-children-position"
+                                    className={['d-sub-menu-children', 'd-sub-menu-children-position', collapsed && 'd-sub-menu-children-collapsed'].filter((d) => d).join(' ')}
+                                    data-name={collapsed ? name : ''}
+                                    data-id={id}
                                     style={style}
                                     onMouseEnter={childrenEnter}
                                     onMouseLeave={childrenLeave}

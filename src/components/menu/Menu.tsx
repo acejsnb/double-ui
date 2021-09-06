@@ -43,11 +43,12 @@ const Menu: FC<Props> = ({
         return () => window.clearTimeout(DUI_MENU_TIMER);
     }, [selectedIds, openIds]);
     useEffect(() => {
+        // listen collapsed
         dispatch({ type: 'collapsed', payload: collapsed });
     }, [collapsed]);
 
     return (
-        <div className={['d-menu', collapsed && 'd-menu-collapsed'].filter((d) => d).join(' ')}>
+        <div className={['d-menu', collapsed ? 'd-menu-collapsed' : 'd-menu-normal'].filter((d) => d).join(' ')}>
             <Context.Provider value={{ state, dispatch }}>
                 {children}
             </Context.Provider>

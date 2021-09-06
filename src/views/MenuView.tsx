@@ -85,33 +85,57 @@ const MenuView: FC = () => {
     // const [selectedIds] = useState(['00']);
     const [openIds] = useState(['111']);
     const [collapsed, seCollapsed] = useState(false);
+
     return (
         <div className="component-view">
             <Button click={() => seCollapsed((status) => !status)}>{collapsed.toString()}</Button>
             <br />
             <br />
-            <div className="menu-view" style={{ backgroundColor: 'var(--grey-50)', width: `${collapsed ? 48 : 224}px`, transition: 'width .12s' }}>
-                <Menu selectedIds={selectedIds} openIds={openIds} collapsed={collapsed} click={click}>
-                    {menuData.map(({
-                        id, name, url = '', children
-                    }) => (
-                        <Menu.SubMenu key={id} menuId={id} id={id} name={name} params={{ name, url }} icon={<HomeSvg />}>
-                            {children?.map(({
-                                id: subId, name: subName, url: subUrl = '', children: subChildren
-                            }) => (
-                                (subChildren && subChildren.length)
-                                    ? (
-                                        <Menu.SubMenu key={subId} menuId={`${id},${subId}`} id={subId} name={subName} params={{ name: subName, url: subUrl }} layout="position">
-                                            {subChildren.map(({ id: threeId, name: threeName, url: threeUrl = '' }) => (
-                                                <Menu.Item key={threeId} menuId={`${id},${subId},${threeId}`} id={threeId} params={{ name: threeName, url: threeUrl }}>{threeName}</Menu.Item>
-                                            ))}
-                                        </Menu.SubMenu>
-                                    )
-                                    : <Menu.Item key={subId} menuId={`${id},${subId}`} id={subId} params={{ name: subName, url: subUrl }}>{subName}</Menu.Item>
-                            ))}
-                        </Menu.SubMenu>
-                    ))}
-                </Menu>
+            <div>
+                <div className="menu-view" style={{ backgroundColor: 'var(--grey-50)', width: `${collapsed ? 48 : 224}px`, transition: 'width .12s' }}>
+                    <Menu selectedIds={selectedIds} openIds={openIds} collapsed={collapsed} click={click}>
+                        {menuData.map(({
+                            id, name, url = '', children
+                        }) => (
+                            <Menu.SubMenu key={id} menuId={id} id={id} name={name} params={{ name, url }} icon={<HomeSvg />} layout={!collapsed ? 'tile' : 'position'}>
+                                {children?.map(({
+                                    id: sid, name: sName, url: sUrl, children: sChildren
+                                }) => (
+                                    <Menu.SubMenu key={sid} menuId={`${id},${sid}`} id={sid} name={sName} params={{ name: sName, url: sUrl }} layout={collapsed ? 'tile' : 'position'}>
+                                        {sChildren?.map(({
+                                            id: tid, name: tName, url: tUrl
+                                        }) => (
+                                            <Menu.Item key={tid} menuId={`${id},${sid},${tid}`} id={tid} params={{ name: tName, url: tUrl }}>{tName}</Menu.Item>
+                                        ))}
+                                    </Menu.SubMenu>
+                                ))}
+                            </Menu.SubMenu>
+                        ))}
+                    </Menu>
+                </div>
+                <br />
+                <br />
+                <div className="menu-view" style={{ backgroundColor: 'var(--grey-50)', width: `${224}px`, transition: 'width .12s' }}>
+                    <Menu selectedIds={selectedIds} openIds={openIds} click={click}>
+                        {menuData.map(({
+                            id, name, url = '', children
+                        }) => (
+                            <Menu.SubMenu key={id} menuId={id} id={id} name={name} params={{ name, url }} icon={<HomeSvg />}>
+                                {children?.map(({
+                                    id: sid, name: sName, url: sUrl, children: sChildren
+                                }) => (
+                                    <Menu.SubMenu key={sid} menuId={`${id},${sid}`} id={sid} name={sName} params={{ name: sName, url: sUrl }}>
+                                        {sChildren?.map(({
+                                            id: tid, name: tName, url: tUrl
+                                        }) => (
+                                            <Menu.Item key={tid} menuId={`${id},${sid},${tid}`} id={tid} params={{ name: tName, url: tUrl }}>{tName}</Menu.Item>
+                                        ))}
+                                    </Menu.SubMenu>
+                                ))}
+                            </Menu.SubMenu>
+                        ))}
+                    </Menu>
+                </div>
             </div>
         </div>
     );

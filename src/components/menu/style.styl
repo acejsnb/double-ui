@@ -3,15 +3,22 @@
   padding-top 8px
   padding-bottom @padding-top
   width 100%
-  //transition width .12s
-.d-menu-collapsed
-  .d-sub-item
-    padding-right 0
-  .d-sub-triangle
-    display none
+.d-menu-normal
+  > .d-sub-menu
+    > .d-sub-menu-children-tile
+      padding-left 8px
+      padding-right @padding-left
   .d-sub-icon
-    & + .d-menu-text
-      display none
+    width 40px
+.d-menu-collapsed
+  .d-sub-icon
+    width 48px
+  > .d-sub-menu
+    > .d-sub-item
+      padding-right 0
+    > .d-sub-item-has-child
+      .d-sub-triangle, .d-menu-text
+          display none
 .d-sub-menu
   width 100%
   & + .d-sub-menu
@@ -19,8 +26,7 @@
 .d-sub-item
   display flex
   align-items center
-  //padding-left 8px
-  padding-right 12px
+  border-radius 4px
   width 100%
   height 32px
   cursor pointer
@@ -35,22 +41,20 @@
     path
       fill var(--blue-500)
   .d-menu-text
-    font-weight bold
     color var(--blue-500)
 
 .d-sub-item-has-child
-  .d-menu-text
-    width calc(100% - 60px)
+  .d-menu-text-i
+    width calc(100% - 48px)
+  .d-menu-text-i-c
+    width calc(100% - 68px)
 .d-sub-item-no-child
-  .d-menu-text
+  .d-menu-text-i
     width calc(100% - 48px)
 
 .d-sub-item-active-position
   background-color var(--blue-100)
-.d-sub-item-selected
-  background-color var(--blue-100)
 .d-sub-icon
-  width 48px
   height 16px
   text-align center
   font-size 0
@@ -60,7 +64,6 @@
     path
       transition fill .2s
 .d-sub-triangle
-  margin-left auto
   width 16px
   height @width
   font-size 0
@@ -70,26 +73,67 @@
   transform rotate(180deg)
 
 .d-sub-menu-children
-  padding-left 8px
-  padding-right @padding-left
   width 100%
+  max-height 0
   overflow hidden
-  transition height .12s
+  transition opacity .12s, transform .12s, max-height .12s
+  .d-sub-item-no-child
+    .d-menu-text-i
+      width calc(100% - 48px)
+  .d-sub-item-active.d-sub-item-position
+    background-color var(--blue-100)
+
+.d-sub-menu-children-tile
   .d-sub-menu
     margin-top 8px
     margin-bottom @margin-top
     .d-sub-item
-      padding-left 32px
-      padding-right 8px
+      padding-left 48px
+      padding-right 16px
+  .d-sub-item-no-child.d-sub-item-active
+      background-color var(--blue-100)
+  .d-sub-menu-children-tile
+    .d-menu-item
+      padding-left 60px
+
 .d-sub-menu-children-position
+  position fixed
+  padding 8px
+  background-color var(--theme)
+  border-radius 8px
+  max-width 180px
+  box-shadow var(--box-shadow-bottom)
+  .d-sub-menu
+    .d-sub-item
+      padding-left 12px
+      padding-right @padding-left
+  .d-menu-item
+    padding-left 8px
+
+.d-sub-menu-children-collapsed
   position fixed
   padding 8px
   background-color var(--theme)
   border-radius 8px
   max-width 160px
   box-shadow var(--box-shadow-bottom)
+  &:before
+    content attr(data-name)
+    display block
+    margin-bottom 8px
+    padding 0 12px 8px
+    border-bottom 1px solid var(--grey-200)
+    width 100%
+    color var(--grey-500)
+    font-size 14px
+    overflow hidden
+    text-overflow ellipsis
+    white-space nowrap
+  .d-sub-item-no-child.d-sub-item-active
+    background-color var(--blue-100)
   .d-menu-item
-    padding-left 8px
+    padding-left 28px
+    padding-right 12px
 
 .d-menu-item
   display flex
@@ -116,3 +160,5 @@
   text-overflow ellipsis
   white-space nowrap
   transition color .2s
+.d-menu-text-normal
+  width 100%

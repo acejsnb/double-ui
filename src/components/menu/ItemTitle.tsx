@@ -18,7 +18,14 @@ const ItemTitle: ForwardRefRenderFunction<HTMLDivElement, ItemTitleProps> = ({
         if (hasChildNode) {
             if (layout === 'position') return;
             // 展开
-            dispatch({ type: 'open', payload: menuId });
+            let payload: string;
+            if (openIds.includes(id)) {
+                const index = openIds.findIndex((d) => d === id);
+                payload = openIds.filter((d, i) => i < index).join(',');
+            } else {
+                payload = menuId;
+            }
+            dispatch({ type: 'open', payload });
         } else {
             dispatch({ type: 'selected', payload: `${menuId},${id}` });
             click?.({ id, ...params });
@@ -26,11 +33,11 @@ const ItemTitle: ForwardRefRenderFunction<HTMLDivElement, ItemTitleProps> = ({
     };
     // 鼠标移入移除
     const enter = () => {
-        if (layout === 'tile') return;
+        if (layout === 'tile' || !hasChildNode) return;
         mouseHandle(true);
     };
     const leave = () => {
-        if (layout === 'tile') return;
+        if (layout === 'tile' || !hasChildNode) return;
         mouseHandle(false);
     };
 
@@ -39,16 +46,23 @@ const ItemTitle: ForwardRefRenderFunction<HTMLDivElement, ItemTitleProps> = ({
             ref={ref}
             className={[
                 'd-sub-item',
-                hasChildNode ? 'd-sub-item-has-child' : 'd-sub-item-no-child',
-                selectedIds.includes(id) && `d-sub-item-active d-sub-item-active-${layout}`,
-                (selectedIds.includes(id) && !hasChildNode) && 'd-sub-item-selected'
+                `d-sub-item-${hasChildNode ? 'has' : 'no'}-child`,
+                selectedIds.includes(id) && `d-sub-item-active d-sub-item-${layout}`
             ].filter((d) => d).join(' ')}
             onClick={titleClick}
             onMouseEnter={enter}
             onMouseLeave={leave}
         >
             {icon && <section className="d-sub-icon">{icon}</section>}
-            <section className="d-menu-text">{name}</section>
+            <section className={[
+                'd-menu-text',
+                icon
+                    ? `d-menu-text-${hasChildNode ? 'i-c' : 'i'}`
+                    : 'd-menu-text-normal'
+            ].join(' ')}
+            >
+                {name}
+            </section>
             {hasChildNode && (
                 <section
                     className={['d-sub-triangle', (openIds.includes(id) && layout === 'tile') && 'd-sub-triangle-open'].filter((d) => d).join(' ')}
