@@ -7,5 +7,6 @@ export type Props = {
     disabled?: boolean
     loading?: boolean
     width?: number
+    className?: string
     click?: Fn
 }

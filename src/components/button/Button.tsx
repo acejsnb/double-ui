@@ -10,6 +10,7 @@ const Button: FC<Props> = ({
     disabled = false,
     loading = false,
     width = 0,
+    className,
     children,
     click = () => {}
 }) => {
@@ -23,7 +24,8 @@ const Button: FC<Props> = ({
                 'd-btn',
                 `d-btn-${type}`,
                 `d-btn-${size}`,
-                `d-btn-${disabled ? 'disabled' : 'normal'}`
+                `d-btn-${disabled ? 'disabled' : 'normal'}`,
+                className
             ].join(' ')}
             style={width ? { width: `${width}px` } : {}}
             onClick={btnClick}
