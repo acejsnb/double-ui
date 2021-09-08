@@ -24,9 +24,20 @@ const ModalView = () => {
     const formSubmit = (params: Params) => {
         console.log('confirm', params);
     };
+
+    const [show2, setShow2] = useState(false);
+    const close2 = () => {
+        console.log('close');
+        setShow2(false);
+    };
+    const confirm2 = () => {
+        console.log('click');
+    };
+
     return (
         <div className="component-view">
             <Button width={90} click={showModal}>按钮-show</Button>
+            <Button width={90} click={() => setShow2(true)}>按钮-show2</Button>
             <Modal show={show} title="模态框" footer={false} close={close} confirm={confirm}>
                 <div style={{ padding: '40px' }}>
                     <Form name="idForm" reset={close} submit={formSubmit}>
@@ -43,6 +54,9 @@ const ModalView = () => {
                         </Form.Item>
                     </Form>
                 </div>
+            </Modal>
+            <Modal show={show2} title="修改密码" mode="tip" type="info" close={close2} confirm={confirm2}>
+                是否要修改密码？如确认，请在钉钉中点击BOSS应用推送消息中密码修改链接。
             </Modal>
         </div>
     );

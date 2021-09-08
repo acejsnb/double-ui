@@ -8,11 +8,14 @@ import Teleport from '@/components/teleport/Teleport';
 import CloseSvg from '@/assets/iconSvg/icon_close.svg';
 import { Props } from './types';
 import ListenEsc from './Tools';
+import Tip from './Tip';
 
 
 const Modal: FC<Props> = ({
-    show, esc = false, shade = false, footer = true,
-    title, mode = 'default',
+    show, esc = false, shade = false, header = true, footer = true,
+    title,
+    mode = 'default',
+    type,
     close, confirm,
     children
 }) => {
@@ -51,19 +54,38 @@ const Modal: FC<Props> = ({
             <CSSTransition in={visible} timeout={120} classNames="d-modal-transition">
                 <div className="d-modal">
                     <div className={['d-modal-container', `d-modal-container-${mode}`].join(' ')}>
-                        <header className="d-modal-header">
-                            <section className="d-modal-title">{title}</section>
-                            <span className="d-modal-icon" onClick={close}><CloseSvg /></span>
-                        </header>
+                        {
+                            mode === 'tip'
+                                ? (
+                                    <Tip title={title} type={type} />
+                                )
+                                : (
+                                    header && (
+                                        typeof header === 'boolean'
+                                            ? (
+                                                <header className="d-modal-header">
+                                                    <section className="d-modal-title">{title}</section>
+                                                    <span className="d-modal-icon" onClick={close}><CloseSvg /></span>
+                                                </header>
+                                            )
+                                            : header
+                                    )
+                                )
+                        }
                         <main className="d-modal-main d-modal-main-mh" ref={refMain}>{children}</main>
                         {
-                            (typeof footer === 'boolean' && footer)
-                                && (
-                                    <footer className={['d-modal-footer', hasShade && 'd-modal-footer-bs'].join(' ')}>
-                                        <Button click={close}>取消</Button>
-                                        <Button type="blue" click={confirm}>确定</Button>
-                                    </footer>
-                                )
+                            footer && (
+                                <footer className={['d-modal-footer', hasShade && 'd-modal-footer-bs'].join(' ')}>
+                                    {
+                                        typeof footer === 'boolean' ? (
+                                            <>
+                                                <Button click={close}>取消</Button>
+                                                <Button type="blue" click={confirm}>确定</Button>
+                                            </>
+                                        ) : footer
+                                    }
+                                </footer>
+                            )
                         }
                     </div>
                 </div>

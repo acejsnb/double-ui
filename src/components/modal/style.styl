@@ -33,6 +33,8 @@
   width 840px
 .d-modal-container-large
   width 1260px
+.d-modal-container-tip
+  width 420px
 
 .d-modal-header
   display flex
@@ -75,6 +77,34 @@
   height 76px
 .d-modal-footer-bs
   box-shadow var(--box-shadow-top)
+
+// Tip
+.d-modal-header-tip
+  display flex
+  align-items center
+  padding 20px 32px 12px
+  width 100%
+  svg
+    width 24px
+    height @width
+  h3
+    margin-left 12px
+    font-size 16px
+.d-modal-header-tip-info
+  path
+    fill var(--blue-500)
+.d-modal-header-tip-error
+  path
+    fill var(--red-500)
+.d-modal-header-tip-warn
+  path
+    fill var(--orange-500)
+.d-modal-container-tip
+  .d-modal-main
+    padding-left 68px
+    padding-right 32px
+    font-size 14px
+    color var(--grey-600)
 
 .d-modal-transition-enter
   opacity 0

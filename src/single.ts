@@ -12,6 +12,7 @@ module.exports = {
     Form: '../src/components/form',
     Input: '../src/components/input',
     Loading: '../src/components/loading',
+    Menu: '../src/components/menu',
     Message: '../src/components/message',
     Modal: '../src/components/modal',
     Select: '../src/components/select',
