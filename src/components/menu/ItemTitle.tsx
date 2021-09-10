@@ -21,7 +21,7 @@ const ItemTitle: ForwardRefRenderFunction<HTMLDivElement, ItemTitleProps> = ({
             let payload: string;
             if (openIds.includes(id)) {
                 const index = openIds.findIndex((d) => d === id);
-                payload = openIds.filter((d, i) => i < index).join(',');
+                payload = openIds.filter((d, i) => i < index)?.join(',') ?? '';
             } else {
                 payload = menuId;
             }

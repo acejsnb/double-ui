@@ -12,7 +12,8 @@ const reducer: Reducer = (state, { type, payload }) => {
     case 'collapsed':
         return { ...state, collapsed: payload };
     case 'open': {
-        const openIds = state.openIds.join(',') === payload ? [] : payload.split(',');
+        const stateOIds = state.openIds ?? [];
+        const openIds = (stateOIds.length && stateOIds.join(',') === payload) ? [] : payload.split(',');
         return { ...state, openIds };
     }
     case 'selected': {

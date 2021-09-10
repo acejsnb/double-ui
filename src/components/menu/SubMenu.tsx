@@ -20,6 +20,10 @@ const SubMenu: FC<SubMenuProps> = ({
     const titleRef = useRef<HTMLDivElement | null>(null);
     const [style, setStyle] = useState({});
     const [show, setShow] = useState(false);
+    const [hasChildNode, setHasChildNode] = useState(false);
+    useEffect(() => {
+        setHasChildNode(!!Children.count(children));
+    }, [children]);
 
     // 设置定位
     const setPositionStyle = () => {
@@ -32,6 +36,10 @@ const SubMenu: FC<SubMenuProps> = ({
         else setStyle({ maxHeight: 0 });
     };
 
+    // 监听折叠/收起
+    useEffect(() => {
+        if (!collapsed) changeStyle(!collapsed && openIds.includes(id));
+    }, [collapsed]);
     // 监听展开项数据ids
     useEffect(() => {
         if (layout === 'position') {
@@ -83,13 +91,13 @@ const SubMenu: FC<SubMenuProps> = ({
                 menuId={menuId}
                 params={params}
                 name={name}
-                hasChildNode={!!children}
+                hasChildNode={hasChildNode}
                 icon={icon}
                 layout={layout}
                 mouseHandle={mouseHandle}
             />
             {
-                children && (
+                hasChildNode && (
                     layout === 'position'
                         ? (
                             <CSSTransition in={show} timeout={120} mountOnEnter classNames="d-transition-menu">

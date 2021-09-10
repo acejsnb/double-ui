@@ -1,12 +1,13 @@
 import React, { FC, useState } from 'react';
 import Menu from '@/components/menu';
+import { Item } from '@/components/menu/types';
 import Button from '@/components/button';
 import HomeSvg from '@/assets/iconSvg/home.svg';
 
 const Icon = <HomeSvg />;
 const menuData = [
     {
-        id: '00', name: '首页首页首页首页首页首页首页首页首页', Icon, url: '/shouye'
+        id: '00', name: '首页首页首页首页首页首页首页首页首页', icon: Icon, url: '/shouye'
     },
     {
         id: '111',
@@ -74,6 +75,17 @@ const menuData = [
     },
     {
         id: '888', name: '888', Icon, url: '/888'
+    }
+];
+const menuData2: Item[] = [
+    {
+        id: '666', name: '666', icon: Icon, url: '/666'
+    },
+    {
+        id: '777', name: '777777777777777777777777777777777777777', icon: Icon, url: '/777'
+    },
+    {
+        id: '888', name: '888', icon: Icon, url: '/888'
     }
 ];
 

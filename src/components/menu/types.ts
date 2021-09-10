@@ -3,6 +3,8 @@ import { Dispatch, ReactElement } from 'react';
 export interface Item {
     id: string
     name: string
+    icon?: ReactElement | string
+    url?: string
     children?: Item[]
 }
 export type Params = {
