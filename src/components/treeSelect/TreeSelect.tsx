@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useRef, useState, MouseEvent, useEffect
+    FC, useRef, useState, MouseEvent, useEffect, memo, useCallback
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
@@ -29,7 +29,7 @@ const TreeSelect: FC<Props> = ({
     const [top, setTop] = useState(0);
     const [position, setPosition] = useState(true);
 
-    const openDrop = (e: MouseEvent) => {
+    const openDrop = useCallback((e: MouseEvent) => {
         e.stopPropagation();
         if (disabled) return;
         const { X, Y, P } = ResetPosition({
@@ -40,8 +40,8 @@ const TreeSelect: FC<Props> = ({
         setPosition(P);
         if (!isMounted) setIsMounted(true);
         setShow(true);
-    };
-    const itemClick = (item: TileItem | IMultiple) => {
+    }, [triggerRef, isMounted]);
+    const itemClick = useCallback((item: TileItem | IMultiple) => {
         // if (multiple) {
         // } else {
         // }
@@ -49,7 +49,7 @@ const TreeSelect: FC<Props> = ({
         setText((item as TileItem).name);
         setShow(false);
         change(item);
-    };
+    }, []);
     useEffect(() => {
         setSelectId(value as string);
     }, [value]);
@@ -89,4 +89,4 @@ const TreeSelect: FC<Props> = ({
     );
 };
 
-export default TreeSelect;
+export default memo(TreeSelect);

@@ -1,5 +1,7 @@
 import './style.styl';
-import React, { FC, FormEvent, useEffect } from 'react';
+import React, {
+    FC, FormEvent, useEffect, memo
+} from 'react';
 import { Props } from './types';
 
 const Input: FC<Props> = ({
@@ -41,4 +43,4 @@ const Input: FC<Props> = ({
     );
 };
 
-export default Input;
+export default memo(Input);

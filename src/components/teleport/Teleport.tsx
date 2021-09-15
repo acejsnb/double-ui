@@ -1,6 +1,6 @@
 // 传送门
 import React, {
-    FC, useRef, useEffect, PropsWithChildren
+    FC, useRef, useEffect, PropsWithChildren, memo
 } from 'react';
 import { createPortal } from 'react-dom';
 import ClickOutside from '@/utils/ClickOutside';
@@ -42,4 +42,4 @@ const Teleport: FC<Props> = ({ isMounted, setShow, children }) => {
     return isMounted ? createPortal(children, el.current) : null;
 };
 
-export default Teleport;
+export default memo(Teleport);

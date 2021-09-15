@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, memo, useContext } from 'react';
 import Input from '@/components/input/Input';
 import { Props } from '@/components/input/types';
 import FormContext from './FormContext';
@@ -26,4 +26,4 @@ const FormInput: FC<Props> = ({
     );
 };
 
-export default FormInput;
+export default memo(FormInput);

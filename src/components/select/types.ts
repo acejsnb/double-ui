@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface Item {
     id: string
     name: string
@@ -16,7 +18,7 @@ export interface OptionProps {
     change: (item: Item) => void
 }
 
-export interface IProps extends OptionProps {
+export interface Props extends OptionProps {
     border?: boolean
     arrow?: boolean
     triangle?: boolean
@@ -25,4 +27,5 @@ export interface IProps extends OptionProps {
     className?: string
     disabled?: boolean
     width?: number
+    children?: ReactNode
 }

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface Item {
     id: string
     name?: string
@@ -16,11 +18,12 @@ export interface Types {
     change(item: { pid?: string; id: string; name?: string }): void
 }
 
-export interface IProps extends Types {
+export interface Props extends Types {
     triangle?: boolean
     trigger?: string
     disabled?: boolean
     underline?: boolean
+    children?: ReactNode
 }
 
 export interface OptionProps extends Types {

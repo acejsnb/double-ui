@@ -1,5 +1,7 @@
 import './style.styl';
-import React, { FC, useReducer, useEffect } from 'react';
+import React, {
+    FC, useReducer, useEffect, memo
+} from 'react';
 import { Props, Reducer } from './types';
 import Context from './Context';
 
@@ -57,4 +59,4 @@ const Menu: FC<Props> = ({
     );
 };
 
-export default Menu;
+export default memo(Menu);

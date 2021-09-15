@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useRef, useState, useEffect
+    FC, useRef, useState, useEffect, memo
 } from 'react';
 
 import IconClose from '@/assets/iconSvg/icon_close_white.svg';
@@ -60,4 +60,4 @@ const MessageBox: FC<Props> = ({
         </div>
     );
 };
-export default MessageBox;
+export default memo(MessageBox);

@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, MouseEvent, useState, useEffect
+    FC, MouseEvent, useState, useEffect, memo
 } from 'react';
 
 import TextEllipsis from '@/utils/TextEllipsis';
@@ -43,4 +43,4 @@ const Checkbox: FC<Props> = ({
     );
 };
 
-export default Checkbox;
+export default memo(Checkbox);

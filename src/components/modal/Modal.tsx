@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useEffect, useRef, useState
+    FC, memo, useEffect, useRef, useState
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Button from '@/components/button/Button';
@@ -94,4 +94,4 @@ const Modal: FC<Props> = ({
     );
 };
 
-export default Modal;
+export default memo(Modal);

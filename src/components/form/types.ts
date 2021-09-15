@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface SubmitParams {
     [key: string]: string
 }
@@ -8,6 +10,7 @@ export interface Props {
     layout?: 'vertical' | 'horizontal'
     reset?: Fn
     submit?: (params: { [key: string]: string }) => void
+    children?: ReactNode
 }
 
 export interface CheckList {
@@ -35,6 +38,7 @@ export interface ItemProps {
     className?: string
     rules?: Rule[]
     getFieldValue?: (key: string) => string | void
+    children?: ReactNode
 }
 
 // ItemContext

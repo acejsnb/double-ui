@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface Item {
     parentId?: string
     id: string
@@ -26,6 +28,7 @@ export interface Props {
     reverse?: boolean
     data: Item[]
     change?: (id: string, pid: string, item: Item | undefined) => void
+    children?: ReactNode
 }
 export interface CProps {
     reverse?: boolean

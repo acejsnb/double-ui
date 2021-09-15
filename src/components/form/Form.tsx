@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, FormEvent, useRef, useState
+    FC, FormEvent, useCallback, useRef, useState, memo
 } from 'react';
 import {
     Props, SubmitParams, CheckList
@@ -21,26 +21,26 @@ const Form: FC<Props> = ({
     const [isReset, setIsReset] = useState(false);
     // 改变checkName以达到check的目的
     const checkList = useRef<CheckList>({});
-    const setCheckList = (name: string, v: boolean) => {
+    const setCheckList = useCallback((name: string, v: boolean) => {
         checkList.current[name] = v;
-    };
+    }, []);
 
     const [params, setParams] = useState<SubmitParams>({});
-    const setParam = (name: string, v: string) => {
+    const setParam = useCallback((name: string, v: string) => {
         setOpenCheck(false);
         setParams((params) => ({ ...params, [name]: v }));
-    };
+    }, [params]);
     // 开启验证
     const [openCheck, setOpenCheck] = useState(false);
 
-    const checkParams = async (params: SubmitParams) => {
+    const checkParams = useCallback(async (params: SubmitParams) => {
         const status = await CheckKeyStatus(params, checkList.current);
         if (status) {
             submit?.(params);
             return;
         }
         setOpenCheck(true);
-    };
+    }, []);
 
     // 提交
     const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -76,4 +76,4 @@ const Form: FC<Props> = ({
     );
 };
 
-export default Form;
+export default memo(Form);

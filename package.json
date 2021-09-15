@@ -1,6 +1,6 @@
 {
   "name": "double-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "react ui组件库",
   "main": "lib/index.js",
   "author": "xiongshuang",

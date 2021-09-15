@@ -1,11 +1,13 @@
 import './style.styl';
-import React, { FC, useRef, useState } from 'react';
+import React, {
+    FC, memo, useRef, useState
+} from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import Trigger from '@/components/trigger/Trigger';
 import Teleport from '@/components/teleport/Teleport';
 import ResetPosition from './depend/ResetPosition';
-import { IProps as Props } from './types';
+import { Props } from './types';
 import DGroup from './depend/DGroup';
 
 interface ClickItem {
@@ -77,5 +79,5 @@ const DropGroup: FC<Props> = ({
     );
 };
 
-export default DropGroup;
+export default memo(DropGroup);
 

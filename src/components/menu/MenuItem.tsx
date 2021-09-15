@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useCallback, useContext } from 'react';
 import Context from '@/components/menu/Context';
 import { ItemProps } from './types';
 
@@ -8,10 +8,10 @@ const MenuItem: FC<ItemProps> = ({
     children
 }) => {
     const { state: { selectedIds, click }, dispatch } = useContext(Context);
-    const itemClick = () => {
+    const itemClick = useCallback(() => {
         dispatch({ type: 'selected', payload: `${menuId},${id}` });
         click?.({ id, ...params });
-    };
+    }, [menuId, id, params]);
 
     return (
         <div className={['d-menu-item', selectedIds.includes(id) && 'd-menu-item-active'].filter((d) => d).join(' ')} onClick={itemClick}>

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 export interface TipProps {
     type?: 'info' | 'error' | 'warn'
@@ -14,4 +14,5 @@ export interface Props extends TipProps {
     mode?: 'default' | 'small' | 'middle' | 'large' | 'tip'
     close?: () => void
     confirm?: () => void
+    children?: ReactNode
 }

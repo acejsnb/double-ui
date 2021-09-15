@@ -1,5 +1,5 @@
 import './style.styl';
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { Props } from './types';
 
 const LoadingBox: FC<Props> = ({ type = 'global', size = 60, imgSrc }) => (
@@ -11,4 +11,4 @@ const LoadingBox: FC<Props> = ({ type = 'global', size = 60, imgSrc }) => (
     </div>
 );
 
-export default LoadingBox;
+export default memo(LoadingBox);

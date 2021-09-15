@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, MouseEvent, Fragment, useState, useEffect
+    FC, MouseEvent, Fragment, useState, useEffect, memo, useCallback
 } from 'react';
 import ArrowTriangle from '@/assets/iconSvg/arrow_triangle.svg';
 import MorePointSvg from '@/assets/iconSvg/morePoint.svg';
@@ -28,6 +28,7 @@ const selectData = [
 const Tree: FC<Props> = (props) => {
     const {
         value, data, multiple = false, omit = false,
+        linkage, lastStage, childDisable,
         sameParams, sortByTree = false,
         change,
         openNode = () => {}
@@ -35,13 +36,13 @@ const Tree: FC<Props> = (props) => {
     // 平铺列表
     const [tileList, setTileList] = useState<TileItem[]>([]);
     // 平铺列表历史数据
-    const [tileListHistory, setTileListHistory] = useState([]);
+    // const [tileListHistory, setTileListHistory] = useState([]);
     // 当前选中的id
     const [currentId, setCurrentId] = useState(value);
     // 选中的数据
     const [checkedData, setCheckedData] = useState<TileItem[]>([]);
 
-    const initTileList = async (data: Item[], value: string | string[] | undefined) => {
+    const initTileList = useCallback(async (data: Item[], value: string | string[] | undefined) => {
         setCurrentId(value);
         const strData = JSON.stringify(data);
         if (strData.length <= 4) {
@@ -53,23 +54,23 @@ const Tree: FC<Props> = (props) => {
             setTileList(tileData);
             setCheckedData(checkedData);
         }
-    };
+    }, [omit, value, multiple, linkage, lastStage, childDisable, sameParams]);
 
     useEffect(() => {
         initTileList(data, value).then();
     }, [value, data]);
 
     // 展开子项
-    const openChildNode = (item: TileItem) => {
+    const openChildNode = useCallback((item: TileItem) => {
         const { id, open } = item;
         const status = !open;
         item.open = status;
         const tile = OpenChildNode(id, status, tileList);
         setTileList(tile);
         openNode(JSON.parse(JSON.stringify(item)));
-    };
+    }, [tileList]);
     // 点击每项 status=true表示需要向父级提交数据并带确定操作
-    const itemClick = (item: TileItem, status?: boolean) => {
+    const itemClick = useCallback((item: TileItem, status?: boolean) => {
         const curItem: TileItem = JSON.parse(JSON.stringify(item));
         const {
             id, sameId, disabled, showCheckbox, checked
@@ -109,10 +110,10 @@ const Tree: FC<Props> = (props) => {
             }
         };
         strategy[`${multiple}`]();
-    };
+    }, [multiple, tileList, sortByTree]);
 
     // 通过类型设置选中状态
-    const strategyChange = (id: string, item: TileItem) => {
+    const strategyChange = useCallback((id: string, item: TileItem) => {
         const { tileData, checkedIds, checkedData } = StrategyChange(id, item, props, tileList);
         setCheckedData(checkedData);
         setTileList(tileData);
@@ -120,11 +121,11 @@ const Tree: FC<Props> = (props) => {
         change({
             item, checkedIds, checkedData
         }, true);
-    };
+    }, [tileList]);
     // Select选中状态改变回调
-    const selectChange = (id: string, item: TileItem) => {
+    const selectChange = useCallback((id: string, item: TileItem) => {
         strategyChange(id, item);
-    };
+    }, []);
 
     return (
         <div className="d-tree">
@@ -204,4 +205,4 @@ const Tree: FC<Props> = (props) => {
     );
 };
 
-export default Tree;
+export default memo(Tree);

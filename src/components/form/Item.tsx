@@ -1,5 +1,5 @@
 import React, {
-    FC, useContext, useEffect, useState
+    FC, useCallback, useContext, useEffect, useState
 } from 'react';
 import Validate from './Validate';
 import { ItemProps } from './types';
@@ -19,33 +19,33 @@ const Item: FC<ItemProps> = ({
     const [message, setMessage] = useState('');
 
     // 验证成功
-    const success = (value: string) => {
+    const success = useCallback((value: string) => {
         setMessage('');
-    };
+    }, []);
     // 验证失败
-    const fail = (value: string, message?: string) => {
+    const fail = useCallback((value: string, message?: string) => {
         if (!isReset && openCheck) setMessage(message || '');
-    };
+    }, [isReset, openCheck]);
 
     // 输入的值
     const [value, setValue] = useState('');
     // 根据key获取输入的value
     // const getFieldValue = (key: string): string => params[key];
     // 验证输入的value
-    const checkValidate = (value: string) => {
+    const checkValidate = useCallback((value: string) => {
         // const confirmValue = getFieldValue(confirm);
         const confirmValue = params[confirm];
         const status = Validate({
             rules, value, success, fail, confirmValue
         });
         setCheckList(name, !!status);
-    };
+    }, [params, rules, value, success, fail]);
     // 监听输入的值改变
-    const change = (v: string) => {
+    const change = useCallback((v: string) => {
         setValue(v);
         setParam(name, v);
         checkValidate(v);
-    };
+    }, []);
 
     useEffect(() => {
         // 存在confirm 当值改变后 验证当前值

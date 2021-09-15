@@ -1,12 +1,12 @@
 import './style.styl';
 import React, {
-    FC, useState, useRef, MouseEvent
+    FC, MouseEvent, useState, useRef, memo, useCallback
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import Trigger from '@/components/trigger/Trigger';
 import Teleport from '@/components/teleport/Teleport';
-import { IProps as Props, Item } from './types';
+import { Props, Item } from './types';
 
 import DOption from './depend/DOption';
 import ResetPosition from './depend/ResetPosition';
@@ -38,11 +38,11 @@ const Select: FC<Props> = ({
     const [top, setTop] = useState(0);
     const [position, setPosition] = useState(true);
 
-    const itemClick = (item: Item): void => {
+    const itemClick = useCallback((item: Item): void => {
         setShow(false);
         change(item);
-    };
-    const openDrop = (e: MouseEvent) => {
+    }, []);
+    const openDrop = useCallback((e: MouseEvent) => {
         e.stopPropagation();
         if (disabled) return;
         const { X, Y, P } = ResetPosition({
@@ -53,13 +53,13 @@ const Select: FC<Props> = ({
         setPosition(P);
         if (!isMounted) setIsMounted(true);
         setShow(true);
-    };
+    }, [triggerRef, isMounted]);
     // 清除选中
-    const clear = (e: MouseEvent) => {
+    const clear = useCallback((e: MouseEvent) => {
         e.stopPropagation();
         if (disabled) return;
         change({ id: '', name: '' });
-    };
+    }, [disabled]);
 
     return (
         <>
@@ -99,4 +99,4 @@ const Select: FC<Props> = ({
     );
 };
 
-export default Select;
+export default memo(Select);

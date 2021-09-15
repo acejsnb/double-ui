@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import Select from '@/components/select/Select';
 
@@ -25,11 +25,11 @@ const SelectView = () => {
     const [value, setValue] = useState('4');
     const [name, setName] = useState('DDD');
     const [dropData, setDropData] = useState(JSON.parse(JSON.stringify(data)));
-    const change = (item: Item) => {
+    const change = useCallback((item: Item) => {
         console.log(item);
         setValue(item.id);
         setName(item.name);
-    };
+    }, []);
     useEffect(() => {
         const timer = setTimeout(() => {
             setDropData([...JSON.parse(JSON.stringify(data)), { id: '10', name: 'JJJJJJJJ' }]);
@@ -42,14 +42,14 @@ const SelectView = () => {
     const [value2, setValue2] = useState('7');
     const [name2, setName2] = useState('GGGGGGG');
     const [dropData2, setDropData2] = useState(JSON.parse(JSON.stringify(data)));
-    const change2 = (item: Item) => {
+    const change2 = useCallback((item: Item) => {
         console.log(item);
         setValue2(item.id);
         setName2(item.name);
-    };
+    }, []);
     return (
         <div className="component-view">
-            <Select
+            {/* <Select
                 title="选择："
                 width={180}
                 disabled
@@ -58,7 +58,7 @@ const SelectView = () => {
                 change={change}
             >
                 {name}
-            </Select>
+            </Select> */}
             <div style={{ height: `${40}px` }} />
             <Select
                 border={false}

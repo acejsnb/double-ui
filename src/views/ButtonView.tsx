@@ -1,10 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useCallback } from 'react';
 import Button from '@/components/button';
 
 const ButtonView: FC = () => {
-    const click = () => {
+    const [loading, setLoading] = useState(false);
+    const click = useCallback(() => {
         console.log('click');
-    };
+    }, []);
+    const click2 = useCallback(() => {
+        setLoading(true);
+        console.log('click2');
+    }, [loading]);
     return (
         <div className="component-view">
             <Button click={click}>按钮</Button>
@@ -14,6 +19,8 @@ const ButtonView: FC = () => {
             <Button type="orange" click={click}>按钮</Button>
             <Button type="red" click={click}>按钮</Button>
             <Button type="word" click={click}>按钮</Button>
+            <div>****测试****</div>
+            <Button type="green" loading={loading} click={click2}>按钮</Button>
         </div>
     );
 };

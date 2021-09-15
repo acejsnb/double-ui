@@ -1,5 +1,5 @@
 import './style.styl';
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import LoadingSvg from '@/assets/iconSvg/loading.svg';
 import { Props } from './types';
 
@@ -39,4 +39,4 @@ const Button: FC<Props> = ({
     );
 };
 
-export default Button;
+export default memo(Button);

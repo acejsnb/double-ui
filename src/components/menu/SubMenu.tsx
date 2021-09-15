@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useContext, useState, Children, useEffect, useRef
+    FC, useContext, useState, Children, useEffect, useRef, memo, useCallback
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { SubMenuProps } from './types';
@@ -26,15 +26,15 @@ const SubMenu: FC<SubMenuProps> = ({
     }, [children]);
 
     // 设置定位
-    const setPositionStyle = () => {
+    const setPositionStyle = useCallback(() => {
         const { top = 0, right = 0 } = titleRef.current?.getBoundingClientRect() as DOMRect;
         setStyle({ top: `${top}px`, left: `${right + (collapsed ? 8 : 20)}px`, maxHeight: '100vh' });
-    };
+    }, [titleRef]);
     // 设置style样式
-    const changeStyle = (status: boolean) => {
+    const changeStyle = useCallback((status: boolean) => {
         if (status) setStyle({ maxHeight: '100vh' });
         else setStyle({ maxHeight: 0 });
-    };
+    }, []);
 
     // 监听折叠/收起
     useEffect(() => {
@@ -50,7 +50,7 @@ const SubMenu: FC<SubMenuProps> = ({
     }, [openIds]);
 
     // 监听鼠标在当前title上移入移除
-    const mouseHandle = (status: boolean) => {
+    const mouseHandle = useCallback((status: boolean) => {
         if (status) {
             DUI_ITEM_TITLE_ENTER = window.setTimeout(() => {
                 if (DUI_ITEM_TITLE_LEAVE) window.clearTimeout(DUI_ITEM_TITLE_LEAVE);
@@ -63,15 +63,15 @@ const SubMenu: FC<SubMenuProps> = ({
                 setShow(status);
             }, 300);
         }
-    };
+    }, []);
     // 监听鼠标进入子项dom上
-    const childrenEnter = () => {
+    const childrenEnter = useCallback(() => {
         if (DUI_ITEM_TITLE_LEAVE) window.clearTimeout(DUI_ITEM_TITLE_LEAVE);
-    };
+    }, []);
     // 监听鼠标离开子项dom上
-    const childrenLeave = () => {
+    const childrenLeave = useCallback(() => {
         mouseHandle(false);
-    };
+    }, []);
 
     useEffect(() => () => {
         // 选中
@@ -127,4 +127,4 @@ const SubMenu: FC<SubMenuProps> = ({
     );
 };
 
-export default SubMenu;
+export default memo(SubMenu);

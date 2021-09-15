@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    ForwardRefRenderFunction, useState, useEffect, forwardRef
+    ForwardRefRenderFunction, useState, useEffect, forwardRef, memo
 } from 'react';
 import TriangleIcon from '@/assets/iconSvg/triangle.svg';
 import DeleteIcon from '@/assets/iconSvg/delete_icon.svg';
@@ -52,4 +52,4 @@ const Trigger: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
     );
 };
 
-export default forwardRef(Trigger);
+export default memo(forwardRef(Trigger));

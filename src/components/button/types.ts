@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 type Fn = () => void;
 
 export type Props = {
@@ -9,4 +11,5 @@ export type Props = {
     width?: number
     className?: string
     click?: Fn
+    children?: ReactNode
 }

@@ -2,10 +2,11 @@
   "compilerOptions": {
     "baseUrl": "./",
     // "outDir": "./lib",
+//    "rootDir": "./",
      "paths": {
-       "@/*": ["src/*"],
+       "@/*": ["src/*"]
 //       "docs/*": ["docs/*"]
-     },
+    },
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
@@ -20,8 +21,8 @@
     "moduleResolution": "Node",
     "removeComments": true,
     "experimentalDecorators": true,
-    "declaration": false,
-    // "declarationDir": "./lib/types",
+//    "declaration": true,
+//    "declarationDir": "./lib/types",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,

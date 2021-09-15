@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement } from 'react';
+import { Dispatch, ReactElement, ReactNode } from 'react';
 
 export interface Item {
     id: string
@@ -15,6 +15,7 @@ export interface Props {
     openIds: string[]
     collapsed?: boolean
     click?: (params: Params) => void
+    children?: ReactNode
 }
 export interface SubMenuProps {
     id: string
@@ -24,6 +25,7 @@ export interface SubMenuProps {
     layout?: 'position' | 'tile'
     params?: Params
     // data?: Item[]
+    children?: ReactNode
 }
 export interface ItemTitleProps {
     id: string
@@ -40,6 +42,7 @@ export interface ItemProps {
     id: string
     menuId: string
     params?: Params
+    children?: ReactNode
 }
 
 type Action = {

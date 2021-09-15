@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, MouseEvent, useRef, useState
+    FC, MouseEvent, useRef, useState, memo
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Trigger from '@/components/trigger/Trigger';
@@ -89,4 +89,4 @@ const Cascade: FC<Props> = ({
     );
 };
 
-export default Cascade;
+export default memo(Cascade);
