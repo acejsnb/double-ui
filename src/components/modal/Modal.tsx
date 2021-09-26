@@ -12,7 +12,7 @@ import Tip from './Tip';
 
 
 const Modal: FC<Props> = ({
-    show, esc = false, shade = false, header = true, footer = true,
+    show, esc = false, shade = false, confirmBtnLoading, header = true, footer = true,
     title,
     mode = 'default',
     type,
@@ -80,7 +80,7 @@ const Modal: FC<Props> = ({
                                         typeof footer === 'boolean' ? (
                                             <>
                                                 <Button click={close}>取消</Button>
-                                                <Button type="blue" click={confirm}>确定</Button>
+                                                <Button type="blue" loading={confirmBtnLoading} click={confirm}>确定</Button>
                                             </>
                                         ) : footer
                                     }

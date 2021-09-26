@@ -26,11 +26,13 @@ const ModalView = () => {
     };
 
     const [show2, setShow2] = useState(false);
+    const [confirmBtnLoading, setLoading2] = useState(false);
     const close2 = () => {
         console.log('close');
         setShow2(false);
     };
     const confirm2 = () => {
+        setLoading2(true);
         console.log('click');
     };
 
@@ -55,7 +57,7 @@ const ModalView = () => {
                     </Form>
                 </div>
             </Modal>
-            <Modal show={show2} title="修改密码" mode="tip" type="info" close={close2} confirm={confirm2}>
+            <Modal show={show2} title="修改密码" mode="tip" type="info" close={close2} confirmBtnLoading={confirmBtnLoading} confirm={confirm2}>
                 是否要修改密码？如确认，请在钉钉中点击BOSS应用推送消息中密码修改链接。
             </Modal>
         </div>

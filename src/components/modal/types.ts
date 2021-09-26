@@ -8,6 +8,7 @@ export interface Props extends TipProps {
     show: boolean
     esc?: boolean
     shade?: boolean
+    confirmBtnLoading?: boolean
     header?: boolean | ReactElement
     footer?: boolean | ReactElement
     title?: string
