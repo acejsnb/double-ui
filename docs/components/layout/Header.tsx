@@ -9,8 +9,8 @@ const Header = () => {
     const changeTheme = () => {
         const linkTag = document.getElementById('docsRootColor') as HTMLLinkElement;
         setMoon((state) => {
-            if (state) linkTag.href = '/modules/dark.css';
-            else linkTag.href = '/modules/light.css';
+            if (state) linkTag.href = './modules/dark.css';
+            else linkTag.href = './modules/light.css';
             return !state;
         });
     };
