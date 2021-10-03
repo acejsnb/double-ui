@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Props } from './types';
 
 const Progress: FC<Props> = ({
-    play, running, time = 3, end, color = '#0091ff'
+    play, running, time = 3, end, color = '#2196F3'
 }) => (
     <div
         className={['d-progress', play ? 'd-progress-play' : 'd-progress-pause'].join(' ')}

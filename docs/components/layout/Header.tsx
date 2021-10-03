@@ -27,6 +27,10 @@ const Header = () => {
                     <i>📙</i>
                     <span>文档</span>
                 </Link>
+                <Link className="docs-link-item" to="/jstools">
+                    <i>⛏️</i>
+                    <span>js-tools</span>
+                </Link>
                 <Link className="docs-link-item" to="/blog">
                     <i>⌛</i>
                     <span>Blog</span>
