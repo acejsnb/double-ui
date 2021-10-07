@@ -1,6 +1,6 @@
 # react hooks/vue2/vue3 + qiankun微服务踩坑记
 
-![预览效果](/images/210830-view.gif)
+![预览效果](/blog/images/210830-view.gif)
 
 ### 一、开始前来点前奏
 话说iframe是最好的微服务解决方案，不过它有一些无法解决的致命弱点，即使可以解决的问题体验上也不是很好，所以今天这篇文章就来学习一下使用蚂蚁开源的qiankun来解决一些场景的问题。
@@ -10,7 +10,7 @@
 本次升级使用qiankun也是看了qiankun官方吹牛逼的文档，说实话对个人而言，这个牛他们吹得还挺成功的（我没更好的选择）。
 
 使用qiankun之前，个人在项目中也确实遇到了一些问题，这里我把个人在项目中使用iframe遇到的问题与qiankun做了一个对比，请看以下表格：
-![question](/images/210830-question.png)
+![question](/blog/images/210830-question.png)
 
 ### 二、技术栈
 - 主应用：react hooks + webpack5
@@ -18,14 +18,14 @@
 
 ### 三、主应用实现
 1. 项目结构
-   ![项目结构](/images/210830-xiangmujiegou.png)
+   ![项目结构](/blog/images/210830-xiangmujiegou.png)
 
 2. 这里在App.tsx中定义了两个路由，`/` - Home、`/login` - Login
 
 3. config.ts中导出一些配置，这里导出一个prefix，也就是basename（vue中叫base）
 
 4. Login组件中什么功能也没有，这里用来做切换路由演示；Home组件注册微应用，监听主/微应用状态变化
-   ![Login](/images/210830-login.png)
+   ![Login](/blog/images/210830-login.png)
 
 5. 微应用在Home组件中注册，这里单独抽了一个registerApp.ts，请看代码
 ```ts
@@ -89,18 +89,18 @@ export default registerApp;
     - props: 子应用可在生命周期中拿到（以下会在子应用demo中演示）
 
 6. 在Home组件倒入registerApp，待加载完成后注册微应用
-   ![register](/images/210830-register.png)
+   ![register](/blog/images/210830-register.png)
 - 注意：这里建议在 'componentDidMount' 后注册微应用，以防止找不到dom
 - 此例中做一屏展示，header部分高度为49px，且header会一直显示在页面上，所以main部分的高度需要减去49px
-  ![header](/images/210830-header.png)
+  ![header](/blog/images/210830-header.png)
 - div[id^="__qiankun"]是个什么鬼？
-  ![id="__qiankun_xxx"](/images/210830-qiankun_xxx.png)
+  ![id="__qiankun_xxx"](/blog/images/210830-qiankun_xxx.png)
     - qinkun会自动在main中插入一个由他定义且有参数的div
     - 这里需要给这个div也设置一个高度，否则微应用内容不够会撑不满高度，***当然在您的项目中视情况而定***
 
 ### 四、微应用实现
 1. 在src目录下新建 `public-path.js` ，并在 `main.js` 中引入
-   ![public-path](/images/210830-public-path.png)
+   ![public-path](/blog/images/210830-public-path.png)
 2. main.js中需要导出 `bootstrap , mount, unmount ` 三个生命周期钩子，不管有没有用，按照要求导出就对了
 - bootstrap 初始化
 - mount 挂载
@@ -226,15 +226,15 @@ export async function unmount() {
 ```
 7. 主应用与微应用通信
 - 主应用可以通过初始化时props把值传递给子应用
-  ![props](/images/210830-props.png)
+  ![props](/blog/images/210830-props.png)
 - 主应用也可以通过 `globalActions.setGlobalState` 函数设置全局参数
-  ![globalActions.setGlobalState](/images/210830-globalActionssetGlobalState.png)
+  ![globalActions.setGlobalState](/blog/images/210830-globalActionssetGlobalState.png)
 - 当主应用调用 globalActions.setGlobalState 后，子应用怎么接收呢？就是以上示例中的 `props.onGlobalStateChange` 方法，该方法接收一个函数，函数有两个参数：第一个（state）为变更后的状态，第二（prev）个为变更前的状态
-  ![props.onGlobalStateChange](/images/210830-propsonGlobalStateChange.png)
+  ![props.onGlobalStateChange](/blog/images/210830-propsonGlobalStateChange.png)
 8. 微应用与主应用通信
 - 微应用调用 `props.setGlobalState`
 - 主应用在 `globalActions.onGlobalStateChange` 中监听微应用发送的参数
-  ![props.setGlobalState](/images/210830-propssetGlobalState.png)
+  ![props.setGlobalState](/blog/images/210830-propssetGlobalState.png)
 - 微应用可以把mount接收到的props保存到Store中
 
 ### 五、使用qiankun遇到的坑及注意问题
