@@ -3,6 +3,12 @@
   padding-top 8px
   padding-bottom @padding-top
   width 100%
+  > .d-sub-menu
+    > .d-sub-item
+      height 44px
+    > .d-sub-item-active
+      .d-menu-text
+        font-weight 700
 .d-menu-normal
   > .d-sub-menu
     > .d-sub-menu-children-tile
@@ -19,26 +25,32 @@
     > .d-sub-item-has-child
       .d-sub-triangle, .d-menu-text
           display none
+  .d-sub-item-no-child
+    .d-menu-text-i
+      opacity 0
 .d-sub-menu
   width 100%
-  & + .d-sub-menu
-    margin-top 8px
+  //& + .d-sub-menu
+  //  margin-top 8px
+  .d-sub-menu
+    .d-sub-item
+      height 32px
 .d-sub-item
   display flex
   align-items center
   border-radius 4px
   width 100%
-  height 32px
+  //height 32px
   cursor pointer
   &:hover
     .d-sub-icon
-      path
+      svg *
         fill var(--blue-500)
     .d-menu-text
       color var(--blue-500)
 .d-sub-item-active
   .d-sub-icon
-    path
+    svg *
       fill var(--blue-500)
   .d-menu-text
     color var(--blue-500)
