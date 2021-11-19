@@ -1,11 +1,10 @@
 const { resolve } = require('path');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清理垃圾文件
 
 const baseConfig = require('./base');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 const config = {
     mode: 'production',
@@ -36,15 +35,7 @@ const config = {
     optimization: {
         minimize: true,
         minimizer: [
-            new TerserPlugin({
-                extractComments: false, // 不生成LICENSE.txt
-                parallel: true,
-                terserOptions: {
-                    toplevel: true, // 最高级别，删除无用代码
-                    safari10: true
-                }
-            }),
-            new CssMinimizerPlugin()
+            new ESBuildMinifyPlugin({ target: 'es2015', css: true })
         ]
     },
     externals: {

@@ -9,7 +9,7 @@ import routes, { RouteItem } from './routes';
 
 const App = () => (
     <div className="app">
-        <h1 className="title">App</h1>
+        <h1 className="title">double-ui</h1>
         <HashRouter>
             <Switch>
                 <Route exact path="/" component={Home} />

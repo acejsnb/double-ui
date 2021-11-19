@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const {
     name, version, author, license
@@ -14,12 +13,22 @@ const { WEBPACK_SERVE } = process.env;
 // 获取时间
 const TimeFn = require('../get_time');
 
-const banner = `@${name}-docs v${version}
+const banner = `@${name} v${version}
 (c) 2020-2021 ${author}
 Released under the ${license} License.
 ${TimeFn()}`;
 
+/**
+ * 判断是生产环境还是开发环境
+ * @type {boolean}
+ * isProd为true表示生产
+ */
 const isProd = !WEBPACK_SERVE;
+
+/**
+ *  css和stylus开发、生产依赖
+ *  生产分离css
+ */
 const cssConfig = (step = 1) => [
     isProd ? MiniCssExtractPlugin.loader : 'style-loader',
     {
@@ -30,24 +39,14 @@ const cssConfig = (step = 1) => [
         }
     },
     {
-        loader: 'esbuild-loader',
-        options: {
-            loader: 'css',
-            minify: true
-        }
-    },
-    /*{
         loader: 'postcss-loader',
         options: {
             sourceMap: !isProd
         }
-    }*/
+    }
 ];
 
 const config = {
-    entry: {
-        index: resolve(__dirname, '../docs/main.tsx') // 入口文件
-    },
     module: {
         rules: [
             {
@@ -66,24 +65,24 @@ const config = {
                         }
                     }
                 ],
+                include: [resolve(__dirname, '../src')],
                 exclude: /node_modules/
             },
             {
                 test: /\.ts$/,
-                loader: 'esbuild-loader',
-                options: {
-                    loader: 'ts',
-                    target: 'es2015'
-                },
+                use: [
+                    'ts-loader'
+                ],
+                include: [resolve(__dirname, '../src')],
                 exclude: /node_modules/
             },
             {
                 test: /\.tsx$/,
-                loader: 'esbuild-loader',
-                options: {
-                    loader: 'tsx',
-                    target: 'es2015'
-                },
+                use: [
+                    'babel-loader',
+                    'ts-loader'
+                ],
+                include: [resolve(__dirname, '../src')],
                 exclude: /node_modules/
             },
             {
@@ -96,43 +95,33 @@ const config = {
                             jsx: true
                         }
                     }
-                ]
+                ],
+                include: [resolve(__dirname, '../src')]
             },
             {
                 test: /\.(png|jpe?g|gif|bmp|webm|mp4)$/,
-                type: 'asset/inline'
-            },
-            {
-                test: /\.mdx?$/,
-                use: [
-                    'babel-loader',
-                    'md-util-loader'
-                    // resolve(__dirname, '../docs/utils/loader.js')
-                ],
-                include: [resolve(__dirname, '../docs')]
+                // type: 'asset/resource',
+                type: 'asset/inline',
+                include: [resolve(__dirname, '../src/assets')]
             }
         ]
+    },
+    resolve: { // 配置路径别名
+        extensions: ['.js', '.ts', '.tsx'], // import引入文件的时候不用加后缀
+        modules: [
+            'node_modules',
+            resolve(__dirname, '../src/assets'),
+            resolve(__dirname, '../src/static'),
+            resolve(__dirname, '../src/utils')
+        ],
+        alias: {
+            '@': resolve(__dirname, '../src')
+        }
     },
     plugins: [
         new webpack.BannerPlugin({
             banner,
             test: /\.js$/
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: resolve(__dirname, '../docs/public/light.css'),
-                    to: 'modules'
-                },
-                {
-                    from: resolve(__dirname, '../docs/public/dark.css'),
-                    to: 'modules'
-                },
-                {
-                    from: resolve(__dirname, '../docs/posts/images'),
-                    to: 'images'
-                }
-            ]
         }),
         new ProgressBarPlugin(
             {
@@ -142,24 +131,12 @@ const config = {
             }
         )
     ],
-    resolve: {
-        extensions: ['.js', '.ts', '.tsx'], // import引入文件的时候不用加后缀
-        alias: {
-            '@': resolve(__dirname, '../src'),
-            'docs': resolve(__dirname, '../docs')
-        },
-        /*fallback: {
-            fs: false,
-            path: require.resolve('path-browserify'),
-            crypto: require.resolve('crypto-browserify'),
-            assert: require.resolve('assert/'),
-            os: require.resolve('os-browserify/browser'),
-            stream: require.resolve('stream-browserify'),
-            constants: require.resolve('constants-browserify'),
-        }*/
+    externals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        'react-router-dom': 'ReactRouterDOM',
+        'react-transition-group': 'ReactTransitionGroup'
     },
-    cache: true,
-    devtool: 'inline-source-map',
     bail: true, // 在第一个错误出现时抛出失败结果
     target: 'web'
 };

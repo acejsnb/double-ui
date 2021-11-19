@@ -2,12 +2,11 @@ const { resolve, join } = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // 自动生成index.html
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 文本分离插件，分离js和css
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 清理垃圾文件
-const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseConfig = require('./base');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 const config = {
     entry: {
@@ -63,15 +62,7 @@ const config = {
     optimization: { // 抽离第三方插件
         // minimize: true,
         minimizer: [
-            new TerserPlugin({
-                extractComments: false, // 不生成LICENSE.txt
-                parallel: true,
-                terserOptions: {
-                    toplevel: true, // 最高级别，删除无用代码
-                    safari10: true
-                }
-            }),
-            new CssMinimizerPlugin()
+            new ESBuildMinifyPlugin({ target: 'es2015', css: true })
         ],
         splitChunks: {
             chunks: 'all', // 必须三选一： "initial" | "all" | "async"(默认就是异步)

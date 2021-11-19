@@ -39,11 +39,18 @@ const cssConfig = (step = 1) => [
         }
     },
     {
+        loader: 'esbuild-loader',
+        options: {
+            loader: 'css',
+            minify: true
+        }
+    },
+    /*{ // 这里注释后不生成css浏览器兼容前缀
         loader: 'postcss-loader',
         options: {
             sourceMap: !isProd
         }
-    }
+    }*/
 ];
 
 const config = {
@@ -69,19 +76,31 @@ const config = {
                 exclude: /node_modules/
             },
             {
+                test: /\.jsx?$/,
+                loader: 'esbuild-loader',
+                options: {
+                    target: 'es2015'
+                },
+                include: [resolve(__dirname, '../src')],
+                exclude: /node_modules/
+            },
+            {
                 test: /\.ts$/,
-                use: [
-                    'ts-loader'
-                ],
+                loader: 'esbuild-loader',
+                options: {
+                    loader: 'ts',
+                    target: 'es2015'
+                },
                 include: [resolve(__dirname, '../src')],
                 exclude: /node_modules/
             },
             {
                 test: /\.tsx$/,
-                use: [
-                    'babel-loader',
-                    'ts-loader'
-                ],
+                loader: 'esbuild-loader',
+                options: {
+                    loader: 'tsx',
+                    target: 'es2015'
+                },
                 include: [resolve(__dirname, '../src')],
                 exclude: /node_modules/
             },
