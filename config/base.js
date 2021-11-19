@@ -38,19 +38,12 @@ const cssConfig = (step = 1) => [
             sourceMap: !isProd
         }
     },
-    {
-        loader: 'esbuild-loader',
-        options: {
-            loader: 'css',
-            minify: true
-        }
-    },
-    /*{ // 这里注释后不生成css浏览器兼容前缀
+    { // 这里注释后不生成css浏览器兼容前缀
         loader: 'postcss-loader',
         options: {
             sourceMap: !isProd
         }
-    }*/
+    }
 ];
 
 const config = {

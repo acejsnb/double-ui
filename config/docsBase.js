@@ -30,18 +30,11 @@ const cssConfig = (step = 1) => [
         }
     },
     {
-        loader: 'esbuild-loader',
-        options: {
-            loader: 'css',
-            minify: true
-        }
-    },
-    /*{
         loader: 'postcss-loader',
         options: {
             sourceMap: !isProd
         }
-    }*/
+    }
 ];
 
 const config = {
