@@ -7,7 +7,7 @@ interface Params {
     [key: string]: any
 }
 
-const validate = (value: string, confirmValue: string) => {
+const validate = (value: string, confirmValue?: string) => {
     console.log('value', value);
     console.log('FieldValue', confirmValue);
     return !(confirmValue === value);
