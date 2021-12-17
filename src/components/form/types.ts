@@ -26,9 +26,9 @@ export interface IFormContext {
 }
 
 export interface Rule {
-    check?: 'required' | 'phone' | 'email' | 'password' | 'passwordBetter' | 'passwordBest'
-    validate?: (value: string, confirmValue: string) => boolean
     message: string
+    check?: 'required' | 'phone' | 'email' | 'password' | 'passwordBetter' | 'passwordBest'
+    validate?: (value: string, confirmValue?: string) => boolean
 }
 
 export interface ItemProps {

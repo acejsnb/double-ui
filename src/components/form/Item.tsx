@@ -1,7 +1,6 @@
 import React, {
     FC, useCallback, useContext, useEffect, useState
 } from 'react';
-// @ts-ignore
 import { formValidate } from 'js-func-tools';
 import { ItemProps } from './types';
 import FormContext from './FormContext';
@@ -20,11 +19,11 @@ const Item: FC<ItemProps> = ({
     const [message, setMessage] = useState('');
 
     // 验证成功
-    const success = useCallback((value: string) => {
+    const success = () => {
         setMessage('');
-    }, []);
+    };
     // 验证失败
-    const fail = useCallback((value: string, message?: string) => {
+    const fail = useCallback((value: string | undefined, message?: string | undefined): void => {
         if (!isReset && openCheck) setMessage(message || '');
     }, [isReset, openCheck]);
 
