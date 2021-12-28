@@ -3,8 +3,8 @@ import React, {
     FC, MouseEvent, useRef, useState, memo
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import Trigger from '@/components/trigger/Trigger';
-import Teleport from '@/components/teleport/Teleport';
+import Trigger from '../trigger/Trigger';
+import Teleport from '../teleport/Teleport';
 import { Item, Props } from './index';
 import CDrop from './depend/CDrop';
 import ResetPosition from './depend/ResetPosition';

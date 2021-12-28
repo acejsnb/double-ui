@@ -4,8 +4,8 @@ import React, {
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import Trigger from '@/components/trigger/Trigger';
-import Teleport from '@/components/teleport/Teleport';
+import Trigger from '../trigger/Trigger';
+import Teleport from '../teleport/Teleport';
 import { Props, Item } from './index';
 
 import DOption from './depend/DOption';

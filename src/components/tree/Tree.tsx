@@ -7,8 +7,8 @@ import MorePointSvg from '@/assets/iconSvg/morePoint.svg';
 
 import TextEllipsis from '@/utils/TextEllipsis';
 
-import Checkbox from '@/components/checkbox/Checkbox';
-import Select from '@/components/select/Select';
+import Checkbox from '../checkbox/Checkbox';
+import Select from '../select/Select';
 import {
     Item, Props, TileItem
 } from './index';

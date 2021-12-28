@@ -1,11 +1,11 @@
 import { Dispatch, ReactElement, ReactNode } from 'react';
 
-export interface IItem {
+export interface Item {
     id: string
     name: string
     icon?: ReactElement | string
     url?: string
-    children?: IItem[]
+    children?: Item[]
 }
 export type Params = {
     [key: string]: any
@@ -63,7 +63,7 @@ export type Reducer = (state: State, action: Action) => State
 
 declare function MenuInstance(props: Props): JSX.Element
 type TypeMenu = typeof MenuInstance
-interface MenuInterface extends TypeMenu {
+export interface MenuInterface extends TypeMenu {
     SubMenu(props: SubMenuProps): JSX.Element
     Item(props: ItemProps): JSX.Element
 }

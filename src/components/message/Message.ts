@@ -4,7 +4,7 @@ import MessageBox from './MessageBox';
 import { Options } from './index';
 
 let msgEle: HTMLDivElement;
-function Message({ type, message, time = 3.6 }: Options) {
+function Message({ type, message, time = 3.6 }: Options): void {
     if (!msgEle) {
         msgEle = document.createElement('div');
         msgEle.className = 'd-message-box';

@@ -5,11 +5,7 @@ import Message from '@/components/message';
 
 const MessageView = () => {
     const info = () => {
-        Message({
-            message: 'aaaaaaaaaaaa',
-            type: 'info',
-            time: 5
-        });
+        Message.info('aaaaaaaaaaaa', 5);
     };
     const success = () => {
         Message.success('success', 5);

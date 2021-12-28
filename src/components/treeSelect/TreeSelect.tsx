@@ -4,9 +4,9 @@ import React, {
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import Trigger from '@/components/trigger/Trigger';
-import Tree from '@/components/tree';
-import Teleport from '@/components/teleport/Teleport';
+import Trigger from '../trigger/Trigger';
+import Tree from '../tree/Tree';
+import Teleport from '../teleport/Teleport';
 import ResetPosition from './ResetPosition';
 
 import { Props, TileItem, IMultiple } from './index';

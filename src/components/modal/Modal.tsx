@@ -3,8 +3,8 @@ import React, {
     FC, memo, useEffect, useRef, useState
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import Button from '@/components/button/Button';
-import Teleport from '@/components/teleport/Teleport';
+import Button from '../button/Button';
+import Teleport from '../teleport/Teleport';
 import CloseSvg from '@/assets/iconSvg/icon_close.svg';
 import { Props } from './index';
 import ListenEsc from './Tools';

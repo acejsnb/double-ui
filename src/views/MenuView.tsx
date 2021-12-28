@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
-import Menu from '@/components/menu';
-import { Item } from '@/components/menu/types';
+import Menu from '@/components/menu/build';
+import { Item } from '@/components/menu';
 import Button from '@/components/button';
 import HomeSvg from '@/assets/iconSvg/home.svg';
 
