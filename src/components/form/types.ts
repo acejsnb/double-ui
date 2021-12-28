@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Props as InputProps } from '../input';
 
 export interface SubmitParams {
     [key: string]: string
@@ -9,7 +10,7 @@ export interface Props {
     name?: string
     layout?: 'vertical' | 'horizontal'
     reset?: Fn
-    submit?: (params: { [key: string]: string }) => void
+    submit?: (params: any) => void
     children?: ReactNode
 }
 
@@ -46,3 +47,14 @@ export interface IItemContext {
     name?: string | undefined
     change(v: string): void
 }
+
+declare function FormInstance(props: Props): JSX.Element
+type TypeForm = typeof FormInstance
+
+interface FormInterface extends TypeForm {
+    Item(props: ItemProps): JSX.Element
+    Input(props: InputProps): JSX.Element
+}
+
+declare const Form: FormInterface;
+export default Form;

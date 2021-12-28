@@ -4,7 +4,7 @@ import React, {
 import { CSSTransition } from 'react-transition-group';
 import FindTarget from '@/utils/FindTarget';
 import List from './List';
-import { Item, CProps } from '../types';
+import { Item, CProps } from '../index';
 
 const initItem = { id: '', name: '', children: [] };
 

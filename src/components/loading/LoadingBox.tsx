@@ -1,6 +1,6 @@
 import './style.styl';
 import React, { FC, memo } from 'react';
-import { Props } from './types';
+import { Props } from './index';
 
 const LoadingBox: FC<Props> = ({ type = 'global', size = 60, imgSrc }) => (
     <div className={['d-loading', `d-loading-${type}`].join(' ')}>

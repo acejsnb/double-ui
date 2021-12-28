@@ -7,7 +7,7 @@ import { CSSTransition } from 'react-transition-group';
 import Trigger from '@/components/trigger/Trigger';
 import Teleport from '@/components/teleport/Teleport';
 import ResetPosition from './depend/ResetPosition';
-import { Props } from './types';
+import { Props } from './index';
 import DGroup from './depend/DGroup';
 
 interface ClickItem {

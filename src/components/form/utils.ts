@@ -1,4 +1,4 @@
-import { SubmitParams, CheckList } from './types';
+import { SubmitParams, CheckList } from './index';
 
 // form 提交/重置
 const FormHandle = (target: any, type: 'submit' | 'reset') => new Promise<SubmitParams>((resolve) => {

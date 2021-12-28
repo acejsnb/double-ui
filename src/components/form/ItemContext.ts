@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { IItemContext } from './types';
+import { IItemContext } from './index';
 
 const defaultValue = {
     name: '',

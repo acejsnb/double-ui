@@ -16,16 +16,50 @@ const banner = `/**
 */
 `;
 
-const copyFile = (url) => {
-    fs.readFile(url, (err, data) => {
-        fs.writeFile(resolve(__dirname, '../lib/index.js'), (banner + data), err => {
+// 写入index.d.ts
+const copyFile = (url, out) => {
+    fs.readFile(resolve(__dirname, url), (err, data) => {
+        fs.writeFile(resolve(__dirname, out), (banner + data), err => {
             if (err) {
-                console.log(`写入出现错误 ${err.toString()}`);
+                console.log(`${out}写入出现错误 ${err.toString()}`);
             } else {
-                console.log('完成!');
+                console.log(`${out}完成!`);
             }
         })
     })
 };
+copyFile('../src/components/index.ts', '../lib/index.d.ts');
 
-copyFile(resolve(__dirname, '../src/components/index.js'))
+const firstToUpperCase = (str) => {
+    const arr = str.split('');
+    arr[0] = arr[0].toUpperCase();
+    return arr.join('');
+}
+// 写入index.js index.d.ts
+const readFile = (url) => {
+    fs.readdir(resolve(__dirname, url), (err, data) => {
+        const arr = data.filter(d => !d.includes('.'));
+        const resultJs = [], resultTs = [];
+        arr.forEach(d => {
+            resultJs.push(`export { default as ${firstToUpperCase(d)} } from './${d}';`);
+            resultTs.push(`export type { Props as ${firstToUpperCase(d)}Props } from './${d}';\nexport { default as ${firstToUpperCase(d)} } from './${d}';`);
+        })
+        const resJs = `\n${resultJs.join('\n')}\n`;
+        fs.writeFile(resolve(__dirname, `${url}/index.js`), (banner + resJs), err => {
+            if (err) {
+                console.log(`js写入出现错误 ${err.toString()}`);
+            } else {
+                console.log('js完成!');
+            }
+        });
+        const resTs = `\n${resultTs.join('\n')}\n`;
+        /*fs.writeFile(resolve(__dirname, `${url}/index.d.ts`), (banner + resTs), err => {
+            if (err) {
+                console.log(`ts写入出现错误 ${err.toString()}`);
+            } else {
+                console.log('ts完成!');
+            }
+        });*/
+    });
+};
+readFile('../lib');

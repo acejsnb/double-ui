@@ -1,6 +1,6 @@
 import './style.styl';
 import React, { FC } from 'react';
-import { Props } from './types';
+import { Props } from './index';
 
 const Progress: FC<Props> = ({
     play, running, time = 3, end, color = '#2196F3'

@@ -2,7 +2,7 @@ import './style.styl';
 import React, {
     FC, useReducer, useEffect, memo
 } from 'react';
-import { Props, Reducer } from './types';
+import { Props, Reducer } from './index';
 import Context from './Context';
 
 const reducer: Reducer = (state, { type, payload }) => {

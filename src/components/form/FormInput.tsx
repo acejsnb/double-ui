@@ -1,6 +1,6 @@
 import React, { FC, memo, useContext } from 'react';
 import Input from '@/components/input/Input';
-import { Props } from '@/components/input/types';
+import { Props } from '../input';
 import FormContext from './FormContext';
 import ItemContext from './ItemContext';
 

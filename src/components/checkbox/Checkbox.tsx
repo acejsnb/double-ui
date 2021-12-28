@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 
 import TextEllipsis from '@/utils/TextEllipsis';
-import { Props } from './types';
+import { Props } from './index';
 
 const Checkbox: FC<Props> = ({
     checked = 'uncheck', disabled = false, stopPropagation = false,

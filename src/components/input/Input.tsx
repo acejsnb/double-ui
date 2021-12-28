@@ -2,7 +2,7 @@ import './style.styl';
 import React, {
     FC, FormEvent, useEffect, memo
 } from 'react';
-import { Props } from './types';
+import { Props } from './index';
 
 const Input: FC<Props> = ({
     defaultValue = '',

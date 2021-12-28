@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { LProps } from '../types';
+import { LProps } from '../index';
 
 const List: FC<LProps> = ({ tier, id, data = [] }) => (
     <div className={['d-cascade-list', `d-cascade-list-${tier}`].join(' ')}>

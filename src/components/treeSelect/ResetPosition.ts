@@ -1,5 +1,5 @@
 import CalcTargetPosition from '@/utils/CalcTargetPosition';
-import { Item } from './types';
+import { Item } from './index';
 
 interface TItem extends Item{
     [key: string]: any

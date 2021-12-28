@@ -1,11 +1,11 @@
 import { Dispatch, ReactElement, ReactNode } from 'react';
 
-export interface Item {
+export interface IItem {
     id: string
     name: string
     icon?: ReactElement | string
     url?: string
-    children?: Item[]
+    children?: IItem[]
 }
 export type Params = {
     [key: string]: any
@@ -60,3 +60,13 @@ export interface ContextProps {
     dispatch: Dispatch<Action>
 }
 export type Reducer = (state: State, action: Action) => State
+
+declare function MenuInstance(props: Props): JSX.Element
+type TypeMenu = typeof MenuInstance
+interface MenuInterface extends TypeMenu {
+    SubMenu(props: SubMenuProps): JSX.Element
+    Item(props: ItemProps): JSX.Element
+}
+declare const Menu: MenuInterface;
+
+export default Menu;

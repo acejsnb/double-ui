@@ -28,5 +28,5 @@
     "noEmit": false,
     "jsx": "react"
   },
-  "exclude": ["node_modules", "lib"]
+  "exclude": ["node_modules", "lib", "src/components/declaration.ts"]
 }

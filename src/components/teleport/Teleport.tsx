@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import { createPortal } from 'react-dom';
 import ClickOutside from '@/utils/ClickOutside';
-import { Props } from './types';
+import { Props } from './index';
 
 const Teleport: FC<Props> = ({ isMounted, setShow, children }) => {
     const el = useRef<HTMLDivElement>(document.createElement('div'));

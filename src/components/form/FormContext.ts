@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { IFormContext } from './types';
+import { IFormContext } from './index';
 
 const defaultValue = {
     params: {},

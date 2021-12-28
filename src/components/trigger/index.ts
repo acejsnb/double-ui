@@ -15,3 +15,7 @@ export interface Props {
     clear?: (e: MouseEvent) => void
     children?: ReactElement<any, string | JSXElementConstructor<any>> | ReactNode | string | number | null | undefined
 }
+
+declare function Trigger(props: Props): JSX.Element
+
+export default Trigger;

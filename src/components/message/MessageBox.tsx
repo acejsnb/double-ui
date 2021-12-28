@@ -8,7 +8,7 @@ import HintError from '@/assets/iconSvg/hint_error.svg';
 import HintInfo from '@/assets/iconSvg/hint_info.svg';
 import HintSuccess from '@/assets/iconSvg/hint_success.svg';
 import HintWaring from '@/assets/iconSvg/hint_waring.svg';
-import { Props } from './types';
+import { Props } from './index';
 
 enum ETypes {
     info = 'info',

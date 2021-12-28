@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import LoadingBox from './LoadingBox';
-import { IOptions, IReturn } from './types';
+import { IOptions, IReturn } from './index';
 
 function Loading({
     imgSrc, type, size, ele

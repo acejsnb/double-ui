@@ -3,7 +3,7 @@ import React, {
     FC, useContext, useState, Children, useEffect, useRef, memo, useCallback
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { SubMenuProps } from './types';
+import { SubMenuProps } from './index';
 import Context from './Context';
 import ItemTitle from './ItemTitle';
 

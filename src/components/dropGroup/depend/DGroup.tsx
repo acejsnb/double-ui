@@ -2,7 +2,7 @@ import React, { ForwardRefRenderFunction, MouseEvent, forwardRef } from 'react';
 
 import TextEllipsis from '@/utils/TextEllipsis';
 import FindTarget from '@/utils/FindTarget';
-import { OptionProps as Props, IItem } from '../types';
+import { OptionProps as Props, IItem } from '../index';
 
 const DGroup: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
     value, data, left, top, position, maxWidth, underline = false, change

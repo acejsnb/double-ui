@@ -5,7 +5,7 @@ import React, {
 import ClearSvg from '@/assets/iconSvg/clear2.svg';
 import TextEllipsis from '@/utils/TextEllipsis';
 import FindTarget from '@/utils/FindTarget';
-import { Item, OptionProps as Props } from '../types';
+import { Item, OptionProps as Props } from '../index';
 
 const DOption: FC<Props> = ({
     data, value, openSearch, placeholder, change,

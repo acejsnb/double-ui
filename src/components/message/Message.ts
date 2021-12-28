@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { render } from 'react-dom';
 import MessageBox from './MessageBox';
-import { Options } from './types';
+import { Options } from './index';
 
 let msgEle: HTMLDivElement;
 function Message({ type, message, time = 3.6 }: Options) {

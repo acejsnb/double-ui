@@ -11,7 +11,7 @@ import Checkbox from '@/components/checkbox/Checkbox';
 import Select from '@/components/select/Select';
 import {
     Item, Props, TileItem
-} from './types';
+} from './index';
 
 import {
     TileTool, OpenChildNode, SetTileCheckedInit, SetChecked, SetCheckedSortByTree,

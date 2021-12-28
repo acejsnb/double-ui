@@ -10,11 +10,13 @@ const EntryObj = require('../src/single.ts');
 const entry = {}, patterns = [];
 // eslint-disable-next-line no-restricted-syntax
 for (const key of Object.keys(EntryObj)) {
-    entry[key] = resolve(__dirname, EntryObj[key]);
-    patterns.push({
-        from: resolve(__dirname, `${EntryObj[key].split(key)[0]}/types.ts`),
-        to: resolve(__dirname, `../lib/${key}/index.d.ts`)
-    });
+    entry[key] = resolve(__dirname, `${EntryObj[key]}/build.ts`);
+    patterns.push(
+        {
+            from: resolve(__dirname, `${EntryObj[key]}/index.ts`),
+            to: resolve(__dirname, `../lib/${key}/index.d.ts`)
+        }
+    );
 }
 
 const config = {

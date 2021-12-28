@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import {
     Props, SubmitParams, CheckList
-} from './types';
+} from './index';
 import FormContext from './FormContext';
 import FormHandle, { CheckKeyStatus } from './utils';
 

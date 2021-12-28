@@ -1,7 +1,7 @@
 import React, { ForwardRefRenderFunction, useContext, forwardRef } from 'react';
 import TriangleSvg from '@/assets/iconSvg/triangle.svg';
 import Context from './Context';
-import { ItemTitleProps } from './types';
+import { ItemTitleProps } from './index';
 
 const ItemTitle: ForwardRefRenderFunction<HTMLDivElement, ItemTitleProps> = ({
     id, menuId, name,

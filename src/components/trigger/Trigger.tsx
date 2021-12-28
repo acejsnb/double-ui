@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import TriangleIcon from '@/assets/iconSvg/triangle.svg';
 import DeleteIcon from '@/assets/iconSvg/delete_icon.svg';
-import { Props } from './types';
+import { Props } from './index';
 
 import GetCaptionWidth from './GetCaptionWidth';
 

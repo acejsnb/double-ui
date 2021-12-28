@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { TipProps } from './types';
+import { TipProps } from './index';
 import HintInfoSVG from '@/assets/iconSvg/hint_info.svg';
 
 const Tip: FC<TipProps> = ({ type = 'info', title }) => (

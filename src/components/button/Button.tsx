@@ -1,7 +1,7 @@
 import './style.styl';
 import React, { FC, memo } from 'react';
 import LoadingSvg from '@/assets/iconSvg/loading.svg';
-import { Props } from './types';
+import { Props } from './index';
 
 const Button: FC<Props> = ({
     type = 'default',

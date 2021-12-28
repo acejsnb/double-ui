@@ -2,7 +2,7 @@ import React, {
     FC, useCallback, useContext, useEffect, useState
 } from 'react';
 import { formValidate } from 'js-func-tools';
-import { ItemProps } from './types';
+import { ItemProps } from './index';
 import FormContext from './FormContext';
 import ItemContext from './ItemContext';
 

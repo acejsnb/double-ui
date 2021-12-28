@@ -6,7 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import Trigger from '@/components/trigger/Trigger';
 import Teleport from '@/components/teleport/Teleport';
-import { Props, Item } from './types';
+import { Props, Item } from './index';
 
 import DOption from './depend/DOption';
 import ResetPosition from './depend/ResetPosition';

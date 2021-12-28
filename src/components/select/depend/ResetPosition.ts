@@ -1,6 +1,6 @@
 import CalcTargetPosition from '@/utils/CalcTargetPosition';
 
-import { Item } from '../types';
+import { Item } from '../index';
 
 // 获取宽度
 const GetWidth = (data: Item[], maxWidth: number): number => {

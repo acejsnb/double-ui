@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { ContextProps, Params } from './types';
+import { ContextProps, Params } from './index';
 
 const initState = {
     state: {

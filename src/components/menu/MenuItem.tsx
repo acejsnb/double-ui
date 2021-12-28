@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useContext } from 'react';
 import Context from '@/components/menu/Context';
-import { ItemProps } from './types';
+import { ItemProps } from './index';
 
 const MenuItem: FC<ItemProps> = ({
     id = '', menuId,

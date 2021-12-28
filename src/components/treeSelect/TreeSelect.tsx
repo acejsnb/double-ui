@@ -9,7 +9,7 @@ import Tree from '@/components/tree';
 import Teleport from '@/components/teleport/Teleport';
 import ResetPosition from './ResetPosition';
 
-import { Props, TileItem, IMultiple } from './types';
+import { Props, TileItem, IMultiple } from './index';
 
 const TreeSelect: FC<Props> = ({
     data, value = '', name = '', multiple = false,
