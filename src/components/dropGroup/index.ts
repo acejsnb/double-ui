@@ -5,7 +5,7 @@ export interface Item {
     name?: string
 }
 
-export interface IItem extends Item{
+export interface IItem extends Item {
     disabled?: boolean
     children?: Item[]
 }
