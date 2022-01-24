@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from '@/components/button/Button';
-import Form from '@/components/form';
+import Form from '@/components/form/build';
 
 interface Params {
     [key: string]: any

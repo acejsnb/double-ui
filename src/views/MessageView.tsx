@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Button from '@/components/button';
-import Message from '@/components/message';
+import Button from '@/components/button/build';
+import Message from '@/components/message/build';
 
 const MessageView = () => {
     const info = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import TreeSelect from '@/components/treeSelect';
+import TreeSelect from '@/components/treeSelect/build';
 import { TileItem, IMultiple } from '@/components/tree/index';
 import GlobalPng from '@/assets/images/global.png';
 import BuildingPng from '@/assets/images/building.png';

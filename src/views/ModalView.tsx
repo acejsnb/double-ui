@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import Modal from '@/components/modal';
-import Button from '@/components/button';
-import Form from '@/components/form';
+import Modal from '@/components/modal/build';
+import Button from '@/components/button/build';
+import Form from '@/components/form/build';
 
 interface Params {
     [key: string]: string

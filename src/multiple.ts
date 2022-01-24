@@ -8,7 +8,7 @@ import Checkbox from './components/checkbox';
 import Divider from './components/divider';
 import DropGroup from './components/dropGroup';
 import Loading from './components/loading';
-import Message from './components/message';
+import Message from './components/message/build';
 import Transition from './components/transition/Transition';
 // import Tree from './components/tree/Tree';
 

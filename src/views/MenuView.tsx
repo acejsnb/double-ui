@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import Menu from '@/components/menu/build';
 import { Item } from '@/components/menu';
-import Button from '@/components/button';
+import Button from '@/components/button/build';
 import HomeSvg from '@/assets/iconSvg/home.svg';
 
 const Icon = <HomeSvg />;

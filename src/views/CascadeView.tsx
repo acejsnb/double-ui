@@ -1,5 +1,5 @@
 import React from 'react';
-import Cascade from '@/components/cascade';
+import Cascade from '@/components/cascade/build';
 
 const data = [
     {

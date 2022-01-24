@@ -1,5 +1,5 @@
 import React, { FC, useState, useCallback } from 'react';
-import Button from '@/components/button';
+import Button from '@/components/button/build';
 
 const ButtonView: FC = () => {
     const [loading, setLoading] = useState(false);

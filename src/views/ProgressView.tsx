@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 
-import Progress from '@/components/progress';
+import Progress from '@/components/progress/build';
 
 const ProgressView: FC = () => {
     console.log('ProgressBarView');
