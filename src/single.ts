@@ -3,7 +3,7 @@
  */
 
 // @ts-ignore
-module.exports = {
+/* module.exports = {
     button: '../src/components/button',
     cascade: '../src/components/cascade',
     checkbox: '../src/components/checkbox',
@@ -19,8 +19,10 @@ module.exports = {
     teleport: '../src/components/teleport',
     tree: '../src/components/tree',
     treeSelect: '../src/components/treeSelect'
-};
-/* module.exports = {
+}; */
+
+// @ts-ignore
+module.exports = {
     Button: '../src/components/button',
     Cascade: '../src/components/cascade',
     Checkbox: '../src/components/checkbox',
@@ -36,4 +38,4 @@ module.exports = {
     Teleport: '../src/components/teleport',
     Tree: '../src/components/tree',
     TreeSelect: '../src/components/treeSelect'
-}; */
+};
