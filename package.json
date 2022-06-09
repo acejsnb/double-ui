@@ -15,10 +15,12 @@
     "docs:prod": "npm run clean:docs && webpack --mode production --config ./config/docsProd.js",
     "components": "webpack --mode production --config ./config/components.js",
     "libIndex": "node ./config/libIndex.js",
+    "libIndex2": "go run ./config/libIndex.go",
     "single": "webpack --mode production --config ./config/single.js",
     "baseCss": "webpack --mode production --config ./config/baseCss.js",
     "build:lib": "npm run clean && npm run single && npm run baseCss && npm run libIndex",
     "build": "npm run clean && npm run single && npm run libIndex",
+    "build2": "npm run clean && npm run single && npm run libIndex2",
     "addBaseCss": "node ./config/addBaseCss.js",
     "vite": "vite"
   },
