@@ -1,14 +1,14 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import reactSvgPlugin from 'vite-plugin-react-svg';
+import svgr from 'vite-plugin-svgr';
 
 const port = 6006;
 
 export default defineConfig({
     plugins: [
         react(),
-        reactSvgPlugin({ defaultExport: 'component' })
+        svgr({ exportAsDefault: true })
     ],
     resolve: {
         extensions: ['.js', '.ts', '.tsx'], // import引入文件的时候不用加后缀

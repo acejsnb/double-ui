@@ -1,7 +1,7 @@
-import React, { FC, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import Button from '@/components/button/build';
 
-const ButtonView: FC = () => {
+function ButtonView() {
     const [loading, setLoading] = useState(false);
     const click = useCallback(() => {
         console.log('click');
@@ -23,6 +23,6 @@ const ButtonView: FC = () => {
             <Button type="green" loading={loading} click={click2}>按钮</Button>
         </div>
     );
-};
+}
 
 export default ButtonView;

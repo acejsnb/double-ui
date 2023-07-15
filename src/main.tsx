@@ -1,9 +1,6 @@
 import './assets/stylus/base.styl';
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
 
-render(
-    <App />,
-    document.getElementById('double-ui')
-);
+createRoot(document.getElementById('double-ui')!).render(<App />);

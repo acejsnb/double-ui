@@ -1,9 +1,9 @@
 import './style.styl';
-import React, { FC, memo } from 'react';
+import React, { memo } from 'react';
 import LoadingSvg from '@/assets/iconSvg/loading.svg';
 import { Props } from './index';
 
-const Button: FC<Props> = ({
+function Button({
     type = 'default',
     size = 'medium',
     htmlType, // form表单按钮类型
@@ -13,7 +13,7 @@ const Button: FC<Props> = ({
     className,
     children,
     click = () => {}
-}) => {
+}: Props) {
     const btnClick = () => {
         if (disabled || loading || htmlType) return;
         click();
@@ -37,6 +37,6 @@ const Button: FC<Props> = ({
             </section>
         </button>
     );
-};
+}
 
 export default memo(Button);

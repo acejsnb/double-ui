@@ -1,7 +1,7 @@
 import React, {
     FC, useCallback, useContext, useEffect, useState
 } from 'react';
-import { formValidate } from 'js-func-tools';
+import { FormValidate } from 'js-func-tools';
 import { ItemProps } from './index';
 import FormContext from './FormContext';
 import ItemContext from './ItemContext';
@@ -35,7 +35,7 @@ const Item: FC<ItemProps> = ({
     const checkValidate = useCallback((value: string) => {
         // const confirmValue = getFieldValue(confirm);
         const confirmValue = params[confirm];
-        const status = formValidate({
+        const status = FormValidate({
             rules, value, success, fail, confirmValue
         });
         setCheckList(name, !!status);

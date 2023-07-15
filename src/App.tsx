@@ -1,27 +1,28 @@
 import '@/assets/stylus/app.styl';
 import React from 'react';
 import {
-    HashRouter, Route, Switch, Redirect
+    HashRouter, Route, Routes
 } from 'react-router-dom';
 
 import Home from './pages/Home';
 import routes, { RouteItem } from './routes';
 
-const App = () => (
-    <div className="app">
-        <h1 className="title">double-ui</h1>
-        <HashRouter>
-            <Switch>
-                <Route exact path="/" component={Home} />
-                {
-                    routes.map((d: RouteItem) => (
-                        <Route key={d.name} path={d.path} component={d.component} />
-                    ))
-                }
-                <Redirect to="/" />
-            </Switch>
-        </HashRouter>
-    </div>
-);
+function App() {
+    return (
+        <div className="app">
+            <h1 className="title">double-ui</h1>
+            <HashRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    {
+                        routes.map(({ name, path, component: Component }: RouteItem) => (
+                            <Route key={name} path={path} element={<Component />} />
+                        ))
+                    }
+                </Routes>
+            </HashRouter>
+        </div>
+    );
+}
 
 export default App;
