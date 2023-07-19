@@ -1,8 +1,8 @@
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Test from '@/components/test/Test';
 import RenderToBody, { Instance } from '@/utils/RenderToBody';
 
-const TestView: FC = () => {
+function TestView() {
     let vm1: Instance; let vm2: Instance;
     const mount1 = () => {
         console.log('click');
@@ -72,7 +72,7 @@ const TestView: FC = () => {
             />
         </div>
     );
-};
+}
 
 export default TestView;
 

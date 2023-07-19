@@ -36,7 +36,7 @@ const data = [
     { parentId: '-1', id: '444', name: '退出登录' }
 ];
 
-const CascadeView = () => {
+function CascadeView() {
     const change = (id: string, pid: string, item: any) => {
         console.log('change', id, pid, item);
     };
@@ -48,6 +48,6 @@ const CascadeView = () => {
             </div>
         </div>
     );
-};
+}
 
 export default CascadeView;

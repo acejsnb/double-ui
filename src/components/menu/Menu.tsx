@@ -29,10 +29,10 @@ const reducer: Reducer = (state, { type, payload }) => {
 
 let DUI_MENU_TIMER: number;
 
-const Menu: FC<Props> = ({
+function Menu({
     selectedIds = [], openIds = [], collapsed, click,
     children
-}) => {
+}: Props) {
     const [state, dispatch] = useReducer(reducer, {
         selectedIds, openIds, collapsed, click
     });
@@ -57,6 +57,6 @@ const Menu: FC<Props> = ({
             </Context.Provider>
         </div>
     );
-};
+}
 
 export default memo(Menu);

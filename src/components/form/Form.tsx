@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, FormEvent, useCallback, useRef, useState, memo
+    FormEvent, useCallback, useRef, useState, memo
 } from 'react';
 import {
     Props, SubmitParams, CheckList
@@ -8,13 +8,13 @@ import {
 import FormContext from './FormContext';
 import FormHandle, { CheckKeyStatus } from './utils';
 
-const Form: FC<Props> = ({
+function Form({
     children,
     name = 'duiForm',
     layout = 'vertical',
     reset,
     submit
-}) => {
+}: Props) {
     const formRef = useRef<HTMLFormElement>(null);
     FormContext.displayName = name;
     // 设置重置副作用
@@ -74,6 +74,6 @@ const Form: FC<Props> = ({
             </FormContext.Provider>
         </form>
     );
-};
+}
 
 export default memo(Form);

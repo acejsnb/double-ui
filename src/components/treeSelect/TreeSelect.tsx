@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useRef, useState, MouseEvent, useEffect, memo, useCallback
+    useRef, useState, MouseEvent, useEffect, memo, useCallback
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
@@ -11,12 +11,12 @@ import ResetPosition from './ResetPosition';
 
 import { Props, TileItem, IMultiple } from './index';
 
-const TreeSelect: FC<Props> = ({
+function TreeSelect({
     data, value = '', name = '', multiple = false,
     omit = false, sameParams = false,
     sortByTree = false, disabled = false,
     change, openNode
-}) => {
+}: Props) {
     const triggerRef = useRef<HTMLDivElement>(null);
     const dropRef = useRef<HTMLDivElement>(null);
     const [isMounted, setIsMounted] = useState(false);
@@ -87,6 +87,6 @@ const TreeSelect: FC<Props> = ({
             </CSSTransition>
         </>
     );
-};
+}
 
 export default memo(TreeSelect);

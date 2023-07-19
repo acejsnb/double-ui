@@ -1,13 +1,13 @@
 // 过度组件
-import React, { FC, PropsWithChildren, useEffect } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import ClickOutside from '@/utils/ClickOutside';
 import { Props } from './types';
 
 // 自定义下拉弹窗动画
-const Transition: FC<Props> = ({
+function Transition({
     show = false, setShow, timeout, classPrefix, children
-}) => {
+}: Props) {
     // 关闭下拉弹窗
     const closeDrop = () => {
         setShow(false);
@@ -38,6 +38,6 @@ const Transition: FC<Props> = ({
             {children}
         </CSSTransition>
     );
-};
+}
 
 export default Transition;

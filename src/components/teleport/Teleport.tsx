@@ -1,12 +1,12 @@
 // 传送门
 import React, {
-    FC, useRef, useEffect, PropsWithChildren, memo
+    useRef, useEffect, PropsWithChildren, memo
 } from 'react';
 import { createPortal } from 'react-dom';
 import ClickOutside from '@/utils/ClickOutside';
 import { Props } from './index';
 
-const Teleport: FC<Props> = ({ isMounted, setShow, children }) => {
+function Teleport({ isMounted, setShow, children }: Props) {
     const el = useRef<HTMLDivElement>(document.createElement('div'));
     // 关闭下拉弹窗
     const closeDrop = () => {
@@ -40,6 +40,6 @@ const Teleport: FC<Props> = ({ isMounted, setShow, children }) => {
     }, [isMounted]);
 
     return isMounted ? createPortal(children, el.current) : null;
-};
+}
 
 export default memo(Teleport);

@@ -1,17 +1,17 @@
 import React, {
-    FC, useCallback, useContext, useEffect, useState
+    useCallback, useContext, useEffect, useState
 } from 'react';
 import { FormValidate } from 'js-func-tools';
 import { ItemProps } from './index';
 import FormContext from './FormContext';
 import ItemContext from './ItemContext';
 
-const Item: FC<ItemProps> = ({
+function Item({
     children,
     label, name = '', confirm = '',
     className,
     rules = []
-}) => {
+}: ItemProps) {
     const {
         params, openCheck, isReset, setCheckList, setParam
     } = useContext(FormContext);
@@ -77,6 +77,6 @@ const Item: FC<ItemProps> = ({
             {message && <span className="d-form-item-message">{message}</span>}
         </div>
     );
-};
+}
 
 export default Item;

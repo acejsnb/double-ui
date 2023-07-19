@@ -1,12 +1,12 @@
-import React, { FC, useCallback, useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import Context from './Context';
 import { ItemProps } from './index';
 
-const MenuItem: FC<ItemProps> = ({
+function MenuItem({
     id = '', menuId,
     params = {},
     children
-}) => {
+}: ItemProps) {
     const { state: { selectedIds, click }, dispatch } = useContext(Context);
     const itemClick = useCallback(() => {
         dispatch({ type: 'selected', payload: `${menuId},${id}` });
@@ -18,6 +18,6 @@ const MenuItem: FC<ItemProps> = ({
             <div className="d-menu-text">{children}</div>
         </div>
     );
-};
+}
 
 export default MenuItem;

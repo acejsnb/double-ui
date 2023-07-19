@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useRef, useState, useEffect, memo
+    useRef, useState, useEffect, memo
 } from 'react';
 
 import IconClose from '@/assets/iconSvg/icon_close_white.svg';
@@ -26,9 +26,9 @@ const strategy = {
 
 const typesArr: string[] = ['info', 'success', 'warning', 'error'];
 
-const MessageBox: FC<Props> = ({
+function MessageBox({
     type, message, time = 3, remove
-}) => {
+}: Props) {
     const seconds = time * 1000;
     const msgRef = useRef<HTMLDivElement>(null);
     const [enter, setEnter] = useState(true);
@@ -59,5 +59,5 @@ const MessageBox: FC<Props> = ({
             <section className="d-message-close" onClick={remove}><IconClose /></section>
         </div>
     );
-};
+}
 export default memo(MessageBox);

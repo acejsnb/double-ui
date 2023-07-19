@@ -75,7 +75,7 @@ interface Item {
     name?: string
 }
 
-const DropGroupView = () => {
+function DropGroupView() {
     const [value, setValue] = useState('id_index');
     const [name, setName] = useState('首页');
     const change = ({ pid, id, name: cName = '' }: Item): void => {
@@ -102,6 +102,6 @@ const DropGroupView = () => {
             </DropGroup>
         </div>
     );
-};
+}
 
 export default DropGroupView;

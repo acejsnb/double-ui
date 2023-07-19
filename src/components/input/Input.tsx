@@ -1,17 +1,17 @@
 import './style.styl';
 import React, {
-    FC, FormEvent, useEffect, memo
+    FormEvent, useEffect, memo
 } from 'react';
 import { Props } from './index';
 
-const Input: FC<Props> = ({
+function Input({
     defaultValue = '',
     type = 'text', placeholder = '请输入', maxLength = 20,
     disabled = false, isReset = false,
     change,
     message = '',
     name = ''
-}) => {
+}: Props) {
     // input change事件触发
     const changeHandle = (e: FormEvent) => {
         const v = (e.target as HTMLInputElement).value;
@@ -41,6 +41,6 @@ const Input: FC<Props> = ({
             {message && <span className="d-input-err-text">{message}</span>}
         </span>
     );
-};
+}
 
 export default memo(Input);

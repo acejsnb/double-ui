@@ -1,8 +1,8 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 
 import Progress from '@/components/progress/build';
 
-const ProgressView: FC = () => {
+function ProgressView() {
     console.log('ProgressBarView');
     const [play, setPlay] = useState(false); // 是否播放
     const [running, setRunning] = useState(false); // 是否播放中
@@ -30,6 +30,6 @@ const ProgressView: FC = () => {
             <span>{ `播放次数为：${count}` }</span>
         </div>
     );
-};
+}
 
 export default ProgressView;

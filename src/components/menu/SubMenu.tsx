@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, useContext, useState, Children, useEffect, useRef, memo, useCallback
+    useContext, useState, Children, useEffect, useRef, memo, useCallback
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { SubMenuProps } from './index';
@@ -9,13 +9,13 @@ import ItemTitle from './ItemTitle';
 
 let DUI_ITEM_TITLE_ENTER: number; // children 显示timer
 let DUI_ITEM_TITLE_LEAVE: number;
-const SubMenu: FC<SubMenuProps> = ({
+function SubMenu({
     id, menuId, name,
     params = {},
     icon,
     layout = 'tile',
     children
-}) => {
+}: SubMenuProps) {
     const { state: { selectedIds, openIds, collapsed = false } } = useContext(Context);
     const titleRef = useRef<HTMLDivElement | null>(null);
     const [style, setStyle] = useState({});
@@ -125,6 +125,6 @@ const SubMenu: FC<SubMenuProps> = ({
             }
         </div>
     );
-};
+}
 
 export default memo(SubMenu);

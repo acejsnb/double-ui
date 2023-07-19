@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, MouseEvent, Fragment, useState, useEffect, memo, useCallback
+    MouseEvent, Fragment, useState, useEffect, memo, useCallback
 } from 'react';
 import ArrowTriangle from '@/assets/iconSvg/arrow_triangle.svg';
 import MorePointSvg from '@/assets/iconSvg/morePoint.svg';
@@ -25,7 +25,7 @@ const selectData = [
     { id: 'cancelAll', name: '取消所有子级' }
 ];
 
-const Tree: FC<Props> = (props) => {
+function Tree(props: Props) {
     const {
         value, data, multiple = false, omit = false,
         linkage, lastStage, childDisable,
@@ -203,6 +203,6 @@ const Tree: FC<Props> = (props) => {
             }
         </div>
     );
-};
+}
 
 export default memo(Tree);

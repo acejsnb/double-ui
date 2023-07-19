@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, memo, useRef, useState
+    memo, useRef, useState
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
@@ -16,7 +16,7 @@ interface ClickItem {
     name: string | undefined
 }
 
-const DropGroup: FC<Props> = ({
+function DropGroup({
     value,
     data,
     disabled,
@@ -25,7 +25,7 @@ const DropGroup: FC<Props> = ({
     maxWidth = 120,
     change = () => {},
     children
-}) => {
+}: Props) {
     const triggerRef = useRef<HTMLDivElement>(null);
     const dropRef = useRef<HTMLDivElement>(null);
     // 是否创建了下拉弹窗
@@ -77,7 +77,7 @@ const DropGroup: FC<Props> = ({
             </CSSTransition>
         </>
     );
-};
+}
 
 export default memo(DropGroup);
 

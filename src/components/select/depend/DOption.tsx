@@ -1,5 +1,5 @@
 import React, {
-    FC, FormEvent, MouseEvent, UIEvent, useState, useEffect
+    FormEvent, MouseEvent, UIEvent, useState, useEffect
 } from 'react';
 
 import ClearSvg from '@/assets/iconSvg/clear2.svg';
@@ -7,10 +7,10 @@ import TextEllipsis from '@/utils/TextEllipsis';
 import FindTarget from '@/utils/FindTarget';
 import { Item, OptionProps as Props } from '../index';
 
-const DOption: FC<Props> = ({
+function DOption({
     data, value, openSearch, placeholder, change,
     maxCount = 5
-}) => {
+}: Props) {
     const [inputVal, setInputVal] = useState<string>('');
     const [scrollTop, setScrollTop] = useState<number>(0);
     const [optionData, setOptionData] = useState<Item[]>(data);
@@ -65,22 +65,20 @@ const DOption: FC<Props> = ({
 
     return (
         <>
-            <>
-                {
-                    openSearch && (
-                        <span className={['d-drop-search', scrollTop > 12 && 'd-drop-search-shadow'].join(' ')}>
-                            <input
-                                className="d-drop-input"
-                                type="text"
-                                placeholder={placeholder}
-                                value={inputVal}
-                                onInput={inputHandle}
-                            />
-                            {inputVal && <i className="d-drop-clear" onClick={clearInput}><ClearSvg /></i>}
-                        </span>
-                    )
-                }
-            </>
+            {
+                openSearch && (
+                    <span className={['d-drop-search', scrollTop > 12 && 'd-drop-search-shadow'].join(' ')}>
+                        <input
+                            className="d-drop-input"
+                            type="text"
+                            placeholder={placeholder}
+                            value={inputVal}
+                            onInput={inputHandle}
+                        />
+                        {inputVal && <i className="d-drop-clear" onClick={clearInput}><ClearSvg /></i>}
+                    </span>
+                )
+            }
             <div
                 className="d-drop-option"
                 onScroll={scrollTopHandle}
@@ -108,6 +106,6 @@ const DOption: FC<Props> = ({
             </div>
         </>
     );
-};
+}
 
 export default DOption;

@@ -56,7 +56,7 @@ const dataArr = [
     }
 ];
 
-const TreeView = () => {
+function TreeView() {
     const [value] = useState('1');
     const change = (item: TileItem | IMultiple) => {
         console.log('change===', item);
@@ -70,6 +70,6 @@ const TreeView = () => {
             <div style={{ height: '50px' }} />
         </div>
     );
-};
+}
 
 export default TreeView;

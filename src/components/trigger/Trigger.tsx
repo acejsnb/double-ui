@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    ForwardRefRenderFunction, useState, useEffect, forwardRef, memo
+    ForwardedRef, useState, useEffect, forwardRef, memo
 } from 'react';
 import TriangleIcon from '@/assets/iconSvg/triangle.svg';
 import DeleteIcon from '@/assets/iconSvg/delete_icon.svg';
@@ -8,7 +8,7 @@ import { Props } from './index';
 
 import GetCaptionWidth from './GetCaptionWidth';
 
-const Trigger: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
+function Trigger({
     width = 120, title = '', placeholder = '请选择',
     triangle = true,
     disabled = false,
@@ -18,7 +18,7 @@ const Trigger: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
     click = () => {},
     clear = () => {},
     children
-}, ref) => {
+}: Props, ref: ForwardedRef<HTMLDivElement>) {
     const [captionWidth, setCaptionWidth] = useState(0);
     useEffect(() => {
         setCaptionWidth(GetCaptionWidth(title));
@@ -50,6 +50,6 @@ const Trigger: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
             {show && <section className="d-trigger-shade" />}
         </div>
     );
-};
+}
 
 export default memo(forwardRef(Trigger));

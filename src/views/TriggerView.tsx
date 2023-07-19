@@ -2,7 +2,7 @@ import React from 'react';
 
 import Trigger from '@/components/trigger/Trigger';
 
-const TriggerView = () => {
+function TriggerView() {
     const click = () => {
         console.log('click');
     };
@@ -18,6 +18,6 @@ const TriggerView = () => {
             />
         </div>
     );
-};
+}
 
 export default TriggerView;

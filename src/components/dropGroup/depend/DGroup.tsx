@@ -1,12 +1,14 @@
-import React, { ForwardRefRenderFunction, MouseEvent, forwardRef } from 'react';
+import React, {
+    ForwardedRef, MouseEvent, forwardRef
+} from 'react';
 
 import TextEllipsis from '@/utils/TextEllipsis';
 import FindTarget from '@/utils/FindTarget';
 import { OptionProps as Props, IItem } from '../index';
 
-const DGroup: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
+function DGroup({
     value, data, left, top, position, maxWidth, underline = false, change
-}, ref) => {
+}: Props, ref: ForwardedRef<HTMLDivElement>) {
     const optionClick = (e: MouseEvent) => {
         e.stopPropagation();
         const { tagName } = e.target as HTMLElement;
@@ -68,6 +70,6 @@ const DGroup: ForwardRefRenderFunction<HTMLDivElement, Props> = ({
             }
         </div>
     );
-};
+}
 
 export default forwardRef(DGroup);

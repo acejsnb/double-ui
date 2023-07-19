@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, MouseEvent, useState, useRef, memo, useCallback
+    MouseEvent, useState, useRef, memo, useCallback
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
@@ -11,7 +11,7 @@ import { Props, Item } from './index';
 import DOption from './depend/DOption';
 import ResetPosition from './depend/ResetPosition';
 
-const Select: FC<Props> = ({
+function Select({
     value = '',
     data = [],
     title = '',
@@ -28,7 +28,7 @@ const Select: FC<Props> = ({
     translateX = 0,
     maxCount = 5,
     className
-}) => {
+}: Props) {
     const triggerRef = useRef<HTMLDivElement>(null);
     const dropRef = useRef<HTMLDivElement>(null);
     const [isMounted, setIsMounted] = useState(false);
@@ -97,6 +97,6 @@ const Select: FC<Props> = ({
             </CSSTransition>
         </>
     );
-};
+}
 
 export default memo(Select);

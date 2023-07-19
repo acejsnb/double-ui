@@ -1,7 +1,7 @@
 export interface Props {
     imgSrc: string
     type?: string
-    size?: string | null
+    size?: string | number
 }
 export interface IOptions extends Props {
     ele?: Element | DocumentFragment | null

@@ -1,9 +1,9 @@
-import React, { ForwardRefRenderFunction, useContext, forwardRef } from 'react';
+import React, { ForwardedRef, useContext, forwardRef } from 'react';
 import TriangleSvg from '@/assets/iconSvg/triangle.svg';
 import Context from './Context';
 import { ItemTitleProps } from './index';
 
-const ItemTitle: ForwardRefRenderFunction<HTMLDivElement, ItemTitleProps> = ({
+function ItemTitle({
     id, menuId, name,
     icon,
     layout,
@@ -11,7 +11,7 @@ const ItemTitle: ForwardRefRenderFunction<HTMLDivElement, ItemTitleProps> = ({
     hasChildNode,
     mouseHandle,
     children
-}, ref) => {
+}: ItemTitleProps, ref: ForwardedRef<HTMLDivElement>) {
     const { state: { selectedIds, openIds, click }, dispatch } = useContext(Context);
 
     const titleClick = () => {
@@ -72,6 +72,6 @@ const ItemTitle: ForwardRefRenderFunction<HTMLDivElement, ItemTitleProps> = ({
             )}
         </div>
     );
-};
+}
 
 export default forwardRef(ItemTitle);

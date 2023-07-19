@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import Menu from '@/components/menu/build';
 import { Item } from '@/components/menu';
 import Button from '@/components/button/build';
@@ -89,7 +89,7 @@ const menuData2: Item[] = [
     }
 ];
 
-const MenuView: FC = () => {
+function MenuView() {
     const click = ({ id, name, url }: {[key: string]: any}) => {
         console.log(id, name, url);
     };
@@ -151,6 +151,6 @@ const MenuView: FC = () => {
             </div>
         </div>
     );
-};
+}
 
 export default MenuView;

@@ -1,17 +1,17 @@
 import './style.styl';
 import React, {
-    FC, MouseEvent, useState, useEffect, memo
+    MouseEvent, useState, useEffect, memo
 } from 'react';
 
 import TextEllipsis from '@/utils/TextEllipsis';
 import { Props } from './index';
 
-const Checkbox: FC<Props> = ({
+function Checkbox({
     checked = 'uncheck', disabled = false, stopPropagation = false,
     change = () => {},
     children,
     ...other
-}) => {
+}: Props) {
     const [status, setStatus] = useState(checked);
     useEffect(() => {
         setStatus(checked);
@@ -41,6 +41,6 @@ const Checkbox: FC<Props> = ({
             }
         </div>
     );
-};
+}
 
 export default memo(Checkbox);

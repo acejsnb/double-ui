@@ -1,9 +1,9 @@
-import React, { FC, useRef } from 'react';
+import React, { useRef } from 'react';
 import Loading from '@/components/loading/Loading';
 import Button from '@/components/button/Button';
 import AvatarImg from '@/assets/images/avatarimg.jpg';
 
-const ButtonView: FC = () => {
+function ButtonView() {
     const divRef = useRef(null);
     const click = () => {
         const global = Loading({ imgSrc: AvatarImg });
@@ -35,6 +35,6 @@ const ButtonView: FC = () => {
             </div>
         </div>
     );
-};
+}
 
 export default ButtonView;

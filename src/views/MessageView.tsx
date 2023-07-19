@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '@/components/button/build';
 import Message from '@/components/message/build';
 
-const MessageView = () => {
+function MessageView() {
     const info = () => {
         Message.info('aaaaaaaaaaaa', 5);
     };
@@ -24,6 +24,6 @@ const MessageView = () => {
             <Button type="red" click={error}>error</Button>
         </div>
     );
-};
+}
 
 export default MessageView;

@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, memo, useEffect, useRef, useState
+    memo, useEffect, useRef, useState
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Button from '../button/Button';
@@ -11,14 +11,14 @@ import ListenEsc from './Tools';
 import Tip from './Tip';
 
 
-const Modal: FC<Props> = ({
+function Modal({
     show, esc = false, shade = false, confirmBtnLoading, header = true, footer = true,
     title,
     mode = 'default',
     type,
     close, confirm,
     children
-}) => {
+}: Props) {
     const refMain = useRef<HTMLElement>(null);
     const [isMounted, setMounted] = useState(false);
     const [visible, setVisible] = useState(false);
@@ -92,6 +92,6 @@ const Modal: FC<Props> = ({
             </CSSTransition>
         </Teleport>
     );
-};
+}
 
 export default memo(Modal);

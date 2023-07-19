@@ -1,6 +1,6 @@
 import './style.styl';
 import React, {
-    FC, MouseEvent, useRef, useState, memo
+    MouseEvent, useRef, useState, memo
 } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Trigger from '../trigger/Trigger';
@@ -10,7 +10,7 @@ import CDrop from './depend/CDrop';
 import ResetPosition from './depend/ResetPosition';
 
 
-const Cascade: FC<Props> = ({
+function Cascade({
     value = '',
     data = [],
     title = '',
@@ -23,7 +23,7 @@ const Cascade: FC<Props> = ({
     maxCount = 5,
     change,
     children
-}) => {
+}: Props) {
     const triggerRef = useRef<HTMLDivElement>(null);
     const dropRef = useRef<HTMLDivElement>(null);
     // 是否已经挂载
@@ -87,6 +87,6 @@ const Cascade: FC<Props> = ({
             </CSSTransition>
         </>
     );
-};
+}
 
 export default memo(Cascade);

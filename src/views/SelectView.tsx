@@ -21,7 +21,7 @@ const data = [
     { id: '9', name: 'IIIIIIIIIIIIIIIIIII' }
 ];
 
-const SelectView = () => {
+function SelectView() {
     const [value, setValue] = useState('4');
     const [name, setName] = useState('DDD');
     const [dropData, setDropData] = useState(JSON.parse(JSON.stringify(data)));
@@ -85,6 +85,6 @@ const SelectView = () => {
             </div>
         </div>
     );
-};
+}
 
 export default SelectView;

@@ -36,6 +36,7 @@ export interface ItemTitleProps {
     icon?: ReactElement
     layout?: 'position' | 'tile'
     params?: Params
+    children?: ReactNode
 }
 
 export interface ItemProps {

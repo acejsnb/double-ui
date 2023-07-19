@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Checkbox from '@/components/checkbox/Checkbox';
 
-const CheckboxView = () => {
+function CheckboxView() {
     const [checked2, setChecked2] = useState('uncheck');
     const change1 = (checked: string) => {
         console.log('checked===', checked);
@@ -23,6 +23,6 @@ const CheckboxView = () => {
             <Checkbox checked={checked2} change={change2} id="z333">张三</Checkbox>
         </div>
     );
-};
+}
 
 export default CheckboxView;

@@ -13,7 +13,7 @@ const validate = (value: string, confirmValue?: string) => {
     return !(confirmValue === value);
 };
 
-const InputView = () => {
+function InputView() {
     const reset = () => {
         console.log('reset');
     };
@@ -57,6 +57,6 @@ const InputView = () => {
             </Form> */}
         </div>
     );
-};
+}
 
 export default InputView;

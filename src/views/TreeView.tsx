@@ -52,7 +52,7 @@ const dataArr = [
     }
 ];
 
-const TreeSelectView = () => {
+function TreeSelectView() {
     const change = (item: TileItem | IMultiple) => {
         console.log('change===', item);
     };
@@ -76,6 +76,6 @@ const TreeSelectView = () => {
             />
         </div>
     );
-};
+}
 
 export default TreeSelectView;

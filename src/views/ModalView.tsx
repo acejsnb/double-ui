@@ -8,7 +8,7 @@ interface Params {
     [key: string]: string
 }
 
-const ModalView = () => {
+function ModalView() {
     const [show, setShow] = useState(false);
     const close = () => {
         console.log('close');
@@ -62,6 +62,6 @@ const ModalView = () => {
             </Modal>
         </div>
     );
-};
+}
 
 export default ModalView;
