@@ -27,7 +27,7 @@ const strategy = {
 const typesArr: string[] = ['info', 'success', 'warning', 'error'];
 
 function MessageBox({
-    type, message, time = 3, remove
+    type, message, time = 3, remove, zIndex = 900
 }: Props) {
     const seconds = time * 1000;
     const msgRef = useRef<HTMLDivElement>(null);
@@ -53,6 +53,7 @@ function MessageBox({
                     active ? 'd-fade-in-down-enter-active' : 'd-fade-in-down-leave-active'
                 ].join(' ')
             }
+            style={{ zIndex }}
         >
             <section className="d-message-hint">{typesArr.includes(type) && strategy[type as keyof typeof ETypes]()}</section>
             <section className="d-message-text">{message}</section>

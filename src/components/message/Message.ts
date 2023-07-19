@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import MessageBox from './MessageBox';
 import { Options } from './index';
 
@@ -12,17 +12,18 @@ function Message({ type, message, time = 3.6 }: Options): void {
     }
     (() => {
         const span: HTMLSpanElement = document.createElement('span');
-        span.style.marginBottom = '24px';
         msgEle.appendChild(span);
+        const root = createRoot(span);
         let timer: any;
         const remove = () => {
             if (timer) clearTimeout(timer);
             if (span) msgEle.removeChild(span);
+            root.unmount();
         };
 
-        render(createElement(MessageBox, {
-            type, message, time, remove
-        }), span);
+        root.render(createElement(MessageBox, {
+            type, message, time, remove, zIndex: 900 + msgEle.children.length
+        }));
         timer = setTimeout(remove, time * 1000);
     })();
 }

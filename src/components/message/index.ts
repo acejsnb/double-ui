@@ -2,6 +2,7 @@ export interface Options {
     message: string
     type: string
     time?: number
+    zIndex?: number
 }
 
 export interface Props extends Options{
