@@ -58,7 +58,7 @@ func getBanner(pwd string) string {
 }
 
 func copyFile(pwd string) {
-	data, errRead := os.ReadFile(filepath.Join(pwd, "src/components/index.ts"))
+	data, errRead := os.ReadFile(filepath.Join(pwd, "src/components/index.tsx"))
 	if errRead != nil {
 		log.Fatal("-----", errRead)
 	}

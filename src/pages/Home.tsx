@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import routes from '@/routes';
 
-function Home() {
+export default function Home() {
     return (
         <>
             {
@@ -15,5 +15,3 @@ function Home() {
         </>
     );
 }
-
-export default Home;

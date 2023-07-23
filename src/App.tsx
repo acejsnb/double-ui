@@ -1,11 +1,9 @@
 import '@/assets/stylus/app.styl';
 import React from 'react';
-import {
-    HashRouter, Route, Routes
-} from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
-import routes, { RouteItem } from './routes';
+import routes from './routes';
 
 function App() {
     return (
@@ -15,8 +13,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     {
-                        routes.map(({ name, path, component: Component }: RouteItem) => (
-                            <Route key={name} path={path} element={<Component />} />
+                        routes.map(({ name, path, element: Element }) => (
+                            <Route key={name} path={path} element={Element} />
                         ))
                     }
                 </Routes>
