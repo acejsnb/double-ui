@@ -14,7 +14,7 @@ const { WEBPACK_SERVE } = process.env;
 const TimeFn = require('../get_time');
 
 const banner = `@${name} v${version}
-(c) 2020-2021 ${author}
+(c) 2020-2023 ${author}
 Released under the ${license} License.
 ${TimeFn()}`;
 

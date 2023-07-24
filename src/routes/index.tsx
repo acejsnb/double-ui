@@ -1,4 +1,6 @@
 import { ReactNode, ReactElement } from 'react';
+import { createHashRouter } from 'react-router-dom';
+import Home from '@/pages/Home';
 import TestView from '@/views/TestView';
 
 import ButtonView from '@/views/ButtonView';
@@ -41,6 +43,8 @@ const routes: RouteItem[] = [
     { name: 'TreeSelect', path: '/treeselectview', element: <TreeSelectView /> },
     { name: 'Trigger', path: '/triggerview', element: <TriggerView /> }
 ];
+const router = createHashRouter([{ path: '/', element: <Home /> }, ...routes]);
 
 export type { RouteItem };
+export { router };
 export default routes;

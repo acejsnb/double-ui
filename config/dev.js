@@ -45,7 +45,7 @@ const config = {
                     to: 'modules'
                 },
                 {
-                    from: resolve(__dirname, '../node_modules/react-router-dom/umd/react-router-dom.js'),
+                    from: resolve(__dirname, '../node_modules/react-router-dom/dist/umd/react-router-dom.development.js'),
                     to: 'modules'
                 },
                 {
